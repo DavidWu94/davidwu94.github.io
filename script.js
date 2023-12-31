@@ -1,5 +1,5 @@
 function getValue() {
-    const inputBoxcod = document.getElementById ( 'cod');
+    const inputBoxcod = document.getElementById ( 'code');
     const inputBoxpw = document.getElementById ( 'pw');
     const valuecod = inputBoxcod.value;
     const valuepw = inputBoxpw.value;
