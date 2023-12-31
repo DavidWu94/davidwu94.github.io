@@ -3,28 +3,25 @@
 }
 
 h1 {
-	margin: 120px 30px 50px;
+	margin: 0px 0px 0px;
 	font-size: 70px;
 	color: white;
 }
 
 html,body{
-    height: 100%;
-	width:100%;
-}
-
-div {
-	position: absolute;
 	top: 0px;
-	right: 0px;
+	right: -1px;
 	height: 100%;
 	width: 100%;
 	background: url("img/login.jpg") no-repeat center;
 	background-size: 100% ;
 }
 
+div {
+}
+
 input {
-	margin: 10px 20px;
+	margin: 10px 0px;
 	width: 200px;
 	height: 20px;
 	size: 10px;
