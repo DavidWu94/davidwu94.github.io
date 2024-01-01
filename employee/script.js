@@ -22,7 +22,7 @@ function viewData(){
 		}))
 }
 function employee.(){
-	fetch(`${window.location.origin}/employee/employee.html`)
+	window.location = `${window.location.origin}/employee/employee.html`
 		.then((res)=>res.text().then(text=>{
 			document.getElementById("full").innerHTML = text;
 		}))
