@@ -1,0 +1,13 @@
+* {
+	text-align: center;
+}
+
+
+body,html{
+	margin:0;
+	height: 100%;
+}
+
+textarea{
+	text-align: left;
+}
