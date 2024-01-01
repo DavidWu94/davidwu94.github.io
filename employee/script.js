@@ -21,3 +21,9 @@ function viewData(){
 			document.getElementById("full").innerHTML = text;
 		}))
 }
+function employee.(){
+	fetch(`${window.location.origin}/employee/employee.html`)
+		.then((res)=>res.text().then(text=>{
+			document.getElementById("full").innerHTML = text;
+		}))
+}
