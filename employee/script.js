@@ -22,5 +22,8 @@ function viewData(){
 		}))
 }
 function goback(){
-	window.location = `${window.location.origin}/employee/employee.html`;
+	fetch(`${window.location.origin}/employee/templates/employeeTemp.html`)
+		.then((res)=>res.text().then(text=>{
+			document.getElementById("full").innerHTML = text;
+		}))
 }
