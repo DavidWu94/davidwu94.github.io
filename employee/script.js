@@ -21,9 +21,6 @@ function viewData(){
 			document.getElementById("full").innerHTML = text;
 		}))
 }
-function employee.(){
-	window.location = `${window.location.origin}/employee/employee.html`
-		.then((res)=>res.text().then(text=>{
-			document.getElementById("full").innerHTML = text;
-		}))
+function goback(){
+	window.location = `${window.location.origin}/employee/employee.html`;
 }
