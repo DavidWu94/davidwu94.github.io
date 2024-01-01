@@ -8,7 +8,6 @@ window.onload = ()=>{
 	}*/
 }
 
-
 function newdayoff(){
 	fetch(`${window.location.origin}/employee/templates/newdayoff.html`)
 		.then((res)=>res.text().then(text=>{
