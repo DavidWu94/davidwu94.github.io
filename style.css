@@ -48,6 +48,7 @@ button {
 }
 
 #version {
+	color: white;
 	position: absolute;
 	right: 0;
 	bottom: 0;
