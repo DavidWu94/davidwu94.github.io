@@ -35,11 +35,11 @@ $(function() {
 				pwd:$("#pw").val()
 			}),
 		}).then(res=>{
-			console.log(res)
+			// console.log(res)
 			document.cookie = `session=${res["sessionKey"]};`;
 			window.location = `${window.location.origin}/${res["type"]=="employee"?"employee/employee.html":res["type"]=="admin"?"admin/admin.html":""}`
-		})
-	})
+		});
+	});
 });
 
 

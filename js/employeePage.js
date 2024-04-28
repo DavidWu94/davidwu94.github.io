@@ -48,7 +48,7 @@
 function readCookie(key){
 	const cookieString = document.cookie;
 	var cookieData = {}
-	cookieString.split(";").forEach((val,i,cookieList)=>{
+	cookieString.split("; ").forEach((val,i,cookieList)=>{
 		let a = val.split("=");
 		cookieData[a[0]] = a[1];
 	});
@@ -61,8 +61,52 @@ function readCookie(key){
 
 $(()=>{
 	const sessionKey = readCookie("sessionKey");
-	console.log(sessionKey)
+	const userId = readCookie("id");
+	// console.log(sessionKey);
 	if(sessionKey == null){
 		alert("請重新登入");
+		window.location = window.location.origin;
+	}else{
+		try{
+			$.ajax({
+				url: `http://127.0.0.1:3000/checkLogin`,
+				type: 'POST',
+				dataType: 'json',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				data: JSON.stringify({
+					session:sessionKey
+				}),
+			}).then(res=>{
+				if(res==null){
+					alert("請重新登入");
+					window.location = window.location.origin;
+				}
+			});
+		}catch{
+			alert("無法連線至伺服器")
+		}
 	}
-})
+	$("#newdayoff").on('click',()=>{
+		$.ajax({
+			url: `http://127.0.0.1:3000/employee`,
+			type: 'POST',
+			dataType: 'json',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			data: JSON.stringify({
+				session:sessionKey,
+				id:userId
+			}),
+		}).then(res=>{
+			if(res["status"]==null){
+				if(res["type"]=="bad id") alert("查無此使用者");
+				else alert("請重新登入");
+				
+				window.location = window.location.origin;
+			}
+		});
+	});
+});
