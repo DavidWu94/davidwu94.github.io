@@ -21,8 +21,8 @@
 // 	document.cookie = receivedData;
 // 	window.location = `${window.location.origin}/${receivedData["cat"]=="employee"?"employee/employee.html":receivedData["cat"]=="admin"?"admin/admin.html":""}`
 // }
-$(document).ready(function() {
-	$("#login").click(function(){
+$(function() {
+	$("#login").on("click",function(){
 		$.ajax({
 			url: 'http://127.0.0.1:3000/login',
 			type: 'POST',
