@@ -10,7 +10,7 @@ body,html{
 
 .fullscreen {
 	margin: 0 !important;
-	background-image: url("img/login.jpg");
+	background-image: url("../img/login.jpg");
 	position: fixed;
 	opacity: 0.85;
 	background-position: center;
@@ -47,10 +47,14 @@ button {
 	font-size: 20px;
 }
 
+.inputs {
+	margin: 15px 0 15px 0;
+}
+
 #version {
 	color: white;
 	position: absolute;
-	right: 0;
+	right: 15px;
 	bottom: 0;
 }
 

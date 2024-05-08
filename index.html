@@ -4,7 +4,7 @@
         <script src="js/jquery-3.7.1.min.js"></script>
         <script src="js/loginPage.js"></script>
 		<title>祐肯請假系統</title>
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="./css/mainPage.css">
 		<link rel="icon" type="image/x-icon" href="./img/logo.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
@@ -12,20 +12,19 @@
 		<div class="fullscreen">
 			<div class="field">
 				<h1>
-					祐肯企業
+					祐肯企業<br>請假系統
 				</h1>
-				<h1>
-					請假系統
-				</h1>
-				<input type = "text" id = "code" placeholder = "輸入編號" />
-				<br>
-				<br>
-				<input type = "text" id = "pw" placeholder = "輸入密碼" />
-				<br>
-				<br>
-				<button id="login">
-					登入
-				</button>
+				<div class="inputs">
+					<input type = "text" id = "code" placeholder = "輸入編號" />
+				</div>
+				<div class="inputs">
+					<input type = "password" id = "pw" placeholder = "輸入密碼" />
+				</div>
+				<div class="inputs">
+					<button id="login">
+						登入
+					</button>
+				</div>
 			</div>
 			<div id="version">
 				<p>Version: Alpha 0.1.0</p>
