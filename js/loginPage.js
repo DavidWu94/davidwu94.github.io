@@ -1,7 +1,7 @@
 $(function() {
 	$("#login").on("click",function(){
 		$.ajax({
-			url: 'https://yoconcorporation.loophole.site/login',
+			url: 'https://eucancorporation.loophole.site/login',
 			type: 'POST',
 			dataType: 'json',
 			headers: {
