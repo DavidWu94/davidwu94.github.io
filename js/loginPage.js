@@ -13,7 +13,7 @@ $(function() {
 			}),
 		}).then(res=>{
 			document.cookie = `session=${res["sessionKey"]};`;
-			// window.location = `${window.location.origin}/${res["type"]=="employee"?"employee/employee.html":res["type"]=="admin"?"admin/admin.html":""}`
+			window.location = `${window.location.origin}/${res["type"]=="employee"?"employee/employee.html":res["type"]=="admin"?"admin/admin.html":""}`
 		});
 	});
 });
