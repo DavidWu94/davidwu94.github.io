@@ -60,37 +60,37 @@ function readCookie(key){
 }
 
 $(()=>{
-	const sessionKey = readCookie("sessionKey");
+	const sessionKey = readCookie("session");
 	const userId = readCookie("id");
 	// console.log(sessionKey);
 	if(sessionKey == null){
 		alert("請重新登入");
 		window.location = window.location.origin;
 	}else{
-		try{
-			$.ajax({
-				url: `http://127.0.0.1:3000/checkLogin`,
-				type: 'POST',
-				dataType: 'json',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				data: JSON.stringify({
-					session:sessionKey
-				}),
-			}).then(res=>{
-				if(res==null){
-					alert("請重新登入");
-					window.location = window.location.origin;
-				}
-			});
-		}catch{
-			alert("無法連線至伺服器")
-		}
+		// try{
+		// 	$.ajax({
+		// 		url: `https://eucancorporation.loophole.site/login`,
+		// 		type: 'POST',
+		// 		dataType: 'json',
+		// 		headers: {
+		// 			'Content-Type': 'application/json',
+		// 		},
+		// 		data: JSON.stringify({
+		// 			session:sessionKey
+		// 		}),
+		// 	}).then(res=>{
+		// 		if(res==null){
+		// 			alert("請重新登入");
+		// 			window.location = window.location.origin;
+		// 		}
+		// 	});
+		// }catch{
+		// 	alert("無法連線至伺服器")
+		// }
 	}
 	$("#newdayoff").on('click',()=>{
 		$.ajax({
-			url: `http://127.0.0.1:3000/employee`,
+			url: `https://eucancorporation.loophole.site/employee`,
 			type: 'POST',
 			dataType: 'json',
 			headers: {
