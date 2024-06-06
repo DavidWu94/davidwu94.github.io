@@ -1,7 +1,7 @@
 $(function() {
 	$("#login").on("click",function(){
 		$.ajax({
-			url: 'https://eucancorporation.loophole.site/login',
+			url: 'https://127.0.0.1:3000/login',
 			type: 'POST',
 			dataType: 'json',
 			headers: {
