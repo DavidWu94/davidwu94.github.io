@@ -90,7 +90,7 @@ $(()=>{
 	}
 	$("#newdayoff").on('click',()=>{
 		$.ajax({
-			url: `https://eucancorporation.loophole.site/employee`,
+			url: `http://eucan.ddns.net:3000/employee`,
 			type: 'POST',
 			dataType: 'json',
 			headers: {
