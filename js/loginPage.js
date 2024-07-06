@@ -24,7 +24,7 @@ $(function() {
 			data: JSON.stringify({
 				account:$("#code").val(),
 				pwd:$("#pw").val(),
-				cookie:document.cookie
+				cookie:readCookie("session")
 			}),
 		}).then(res=>{
 			// console.log(res);
