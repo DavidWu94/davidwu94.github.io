@@ -23,7 +23,8 @@ $(function() {
 			},
 			data: JSON.stringify({
 				account:$("#code").val(),
-				pwd:$("#pw").val()
+				pwd:$("#pw").val(),
+				cookie:document.cookie
 			}),
 		}).then(res=>{
 			// console.log(res);
