@@ -4,9 +4,10 @@
 		<title>祐肯請假系統</title>
 		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 		<meta content="utf-8" http-equiv="encoding">
-		<link rel="stylesheet" href="../css/register.css">
+		<link rel="stylesheet" href="../css/addEmp.css">
 		<link rel="icon" type="image/x-icon" href="../img/logo.ico">
         <script src="../js/jquery-3.7.1.min.js"></script>
+        <script src="../js/cookieOperation.js"></script>
 		<script src="../js/registerPage.js"></script>
 	</head>
     <body>
@@ -15,10 +16,11 @@
         </h1>
         <div id="inputFields">
             <input placeholder="員工編號" id="code" class="cpw"></input>
-            <input placeholder="密碼(身分證字號)" id="pw" class="cpw"></input>
+            <input placeholder="密碼(身分證字號)" id="pwd" class="cpw"></input>
             <input placeholder="員工姓名" id="name" class="cpw"></input>
-            <span>到職日期:&nbsp;</span><input type="date" id="joinDate"></input>
+            <span>到職日期:&nbsp;</span><input type="date" id="joinDate" class="cpw"></input>
             <input placeholder="電子信箱" id="email" class="cpw"></input>
-            <button id="start"  class="cpw">確認新增</button>
+            <button id="confirm"  class="cpw">確認新增</button>
+        </div>
     </body>
 </html>
