@@ -1,10 +1,17 @@
-function readCookie(key){
+function cookieToObj(){
 	const cookieString = document.cookie;
 	var cookieData = {}
-	cookieString.split("; ").forEach((val,i,cookieList)=>{
+	cookieString.split(/; ?/gm).forEach((val,i,cookieList)=>{
+        if(val=="") return;
 		let a = val.split("=");
 		cookieData[a[0]] = a[1];
 	});
+    return cookieData;
+}
+
+
+function readCookie(key){
+    const cookieData = cookieToObj();
 	if(cookieData[key] == undefined){
 		return null;
 	}else{
@@ -12,10 +19,22 @@ function readCookie(key){
 	}
 }
 
-function addCookie(key,val){
-
+function updateCookie(cookieData){
+    var listCookie = [];
+    for(let k in cookieData){
+         document.cookie = `${k}=${cookieData[k]}`;
+    }
 }
 
-function deleteCookie(key,val){
-	
+function addCookie(key,val){
+    var cookieData = cookieToObj();
+    cookieData[key] = val;
+    console.log(cookieData)
+    updateCookie(cookieData);
+}
+
+function deleteCookie(key){
+    var cookieData = cookieToObj();
+    cookieData[key] = '';
+	updateCookie(cookieData);
 }
