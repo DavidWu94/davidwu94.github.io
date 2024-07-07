@@ -1,5 +1,9 @@
 
 $(function() {
-	$("#login").on("click",function(){
+	$("#confirm").on("click",function(){
+		loginCheck();
+		$("#joinDate").val()
+
+		
 	});
 });

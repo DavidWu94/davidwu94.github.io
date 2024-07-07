@@ -1,5 +1,5 @@
 function cookieToObj(){
-	const cookieString = document.cookie;
+	var cookieString = document.cookie;
 	var cookieData = {}
 	cookieString.split(/; ?/gm).forEach((val,i,cookieList)=>{
         if(val=="") return;
@@ -37,4 +37,29 @@ function deleteCookie(key){
     var cookieData = cookieToObj();
     cookieData[key] = '';
 	updateCookie(cookieData);
+}
+
+
+function loginCheck(userId,sessionKey){
+    var ret;
+    $.ajax({
+        url: 'http://eucan.ddns.net:3000/session',
+        type: 'POST',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        data: JSON.stringify({
+            account:userId,
+            cookie:sessionKey
+        }),
+    }).then(res=>{
+        // console.log("success")
+    }).catch(rej=>{
+        console.log(rej)
+        ret = null;
+        alert("請重新登入");
+        window.location = window.location.origin;
+    });
+    return new Promise(res=>res(ret));
 }
