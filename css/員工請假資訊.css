@@ -1,0 +1,36 @@
+body,html{
+    text-align: center; 
+}
+
+table{
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-left:auto; 
+    margin-right:auto;
+}
+  
+thead,tfoot{
+    background-color: rgb(228 240 245);
+}
+  
+th,td {
+    border: 2px solid rgb(160 160 160);
+    padding: 8px 100px;
+}
+  
+td:last-of-type{
+    text-align: center;
+}
+
+.search{
+    font-size: 1.3rem;
+}
+
+.button{
+    font-size: 1.3rem;
+}
+
+
