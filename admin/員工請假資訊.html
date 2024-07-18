@@ -13,70 +13,63 @@
     <body>
         <h1>查詢員工請假時數</h1>
         <div id="search" class="search">
-            <input placeholder="員工編號" id="code" class="button"></input>
-            <button id="Search_employees" class="button">搜尋</button>
-            <h4>以下為該員工的資訊:</h4>
+            <input placeholder="員工編號" id="code" class="button">
+            <input placeholder="年度" id="year" class="button">
+            <br>
+            <button id="search" class="button">搜尋</button>
         </div>
+        <br>
         <div id="info" class="info">
-            <table style="font-size: 25px;">
+            <table  style="font-size: 45px;">
                 <thead>
                     <tr>
-                        <th>當年度特休天數</th>
-                        <td></td>
+                        <th align="left">當年度特休天數</th>
+                        <td><output id="當年度特休天數"></output></td>
                     </tr>
                     <tr>
                         <th>假別</th>
-                        <th>數值</th>
+                        <th>時數</th>
+                        <th>假別</th>
+                        <th>時數</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th id="info">目前已請之特休假:</th>
-                        <td></td>
+                        <th align="left">特休假</th>
+                        <td><output id="特休假"></output></td>
+                        <th align="left">分娩假</th>
+                        <td><output id="分娩假"></output></td>
                     </tr>
                     <tr>
-                        <th>目前已請之事假:</th>
-                        <td></td>
+                        <th align="left">事假</th>
+                        <td><output id="事假"></output></td>
+                        <th align="left">產檢假</th>
+                        <td><output id="產檢假"></output></td>
                     </tr>
                     <tr>
-                        <th>目前已請之家庭照顧假:</th>
-                        <td></td>
+                        <th align="left">家庭照顧假</th>
+                        <td><oupt id="家庭照顧假"></oupt></td>
+                        <th align="left">流產假</th>
+                        <td><output id="流產假"></output></td>
                     </tr>
                     <tr>
-                        <th>目前已請之普通傷病假:</th>
-                        <td></td>
+                        <th align="left">普通傷病假</th>
+                        <td><output id="普通傷病假"></output></td>
+                        <th align="left">陪產假</th>
+                        <td><output id="陪產假"></output></td>
                     </tr>
                     <tr>
-                        <th>目前已請之婚假:</th>
-                        <td></td>
+                        <th align="left">婚假</th>
+                        <td><output id="婚假"></output></td>
+                        <th align="left">產假</th>
+                        <td><output id="產假"></output></td>
                     </tr>
                     <tr>
-                        <th>目前已請之喪假:</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>目前已請之分娩假:</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>目前已請之產檢假:</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>目前已請之流產假:</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>目前已請之陪產假:</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>目前已請之產假:</th>
-                        <td></td>
+                        <th align="left">喪假</th>
+                        <td><output id="喪假"></output></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
     </body>
 </html>
