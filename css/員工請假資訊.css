@@ -39,8 +39,8 @@ th,td {
 
 
 #version {
-	color: white;
-	position: absolute;
+	color: black;
+	position: fixed;
 	right: 20px;
 	bottom: 0;
 }
