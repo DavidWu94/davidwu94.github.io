@@ -1,0 +1,21 @@
+body,html{
+	position: fixed; 
+    left: 50px;
+}
+
+
+.cpw {
+    display: block;
+    position: relative;
+    width: 100%;
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+
+#version {
+	color: white;
+	position: absolute;
+	right: 20px;
+	bottom: 0;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<link rel="icon" type="image/x-icon" href="../img/logo.ico">
+        <script src="../js/jquery-3.7.1.min.js"></script>
+        <script src="../js/cookieOperation.js"></script>
+        <img src="../img/logo.png" style="position: fixed;right: 1%;top: 1%;width: 15%;"> 
+        <link rel="stylesheet" href="../css/員工資料維護.css">
+    </head>
+    <body>
+        <div>
+            <h1 style="font-size: 50px;">員工資料維護</h1>
+            <input placeholder="員工編號" id="code" class="cpw"></input>
+            <input placeholder="密碼(身分證字號)" id="pwd" class="cpw"></input>
+            <input placeholder="員工姓名" id="name" class="cpw"></input>
+            <span class="cpw">到職日期:&nbsp;</span>
+            <input type="date" id="joinDate" class="cpw"></input>
+            <input placeholder="電子信箱" id="email" class="cpw"></input>
+            <input placeholder="主管類型" id="mgroup" class="cpw"></input>
+            <select id="審核確認" class="cpw">
+                <option>請假是否需要審核</option>
+                <option id="true">需要審核</option>
+                <option id="false">不需要審核</option>
+            </select>
+            <button id="confirm"  class="cpw">確認</button>
+        </div>
+        <div id="version">
+            <p>Version: Alpha 0.1.0</p>
+            <p>system builder : 張凱昱 吳岱威</p>
+        </div>
+    </body>
+</html>

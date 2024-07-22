@@ -3,6 +3,7 @@ body,html{
     left: 50px;
 }
 
+
 table{
     border-collapse: collapse;
     border: 2px solid rgb(140 140 140);
@@ -12,10 +13,12 @@ table{
     padding-left: 0%;
 }
   
+
 thead,tfoot{
     background-color: rgb(228 240 245);
 }
   
+
 th,td {
     border: 2px solid rgb(160 160 160);
     padding-right: 20px;
@@ -24,12 +27,20 @@ th,td {
     padding-bottom: 10px;
 }
 
+
 .search{
     font-size: 1.3rem;
 }
 
+
 .button{
-    font-size: 1.3rem;
+    font-size: 2rem;
 }
 
 
+#version {
+	color: white;
+	position: absolute;
+	right: 20px;
+	bottom: 0;
+}
