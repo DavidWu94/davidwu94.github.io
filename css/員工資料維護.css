@@ -16,6 +16,7 @@ body,html{
 #version {
 	color: black;
 	position: fixed;
-	right: 20px;
+	right: 1%;
 	bottom: 0;
+    text-align: end;
 }

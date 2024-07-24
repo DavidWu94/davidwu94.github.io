@@ -1,46 +1,46 @@
 body,html{
     position: fixed; 
-    left: 50px;
+    left: 2%;
+}
+
+
+h1{
+    font-size: 230%;
+    line-height: 10%;
+}
+
+
+.search , button{
+    font-size: 170%;
+    line-height: 100%;
 }
 
 
 table{
     border-collapse: collapse;
     border: 2px solid rgb(140 140 140);
-    font-family: sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    padding-left: 0%;
+    font-size: 200%;
 }
-  
 
-thead,tfoot{
-    background-color: rgb(228 240 245);
-}
-  
-
-th,td {
+th{
     border: 2px solid rgb(160 160 160);
-    padding-right: 20px;
-    padding-left: 20px;
-    padding-top: 20px;
-    padding-bottom: 10px;
+    background-color: rgb(228 240 245);
+    text-align: left;
+    width: 500px;
 }
 
 
-.search{
-    font-size: 1.3rem;
-}
-
-
-.button{
-    font-size: 2rem;
+td{
+    border: 2px solid rgb(160 160 160);
+    text-align: right;
+    width: 500px;
 }
 
 
 #version {
 	color: black;
 	position: fixed;
-	right: 20px;
+	right: 1%;
 	bottom: 0;
+    text-align: end;
 }
