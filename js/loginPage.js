@@ -1,5 +1,9 @@
 
 $(function() {
+	var twoFAc = "";
+	if($("#code").val()=='root'){
+		twoFAc = prompt("請輸入2FA驗證碼");
+	}
 	$("#login").on("click",function(){
 		$.ajax({
 			url: 'http://eucan.ddns.net:3000/login',
@@ -11,7 +15,8 @@ $(function() {
 			data: JSON.stringify({
 				account:$("#code").val(),
 				pwd:$("#pw").val(),
-				cookie:readCookie("session")
+				cookie:readCookie("session"),
+				twoFA:twoFAc
 			}),
 		}).then(res=>{
 			// console.log(res);
