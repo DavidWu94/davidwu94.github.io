@@ -1,10 +1,10 @@
 
 $(function() {
-	var twoFAc = "";
-	if($("#code").val()=='root'){
-		twoFAc = prompt("請輸入2FA驗證碼");
-	}
 	$("#login").on("click",function(){
+		var twoFAc = "";
+		if($("#code").val()=='root'){
+			twoFAc = prompt("請輸入2FA驗證碼");
+		}
 		$.ajax({
 			url: 'http://eucan.ddns.net:3000/login',
 			type: 'POST',
