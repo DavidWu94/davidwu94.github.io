@@ -1,0 +1,44 @@
+body,html{
+    position: fixed; 
+    left: 2%;
+}
+
+
+h1{
+    font-size: 290%;
+    line-height: 10%;
+}
+
+
+.bill{
+	font-size: 150%;
+}
+
+
+button{
+	font-size: 100%;
+}
+
+
+table{
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    font-size: 200%;
+}
+
+
+th{
+    border: 2px solid rgb(160 160 160);
+    background-color: rgb(228 240 245);
+    text-align: left;
+    width: 500px;
+}
+
+
+#version {
+	color: black;
+	position: fixed;
+	right: 1%;
+	bottom: 0;
+    text-align: end;
+}

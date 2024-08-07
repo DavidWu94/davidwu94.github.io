@@ -1,0 +1,19 @@
+body,html{
+    position: fixed; 
+    left: 2%;
+}
+
+
+h1{
+    font-size: 230%;
+    line-height: 10%;
+}
+
+
+#version {
+	color: black;
+	position: fixed;
+	right: 1%;
+	bottom: 0;
+    text-align: end;
+}

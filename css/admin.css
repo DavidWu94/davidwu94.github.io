@@ -1,11 +1,6 @@
-* {
-	text-align: start;
-}
-
-
 body,html{
-	margin:0;
-	height: 100%;
+	position: fixed; 
+    left: 50px;
 }
 
 /* 請假卡 */
@@ -70,4 +65,18 @@ body,html{
 	top: 50%;
 	text-align: left;
     transform: translate(0,-50%);
+}
+
+
+.button{
+	font-size: 250%;
+}
+
+
+#version {
+	color: black;
+	position: fixed;
+	right: 1%;
+	bottom: 0;
+    text-align: end;
 }
