@@ -23,12 +23,11 @@ button{
 table{
     border-collapse: collapse;
     border: 2px solid rgb(140 140 140);
-    font-size: 150%;
 }
 
 
 th{
-    border: 2px solid rgb(160 160 160);
+    border: 3px solid rgb(160 160 160);
     background-color: rgb(228 240 245);
     text-align: left;
 }
