@@ -16,8 +16,19 @@ table{
 }
 
 
+th{
+    outline: 1px solid rgb(160 160 160);
+    background-color: rgb(228 240 245);
+    text-align: left;
+    height: 30px;
+}
+
+
 td{
     outline: 1px solid rgb(160 160 160);
+    text-align: left;
+    width: 150px;
+    height: 80px;
 }
 
 
