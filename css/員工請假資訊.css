@@ -22,6 +22,12 @@ table{
     font-size: 200%;
 }
 
+
+#time{
+    text-align: center;
+}
+
+
 th{
     border: 2px solid rgb(160 160 160);
     background-color: rgb(228 240 245);
