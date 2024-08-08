@@ -11,7 +11,7 @@ h1{
 
 
 .bill{
-	font-size: 200%;
+	font-size: 150%;
 }
 
 
@@ -27,7 +27,7 @@ table{
 
 
 th{
-    border: 3px solid rgb(160 160 160);
+    border: 2px solid rgb(160 160 160);
     background-color: rgb(228 240 245);
     text-align: left;
 }
@@ -35,7 +35,6 @@ th{
 
 td{
     border: 2px solid rgb(160 160 160);
-    text-align: left;
 }
 
 
