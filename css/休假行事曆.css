@@ -10,6 +10,17 @@ h1{
 }
 
 
+table{
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+}
+
+
+td{
+    outline: 1px solid rgb(160 160 160);
+}
+
+
 #version {
 	color: black;
 	position: fixed;
