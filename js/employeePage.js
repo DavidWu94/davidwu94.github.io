@@ -50,49 +50,11 @@ $(()=>{
 	const userId = readCookie("id");
 	// console.log(sessionKey);
 	if(sessionKey == null){
-		// alert("請重新登入");
-		// window.location = window.location.origin;
-	}else{
-		// try{
-		// 	$.ajax({
-		// 		url: `https://eucancorporation.loophole.site/login`,
-		// 		type: 'POST',
-		// 		dataType: 'json',
-		// 		headers: {
-		// 			'Content-Type': 'application/json',
-		// 		},
-		// 		data: JSON.stringify({
-		// 			session:sessionKey
-		// 		}),
-		// 	}).then(res=>{
-		// 		if(res==null){
-		// 			alert("請重新登入");
-		// 			window.location = window.location.origin;
-		// 		}
-		// 	});
-		// }catch{
-		// 	alert("無法連線至伺服器")
-		// }
+		alert("請重新登入");
+		window.location = window.location.origin;
 	}
+	loginCheck(userId,sessionKey);
 	$("#newdayoff").on('click',()=>{
-		$.ajax({
-			url: `http://eucan.ddns.net:3000/employee`,
-			type: 'POST',
-			dataType: 'json',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			data: JSON.stringify({
-				session:sessionKey,
-				id:userId
-			}),
-		}).then(res=>{
-			if(res["status"]==null){
-				if(res["type"]=="bad id") alert("查無此使用者");
-				else alert("請重新登入");
-				
-				window.location = window.location.origin;
-			}
-		});
+		window.location = `${window.location.origin}/employee/newdayoff.html`;
 	});
 });
