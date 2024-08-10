@@ -50,8 +50,8 @@ $(()=>{
 	const userId = readCookie("id");
 	// console.log(sessionKey);
 	if(sessionKey == null){
-		alert("請重新登入");
-		window.location = window.location.origin;
+		// alert("請重新登入");
+		// window.location = window.location.origin;
 	}else{
 		// try{
 		// 	$.ajax({
