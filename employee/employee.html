@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="../css/employee.css">
-		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-		<meta content="utf-8" http-equiv="encoding">
 		<title>祐肯請假系統</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
 		<link rel="icon" type="image/x-icon" href="../img/logo.ico">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="../js/jquery-3.7.1.min.js"></script>
         <script src="../js/cookieOperation.js"></script>
-		<script src="../js/employeePage.js"></script>
+        <img src="../img/logo.png" style="position: fixed;right: 1%;top: 1%;width: 15%;">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="../css/employee.css">
+		<script src="../js/employeePage.js"></script>
 	</head>
     <body>
 		<div id="full">
@@ -19,16 +20,20 @@
 				員工請假專區
 			</h1>
 			<div class="btndiv w3-card w3-border" id="viewDataDiv">
-				<button class="menubtn" id="viewdata">
-					<span>請假紀錄</span>
-					<img class="menubtni" src="../img/viewdata.jpg" alt="buttonpng" />
-				</button>
+				<a href="../employee/查看請假紀錄.html">
+					<button class="menubtn" id="viewdata">
+						<span>請假紀錄</span>
+						<img class="menubtni" src="../img/viewdata.jpg" alt="buttonpng" />
+					</button>
+				</a>
 			</div>
 			<div class="btndiv w3-card w3-border" id="newDayOffDiv">
-				<button class="menubtn" id="newdayoff">
+				<a href="../employee/請假.html">
+					<button class="menubtn" id="newdayoff">
 					<span>請假</span>
 					<img class="menubtni" src="../img/newdayoff.jpg" alt="buttonpng" />
 				</button>
+				</a>
 			</div>
 			<div id = "worker_calendar">
 				<a href="../admin/休假行事曆.html">
@@ -36,10 +41,13 @@
 				</a>
 			</div>
 			<div id="Check_in">
-				<a href="../employee/Check_in.html">
+				<a href="../employee/打卡.html">
 					<button>打卡</button>
 				</a>
 			</div>
+		</div>
+		<div id="version">
+			<p>Version: Alpha 0.1.0 , system builder : 章凱昱 吳岱威</p>
 		</div>
     </body>
 </html>

@@ -20,3 +20,12 @@ body,html{
     width: 100%;
     /* background-color: aliceblue; */
 }
+
+
+#version {
+	color: black;
+	position: fixed;
+	right: 1%;
+	bottom: 0;
+    text-align: end;
+}

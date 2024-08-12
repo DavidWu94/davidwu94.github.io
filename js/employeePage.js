@@ -44,17 +44,3 @@
 // 	let decodedCookie = decodeURIComponent(document.cookie);
 // 	// decodedCookie.s
 // }
-
-$(()=>{
-	// const sessionKey = readCookie("session");
-	// const userId = readCookie("id");
-	// // console.log(sessionKey);
-	// if(sessionKey == null){
-	// 	alert("請重新登入");
-	// 	window.location = window.location.origin;
-	// }
-	// loginCheck(userId,sessionKey);
-	$("#newdayoff").on('click',()=>{
-		window.location = `${window.location.origin}/employee/newdayoff.html`;
-	});
-});
