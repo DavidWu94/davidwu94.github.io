@@ -17,7 +17,7 @@
 		<h1>員工請假專區</h1>
 		<form action="http://eucan.ddns.net:3000/request" method="post" enctype="multipart/form-data">
 			<div id="dayofftype">
-				<select name="type">
+				<select name="type" id="type">
 					<option>選擇假別</option>
 					<option>特休假</option>
 					<option>事假</option>
@@ -34,22 +34,22 @@
 			</div>
 			<div id="start">
 				<p>
-					輸入請假開始的時間
+					開始時間
 				</p>
-				<input name="start" type="datetime-local" />
+				<input name="start" type="datetime-local" id="start"/>
 			</div>
 
 			<div id="end">
 				<p>
-					輸入請假結束時間
+					結束時間
 				</p>
-				<input name="end" type="datetime-local" />
+				<input name="end" type="datetime-local" id="end"/>
 			</div>
 
 			<br>
 
 			<div id = "reason">
-				<input name="reason" type="text" placeholder = "輸入事由" />
+				<input name="reason" type="text" placeholder = "事由" id="reason"/>
 			</div>
 
 			<!-- <p>
@@ -59,15 +59,14 @@
 			<br>
 			<input type="hidden" id="acc" name="account" />
 			<input type="hidden" id="sess" name="cookie" />
-			<button type="submit">
-				確定請假
+			<button type="submit" id="send">
+				確定
 			</button>
 		</form>
 		<br>
-		<button id="back">
-			返回請假專區
-		</button>
-
+		<a href="../employee/employee.html">
+			<button id="back">返回</button>
+		</a>
 	</body>
 
 </html>
