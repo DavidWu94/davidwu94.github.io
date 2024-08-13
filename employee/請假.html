@@ -15,7 +15,9 @@
 	
 	<body>
 
-		<h1>員工請假專區</h1>
+		<h1 style="font-size: 350%;">
+			員工請假專區 
+		</h1>
 		<form action="http://eucan.ddns.net:3000/request" method="post" enctype="multipart/form-data">
 			<div id="dayofftype">
 				<select name="type" id="type">
@@ -34,13 +36,13 @@
 				</select>
 			</div>
 			<div id="start">
-				<p>開始時間</p>
+				<p style="font-size: 200%;">開始時間</p>
 				<input name="start_day" type="date" min="2024-01-01" max="5000-12-31"/>
 				<input name="start_time" type="time" min="2024-01-01" max="5000-12-31"/>
 			</div>
 
 			<div id="end">
-				<p>結束時間</p>
+				<p style="font-size: 200%;">結束時間</p>
 				<input name="end_day" type="date" min="2024-01-01" max="5000-12-31"/>
 				<input name="end_time" type="time" min="2024-01-01" max="5000-12-31"/>
 			</div>
