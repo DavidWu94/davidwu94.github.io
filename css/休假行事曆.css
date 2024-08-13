@@ -19,7 +19,7 @@ table{
 th{
     outline: 1px solid rgb(160 160 160);
     background-color: rgb(228 240 245);
-    text-align: left;
+    text-align: center;
     height: 30px;
 }
 
@@ -29,6 +29,35 @@ td{
     text-align: left;
     width: 150px;
     height: 80px;
+}
+
+
+.calenda{
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+}
+
+
+.month_picker{
+    cursor: pointer;
+    
+}
+
+
+.year_picker{
+    display: flex;
+    align-items: center;
+}
+
+
+.year_change{
+    width: 300px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 200px;
+    cursor: pointer;
 }
 
 

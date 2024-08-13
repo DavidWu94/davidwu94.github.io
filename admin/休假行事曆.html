@@ -9,16 +9,40 @@
         <script src="../js/jquery-3.7.1.min.js"></script>
         <script src="../js/cookieOperation.js"></script>
         <img src="../img/logo.png" style="position: fixed;right: 1%;top: 1%;width: 15%;">
-        <link rel="stylesheet" href="../css/休假行事曆.css"> 
+        <link rel="stylesheet" href="../css/休假行事曆.css">
+        <script src="../js/休假行事曆.js"></script> 
     </head>
     <body>
         <h1>休假行事曆</h1>
-        <select>
-            <option>2024/08</option>
-            <option>2024/09</option>
-        </select>
-        <div>
+        <div class="calendar">
             <table>
+                <tr>
+                    <th scope="row" colspan="7">
+                        <div class="year_picker">
+                            <span class="year_change" id="prev_year">
+                                <pre><</pre>
+                            </span>
+                            <span id="year">2024</span>
+                            <span class="year_change" id="next_year">
+                                <pre>></pre>
+                            </span>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th scope="row" colspan="7">
+                        <span class="month_picker" id="month_picker">8月</span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>日</th>
+                    <th>一</th>
+                    <th>二</th>
+                    <th>三</th>
+                    <th>四</th>
+                    <th>五</th>
+                    <th>六</th>
+                </tr>
                 <tr>
                     <th></th>
                     <th></th>
@@ -92,7 +116,7 @@
                     <td></td>
                 </tr>
             </table>
-            <a href="../employee/employee.html">
+            <a href="../admin/adminMainPage.html">
                 <button>返回</button>
              </a>
         </div>

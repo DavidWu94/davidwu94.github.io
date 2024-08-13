@@ -10,7 +10,7 @@ $(function() {
     var list = document.getElementById("list");
 	$("#refresh").on("click",()=>{
         $.ajax({
-        url: `http://eucan.ddns.net:3000/register`,
+        url: `http://eucan.ddns.net:3000/query`,
         type: 'POST',
         dataType: 'json',
         headers: {
@@ -22,6 +22,7 @@ $(function() {
             
         }),
     }).then(res=>{
+        console.log(555555)
         for (let i = 0; i == res["data"].length; i++){
             list.innerHTML = list.innerHTML + `
                 <div class="bill">
@@ -39,7 +40,10 @@ $(function() {
                             <td>${res["date"][i]["serialnum"]}</td>
                         </tr>
                         <tr>
-                            <td id="button"><button id="${res["date"][i]["serialnum"]}_no">拒絕</button><button id="${res["date"][i]["serialnum"]}_yes">核准</button></td>
+                            <td id="button">
+                                <button class='no' id=${res["date"][i]["serialnum"]}>拒絕</button>
+                                <button class='yes' id=${res["date"][i]["serialnum"]}>核准</button>
+                            </td>
                         </tr>
                     </table>
             `
