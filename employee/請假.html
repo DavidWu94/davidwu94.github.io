@@ -16,52 +16,50 @@
 	<body>
 
 		<h1>員工請假專區</h1>
-		<form action="http://eucan.ddns.net:3000/request" method="post" enctype="multipart/form-data">
-			<div id="dayofftype">
-				<select name="type" id="type">
-					<option>選擇假別</option>
-					<option>特休假</option>
-					<option>事假</option>
-					<option>家庭照顧假</option>
-					<option>普通傷病假</option>
-					<option>婚假</option>
-					<option>喪假</option>
-					<option>分娩假</option>
-					<option>產檢假</option>
-					<option>流產假</option>
-					<option>陪產假</option>
-					<option>產假</option>
-				</select>
-			</div>
-			<div id="start">
-				<p>開始時間</p>
-				<input name="start_day" type="date" min="2024-01-01" max="5000-12-31"/>
-				<input name="start_time" type="time" min="2024-01-01" max="5000-12-31"/>
-			</div>
+		<!-- <form action="http://eucan.ddns.net:3000/request" method="post" enctype="multipart/form-data"> -->
+		<div id="dayofftypeD">
+			<select id="type">
+				<option>選擇假別</option>
+				<option>特休假</option>
+				<option>事假</option>
+				<option>家庭照顧假</option>
+				<option>普通傷病假</option>
+				<option>婚假</option>
+				<option>喪假</option>
+				<option>分娩假</option>
+				<option>產檢假</option>
+				<option>流產假</option>
+				<option>陪產假</option>
+				<option>產假</option>
+			</select>
+		</div>
+		<div id="startD">
+			<p>開始時間</p>
+			<input id="start_day" type="date" min="2024-01-01" max="5000-12-31"/>
+			<input id="start_time" type="time" min="2024-01-01" max="5000-12-31"/>
+		</div>
 
-			<div id="end">
-				<p>結束時間</p>
-				<input name="end_day" type="date" min="2024-01-01" max="5000-12-31"/>
-				<input name="end_time" type="time" min="2024-01-01" max="5000-12-31"/>
-			</div>
+		<div id="endD">
+			<p>結束時間</p>
+			<input id="end_day" type="date" min="2024-01-01" max="5000-12-31"/>
+			<input id="end_time" type="time" min="2024-01-01" max="5000-12-31"/>
+		</div>
 
-			<br>
+		<br>
 
-			<div id = "reason">
-				<input name="reason" type="text" placeholder = "事由" id="reason"/>
-			</div>
+		<div id = "reasonD">
+			<input type="text" placeholder = "事由" id="reason"/>
+		</div>
 
-			<!-- <p>
-				上傳請假證明
-			</p>
-			<input name = "file" type = "file"> -->
-			<br>
-			<input type="hidden" id="acc" name="account" />
-			<input type="hidden" id="sess" name="cookie" />
-			<button type="submit" id="send">
-				確定
-			</button>
-		</form>
+		<!-- <p>
+			總請假時數: 0 小時
+		</p> -->
+		<!-- <input name = "file" type = "file"> -->
+		<br>
+		<button type="submit" id="submit">
+			確定
+		</button>
+		<!-- </form> -->
 		<br>
 		<a href="../employee/employee.html">
 			<button id="back">返回</button>
