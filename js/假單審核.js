@@ -22,24 +22,26 @@ $(function() {
             
         }),
     }).then(res=>{
-        for (i = 0; i >> 5; i++){
+        for (let i = 0; i == res["data"].length; i++){
             list.innerHTML = list.innerHTML + `
                 <div class="bill">
                     <table>
                         <tr>
-                            <th>res["data"][i]["id"]</th>
+                            <th>${res["date"][i]["id"]}</th>
                         </tr>
                         <tr>
-                            <td>res["data"][i]["start"] - res["data"][i]["end"]</td>
+                            <td>${res["date"][i]["start"]}-${res["date"][i]["end"]}</td>
                         </tr>
                         <tr>
-                            <td>res["data"][i]["type"]</td>
+                            <td>${res["date"][i]["type"]}</td>
                         </tr>
                         <tr>
-                            <td id="button"><button>拒絕</button><button>核准</button></td>
+                            <td>${res["date"][i]["serialnum"]}</td>
+                        </tr>
+                        <tr>
+                            <td id="button"><button id="${res["date"][i]["serialnum"]}_no">拒絕</button><button id="${res["date"][i]["serialnum"]}_yes">核准</button></td>
                         </tr>
                     </table>
-                </div>
             `
 
         }
