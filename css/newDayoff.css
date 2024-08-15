@@ -1,11 +1,10 @@
-* {
-	text-align: center;
+#main{
+    text-align: center; 
+    position: fixed;
+    font-size: 150%;
+    left: 25%;
 }
 
-body,html{
-	margin:0;
-	height: 100%;
-}
 
 .cpw {
     display: block;
@@ -14,6 +13,7 @@ body,html{
     margin: 20px 0;
     transform: translate(-50%,0);
 }
+
 
 #inputFields {
     margin-top: 70px;
