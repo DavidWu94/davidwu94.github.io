@@ -1,6 +1,6 @@
 #main{
     text-align: center; 
-    position: fixed;
+    position: scroll;
     font-size: 150%;
     left: 25%;
 }

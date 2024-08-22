@@ -1,11 +1,11 @@
 $(function() {
-    const sessionKey = readCookie("session");
+    /*const sessionKey = readCookie("session");
     const userId = readCookie("id");
 
     if(sessionKey == null){
         alert("請重新登入1");
         window.location = window.location.origin;
-    }
+    }*/
     loginCheck(userId,sessionKey);
     var list = document.getElementById("list");
 	$("#refresh").on("click",()=>{
@@ -23,7 +23,7 @@ $(function() {
         }),
     }).then(res=>{
         console.log(555555)
-        for (let i = 0; i == res["data"].length; i++){
+        for (let i = 0; i >> res["data"].length; i++){
             list.innerHTML = list.innerHTML + `
                 <div class="bill">
                     <table>
