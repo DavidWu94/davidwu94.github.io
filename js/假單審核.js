@@ -22,38 +22,120 @@ $(function() {
             
         }),
     }).then(res=>{
+        var list = document.getElementById("list");
+        let i = 0;
+
+        list.innerHTML = `
+            <table>
+                <tr>
+                    <th colspan="3" id="number">流水號:${res["date"][i]["serialnum"]}</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td id="woker_name">${res["date"][i]["id"]}</td>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td id="leave">${res["date"][i]["type"]}</td>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td id="reason"></td>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td id="time">${res["date"][i]["start"]}-${res["date"][i]["end"]}</td>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th class="btn"><button class="yes" id="${res["date"][i]["serialnum"]}" onclick="核准()">核准</button></th>
+                    <th></th>
+                    <th class="btn"><button class="no" id="${res["date"][i]["serialnum"]}" onclick="拒絕()">拒絕</button></th>
+                </tr>
+                <tr>
+                    <th class="btn"><button id="previous" onclick="上一個()">上一個</button></th>
+                    <th></th>
+                    <th class="btn"><button id="next" onclick="下一個()">下一個</button></th>
+                </tr>
+            </table>
+        `
+
         function 下一個(){
             a += 1;
-            console.log(a);
+            list.innerHTML = `
+                <table>
+                    <tr>
+                        <th colspan="3" id="number">流水號:${res["date"][i]["serialnum"]}</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td id="woker_name">${res["date"][i]["id"]}</td>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td id="leave">${res["date"][i]["type"]}</td>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td id="reason"></td>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td id="time">${res["date"][i]["start"]}-${res["date"][i]["end"]}</td>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th class="btn"><button class="yes" id="${res["date"][i]["serialnum"]}" onclick="核准()">核准</button></th>
+                        <th></th>
+                        <th class="btn"><button class="no" id="${res["date"][i]["serialnum"]}" onclick="拒絕()">拒絕</button></th>
+                    </tr>
+                    <tr>
+                        <th class="btn"><button id="previous" onclick="上一個()">上一個</button></th>
+                        <th></th>
+                        <th class="btn"><button id="next" onclick="下一個()">下一個</button></th>
+                    </tr>
+                </table>
+            `
+
+
+
+            function 上一個(){
+                a -= 1;
                 list.innerHTML = `
                     <table>
                         <tr>
-                            <th colspan="3" id="number">流水號:${a}</th>
+                            <th colspan="3" id="number">流水號:${res["date"][i]["serialnum"]}</th>
                         </tr>
                         <tr>
                             <th></th>
-                            <td id="woker_name">員工姓名</td>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <td id="leave">假別</td>
+                            <td id="woker_name">${res["date"][i]["id"]}</td>
                             <th></th>
                         </tr>
                         <tr>
                             <th></th>
-                            <td id="reason">事由</td>
+                            <td id="leave">${res["date"][i]["type"]}</td>
                             <th></th>
                         </tr>
                         <tr>
                             <th></th>
-                            <td id="time">2024/12/15/15:00-2024/12/15/18:00</td>
+                            <td id="reason"></td>
                             <th></th>
                         </tr>
                         <tr>
-                            <th class="btn"><button class="yes" id="0" onclick="核准()">核准</button></th>
                             <th></th>
-                            <th class="btn"><button class="no" id="0" onclick="拒絕()">拒絕</button></th>
+                            <td id="time">${res["date"][i]["start"]}-${res["date"][i]["end"]}</td>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th class="btn"><button class="yes" id="${res["date"][i]["serialnum"]}" onclick="核准()">核准</button></th>
+                            <th></th>
+                            <th class="btn"><button class="no" id="${res["date"][i]["serialnum"]}" onclick="拒絕()">拒絕</button></th>
                         </tr>
                         <tr>
                             <th class="btn"><button id="previous" onclick="上一個()">上一個</button></th>
@@ -61,53 +143,10 @@ $(function() {
                             <th class="btn"><button id="next" onclick="下一個()">下一個</button></th>
                         </tr>
                     </table>
-            `
-    
-    }
-    
-    
-    
-    function 上一個(){
-        a -= 1;
-            console.log(a);
-                list.innerHTML = `
-                    <table>
-                        <tr>
-                            <th colspan="3" id="number">流水號:${a}</th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <td id="woker_name">員工姓名</td>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <td id="leave">假別</td>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <td id="reason">事由</td>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <td id="time">2024/12/15/15:00-2024/12/15/18:00</td>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th class="btn"><button class="yes" id="0" onclick="核准()">核准</button></th>
-                            <th></th>
-                            <th class="btn"><button class="no" id="0" onclick="拒絕()">拒絕</button></th>
-                        </tr>
-                        <tr>
-                            <th class="btn"><button id="previous" onclick="上一個()">上一個</button></th>
-                            <th></th>
-                            <th class="btn"><button id="next" onclick="下一個()">下一個</button></th>
-                        </tr>
-                    </table>
-            `
-    }
+                `
+        }
+    }     
+        
         
     });
        
