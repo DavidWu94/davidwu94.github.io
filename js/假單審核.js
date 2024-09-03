@@ -24,14 +24,16 @@ $(function() {
     }).then(res=>{
         var list = document.getElementById("list");
         let i = 0;
-        console.log(res["date"][i]["serialnum"])
+        console.log(res["date"][i]["serialnum"]);
+        console.log(5);
+        console.log(i);
 
-        function 下一個(){
-            console.log(res["date"][i]["id"])
+        function next(){
+            console.log(res["date"][i]["id"]);
         }
 
-        function 上一個(){
-            console.log(res["date"][i]["type"])
+        function previous(){
+            console.log(res["date"][i]["type"]);
         }
         
             
