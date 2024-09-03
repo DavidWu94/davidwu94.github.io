@@ -1,6 +1,5 @@
 body,html{
-    position: fixed; 
-    left: 2%;
+    text-align: center;
 }
 
 
@@ -10,24 +9,21 @@ h1{
 }
 
 
-.bill{
-	font-size: 130%;
-}
-
-
 button{
 	font-size: 100%;
 }
 
 
 table{
+    margin-left:auto; 
+    margin-right:auto;
     border-collapse: collapse;
     border: 2px solid rgb(140 140 140);
+    font-size: 300%;
 }
 
 
 th{
-    outline: 1px solid rgb(160 160 160);
     background-color: rgb(228 240 245);
     text-align: left;
 }
@@ -35,11 +31,12 @@ th{
 
 td{
     outline: 1px solid rgb(160 160 160);
+    text-align: start;
 }
 
 
-#button{
-    text-align: end;
+.btn{
+    text-align: center;
 }
 
 
