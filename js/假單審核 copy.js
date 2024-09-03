@@ -51,14 +51,14 @@ $(function() {
                     <th></th>
                 </tr>
                 <tr>
-                    <th class="btn"><button class="yes" id="${res["date"][i]["serialnum"]}" onclick="核准()">核准</button></th>
+                    <th class="btn"><button class="yes" id="${res["date"][i]["serialnum"]}" onclick="yes()">核准</button></th>
                     <th></th>
-                    <th class="btn"><button class="no" id="${res["date"][i]["serialnum"]}" onclick="拒絕()">拒絕</button></th>
+                    <th class="btn"><button class="no" id="${res["date"][i]["serialnum"]}" onclick="no()">拒絕</button></th>
                 </tr>
                 <tr>
-                    <th class="btn"><button id="previous" onclick="上一個()">上一個</button></th>
+                    <th class="btn"><button id="previous" onclick="previous()">上一個</button></th>
                     <th></th>
-                    <th class="btn"><button id="next" onclick="下一個()">下一個</button></th>
+                    <th class="btn"><button id="next" onclick="next()">下一個</button></th>
                 </tr>
             </table>
         `
@@ -91,17 +91,18 @@ $(function() {
                         <th></th>
                     </tr>
                     <tr>
-                        <th class="btn"><button class="yes" id="${res["date"][i]["serialnum"]}" onclick="核准()">核准</button></th>
+                        <th class="btn"><button class="yes" id="${res["date"][i]["serialnum"]}" onclick="yes()">核准</button></th>
                         <th></th>
-                        <th class="btn"><button class="no" id="${res["date"][i]["serialnum"]}" onclick="拒絕()">拒絕</button></th>
+                        <th class="btn"><button class="no" id="${res["date"][i]["serialnum"]}" onclick="no()">拒絕</button></th>
                     </tr>
                     <tr>
-                        <th class="btn"><button id="previous" onclick="上一個()">上一個</button></th>
+                        <th class="btn"><button id="previous" onclick="previous()">上一個</button></th>
                         <th></th>
-                        <th class="btn"><button id="next" onclick="下一個()">下一個</button></th>
+                        <th class="btn"><button id="next" onclick="next()">下一個</button></th>
                     </tr>
                 </table>
             `
+        }
 
 
 
@@ -133,19 +134,18 @@ $(function() {
                             <th></th>
                         </tr>
                         <tr>
-                            <th class="btn"><button class="yes" id="${res["date"][i]["serialnum"]}" onclick="核准()">核准</button></th>
+                            <th class="btn"><button class="yes" id="${res["date"][i]["serialnum"]}" onclick="yes()">核准</button></th>
                             <th></th>
-                            <th class="btn"><button class="no" id="${res["date"][i]["serialnum"]}" onclick="拒絕()">拒絕</button></th>
+                            <th class="btn"><button class="no" id="${res["date"][i]["serialnum"]}" onclick="no()">拒絕</button></th>
                         </tr>
                         <tr>
-                            <th class="btn"><button id="previous" onclick="上一個()">上一個</button></th>
+                            <th class="btn"><button id="previous" onclick="previous()">上一個</button></th>
                             <th></th>
-                            <th class="btn"><button id="next" onclick="下一個()">下一個</button></th>
+                            <th class="btn"><button id="next" onclick="next()">下一個</button></th>
                         </tr>
                     </table>
                 `
-        }
-    }     
+        }     
         
         
     });
