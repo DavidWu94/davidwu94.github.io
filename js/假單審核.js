@@ -67,7 +67,7 @@ $(function() {
 
 });
 
-function 下一個(){
+function next(){
     a += 1;
     list.innerHTML = `
         <table>
@@ -110,7 +110,7 @@ function 下一個(){
 
 
 
-    function 上一個(){
+    function previous(){
         a -= 1;
         list.innerHTML = `
             <table>
