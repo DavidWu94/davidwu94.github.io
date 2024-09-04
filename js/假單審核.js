@@ -8,7 +8,7 @@ $(function() {
     }*/
     loginCheck(userId,sessionKey);
     var list = document.getElementById("list");
-	$("#refresh").on("click",()=>{
+	
         $.ajax({
         url: `http://eucan.ddns.net:3000/query`,
         type: 'POST',
@@ -149,7 +149,5 @@ $(function() {
         
         
     });
-       
-        
-    });
+
 });
