@@ -67,7 +67,7 @@ var list = document.getElementById("list");
 let i = 0;
 
 function next(){
-    a += 1;
+    i += 1;
     list.innerHTML = `
         <table>
             <tr>
@@ -110,7 +110,7 @@ function next(){
 
 
 function previous(){
-    a -= 1;
+    i -= 1;
     list.innerHTML = `
         <table>
             <tr>
