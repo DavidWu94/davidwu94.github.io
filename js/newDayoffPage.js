@@ -27,29 +27,29 @@ $(()=>{
 		const endDate = `${$("#end_day").val()} ${$("#end_time").val()}`
 		const a = caculateTime(startDate,endDate);
 		alert(`總請假時數: ${a} 小時`);
-		// $.ajax({
-		// 	url: 'http://eucan.ddns.net:3000/request',
-		// 	type: 'POST',
-		// 	dataType: 'json',
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 	},
-		// 	data: JSON.stringify({
-		// 		// "account":"david",
-		// 		// "cookie":"bbbe040c61",
-		// 		// "type":"sick",
-		// 		// "start":"2024-08-09",
-		// 		// "end":"2024-08-10"
-		// 		account:userId,
-		// 		cookie:sessionKey,
-		// 		type:$("#type").val(),
-		// 		start:startDate,
-		// 		end:endDate,
-		// 		totalTime:a
-		// 	}),
-		// }).then(res=>{
-		// 	alert("已發送請假審核");
-		// })
+		$.ajax({
+			url: 'http://eucan.ddns.net:3000/request',
+			type: 'POST',
+			dataType: 'json',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			data: JSON.stringify({
+				// "account":"david",
+				// "cookie":"bbbe040c61",
+				// "type":"sick",
+				// "start":"2024-08-09",
+				// "end":"2024-08-10"
+				account:userId,
+				cookie:sessionKey,
+				type:$("#type").val(),
+				start:startDate,
+				end:endDate,
+				totalTime:a
+			}),
+		}).then(res=>{
+			alert("已發送請假審核");
+		})
 	});
 });
 
