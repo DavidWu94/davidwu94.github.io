@@ -25,7 +25,7 @@ $(function() {
         list.innerHTML = `
             <table>
                 <tr>
-                    <th colspan="3" id="number">流水號:${res["date"][0]["serialnum"]}</th>
+                    <th colspan="3" id="number">流水號:5</th>
                 </tr>
                 <tr>
                     <th></th>
@@ -71,7 +71,7 @@ function next(){
     list.innerHTML = `
         <table>
             <tr>
-                <th colspan="3" id="number">流水號:${res["date"][i]["serialnum"]}</th>
+                <th colspan="3" id="number">流水號:${i}</th>
             </tr>
             <tr>
                 <th></th>
