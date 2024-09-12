@@ -1,11 +1,11 @@
 $(function() {
-    /*const sessionKey = readCookie("session");
+    const sessionKey = readCookie("session");
     const userId = readCookie("id");
 
     if(sessionKey == null){
         alert("請重新登入1");
         window.location = window.location.origin;
-    }*/
+    }
     loginCheck(userId,sessionKey);
     var list = document.getElementById("list");
 	
