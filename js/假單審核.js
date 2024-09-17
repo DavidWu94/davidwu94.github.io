@@ -65,6 +65,9 @@ $(function() {
 var i = 0;
 
 function next(){
+    i += 1;
+    const sessionKey = readCookie("session");
+    const userId = readCookie("id");
     $.ajax({
         url: `http://eucan.ddns.net:3000/query`,
         type: 'POST',
@@ -121,8 +124,27 @@ function next(){
 
 
 
+
+
+
+
 function previous(){
     i -= 1;
+    const sessionKey = readCookie("session");
+    const userId = readCookie("id");
+    $.ajax({
+    url: `http://eucan.ddns.net:3000/query`,
+    type: 'POST',
+    dataType: 'json',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    data: JSON.stringify({
+        account:userId,
+        cookie:sessionKey,
+        
+    }),
+}).then(res=>{
     list.innerHTML = `
         <table>
             <tr>
@@ -160,4 +182,6 @@ function previous(){
             </tr>
         </table>
     `
+
+})
 }     
