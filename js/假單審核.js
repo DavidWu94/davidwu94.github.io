@@ -80,6 +80,7 @@ function next(){
             
         }),
     }).then(res=>{
+        console.log(res.length);
         i += 1;
         console.log(i);
         list.innerHTML = `
