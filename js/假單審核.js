@@ -138,6 +138,10 @@ function previous(){
         }),
     }).then(res=>{
         i -= 1;
+        if (i == 0){
+            alert(不能再退了);
+            i = 0;
+        }
         console.log(i);
         list.innerHTML = `
             <table>
