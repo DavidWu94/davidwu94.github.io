@@ -20,6 +20,7 @@ $(function() {
             cookie:sessionKey,
         }),
     }).then(res=>{
+        console.log(res.length);
         var list = document.getElementById("list");
         list.innerHTML = `
             <table>
@@ -80,7 +81,6 @@ function next(){
             
         }),
     }).then(res=>{
-        console.log(res.length);
         i += 1;
         console.log(i);
         list.innerHTML = `
@@ -139,10 +139,6 @@ function previous(){
         }),
     }).then(res=>{
         i -= 1;
-        if (i == 0){
-            alert(不能再退了);
-            i = 0;
-        }
         console.log(i);
         list.innerHTML = `
             <table>
