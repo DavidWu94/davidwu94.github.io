@@ -129,59 +129,59 @@ function next(){
 
 
 function previous(){
-    i -= 1;
+    i += 1;
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
     $.ajax({
-    url: `http://eucan.ddns.net:3000/query`,
-    type: 'POST',
-    dataType: 'json',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    data: JSON.stringify({
-        account:userId,
-        cookie:sessionKey,
-        
-    }),
-}).then(res=>{
-    list.innerHTML = `
-        <table>
-            <tr>
-                <th colspan="3" id="number">流水號:${res["data"][i]["serialnum"]}</th>
-            </tr>
-            <tr>
-                <th></th>
-                <td id="woker_name">${res["data"][i]["id"]}</td>
-                <th></th>
-            </tr>
-            <tr>
-                <th></th>
-                <td id="leave">${res["data"][i]["type"]}</td>
-                <th></th>
-            </tr>
-            <tr>
-                <th></th>
-                <td id="reason"></td>
-                <th></th>
-            </tr>
-            <tr>
-                <th></th>
-                <td id="time">${res["data"][i]["start"]}-${res["data"][i]["end"]}</td>
-                <th></th>
-            </tr>
-            <tr>
-                <th class="btn"><button class="yes" id="${res["data"][i]["serialnum"]}" onclick="yes()">核准</button></th>
-                <th></th>
-                <th class="btn"><button class="no" id="${res["data"][i]["serialnum"]}" onclick="no()">拒絕</button></th>
-            </tr>
-            <tr>
-                <th class="btn"><button id="previous" onclick="previous()">上一個</button></th>
-                <th></th>
-                <th class="btn"><button id="next" onclick="next()">下一個</button></th>
-            </tr>
-        </table>
-    `
-
-})
-}     
+        url: `http://eucan.ddns.net:3000/query`,
+        type: 'POST',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        data: JSON.stringify({
+            account:userId,
+            cookie:sessionKey,
+            
+        }),
+    }).then(res=>{
+        i -= 1;
+        list.innerHTML = `
+            <table>
+                <tr>
+                    <th colspan="3" id="number">流水號:${res["data"][i]["serialnum"]}</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td id="woker_name">${res["data"][i]["id"]}</td>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td id="leave">${res["data"][i]["type"]}</td>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td id="reason"></td>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td id="time">${res["data"][i]["start"]}-${res["data"][i]["end"]}</td>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th class="btn"><button class="yes" id="${res["data"][i]["serialnum"]}" onclick="yes()">核准</button></th>
+                    <th></th>
+                    <th class="btn"><button class="no" id="${res["data"][i]["serialnum"]}" onclick="no()">拒絕</button></th>
+                </tr>
+                <tr>
+                    <th class="btn"><button id="previous" onclick="previous()">上一個</button></th>
+                    <th></th>
+                    <th class="btn"><button id="next" onclick="next()">下一個</button></th>
+                </tr>
+            </table>
+        `
+    })
+}
