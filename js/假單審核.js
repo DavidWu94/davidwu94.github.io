@@ -122,14 +122,7 @@ function next(){
     })
 }
 
-
-
-
-
-
-
 function previous(){
-    i += 1;
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
     $.ajax({
@@ -142,7 +135,6 @@ function previous(){
         data: JSON.stringify({
             account:userId,
             cookie:sessionKey,
-            
         }),
     }).then(res=>{
         i -= 1;
