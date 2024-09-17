@@ -18,15 +18,13 @@ $(function() {
         data: JSON.stringify({
             account:userId,
             cookie:sessionKey,
-            
         }),
     }).then(res=>{
         var list = document.getElementById("list");
-        console.log(res);
         list.innerHTML = `
             <table>
                 <tr>
-                    <th colspan="3" id="number">流水號:5</th>
+                    <th colspan="3" id="number">流水號:${res["data"][0]["serialnum"]}</th>
                 </tr>
                 <tr>
                     <th></th>
@@ -64,8 +62,7 @@ $(function() {
 
 });
 
-var list = document.getElementById("list");
-let i = 0;
+var i = 0;
 
 function next(){
     $.ajax({
@@ -85,16 +82,16 @@ function next(){
         list.innerHTML = `
             <table>
                 <tr>
-                    <th colspan="3" id="number">流水號:${i}</th>
+                    <th colspan="3" id="number">流水號:${res["data"][i]["serialnum"]}</th>
                 </tr>
                 <tr>
                     <th></th>
-                    <td id="woker_name">${res["date"][i]["id"]}</td>
+                    <td id="woker_name">${res["data"][i]["id"]}</td>
                     <th></th>
                 </tr>
                 <tr>
                     <th></th>
-                    <td id="leave">${res["date"][i]["type"]}</td>
+                    <td id="leave">${res["data"][i]["type"]}</td>
                     <th></th>
                 </tr>
                 <tr>
@@ -104,13 +101,13 @@ function next(){
                 </tr>
                 <tr>
                     <th></th>
-                    <td id="time">${res["date"][i]["start"]}-${res["date"][i]["end"]}</td>
+                    <td id="time">${res["data"][i]["start"]}-${res["data"][i]["end"]}</td>
                     <th></th>
                 </tr>
                 <tr>
-                    <th class="btn"><button class="yes" id="${res["date"][i]["serialnum"]}" onclick="yes()">核准</button></th>
+                    <th class="btn"><button class="yes" id="${res["data"][i]["serialnum"]}" onclick="yes()">核准</button></th>
                     <th></th>
-                    <th class="btn"><button class="no" id="${res["date"][i]["serialnum"]}" onclick="no()">拒絕</button></th>
+                    <th class="btn"><button class="no" id="${res["data"][i]["serialnum"]}" onclick="no()">拒絕</button></th>
                 </tr>
                 <tr>
                     <th class="btn"><button id="previous" onclick="previous()">上一個</button></th>
@@ -129,16 +126,16 @@ function previous(){
     list.innerHTML = `
         <table>
             <tr>
-                <th colspan="3" id="number">流水號:${res["date"][i]["serialnum"]}</th>
+                <th colspan="3" id="number">流水號:${res["data"][i]["serialnum"]}</th>
             </tr>
             <tr>
                 <th></th>
-                <td id="woker_name">${res["date"][i]["id"]}</td>
+                <td id="woker_name">${res["data"][i]["id"]}</td>
                 <th></th>
             </tr>
             <tr>
                 <th></th>
-                <td id="leave">${res["date"][i]["type"]}</td>
+                <td id="leave">${res["data"][i]["type"]}</td>
                 <th></th>
             </tr>
             <tr>
@@ -148,13 +145,13 @@ function previous(){
             </tr>
             <tr>
                 <th></th>
-                <td id="time">${res["date"][i]["start"]}-${res["date"][i]["end"]}</td>
+                <td id="time">${res["data"][i]["start"]}-${res["data"][i]["end"]}</td>
                 <th></th>
             </tr>
             <tr>
-                <th class="btn"><button class="yes" id="${res["date"][i]["serialnum"]}" onclick="yes()">核准</button></th>
+                <th class="btn"><button class="yes" id="${res["data"][i]["serialnum"]}" onclick="yes()">核准</button></th>
                 <th></th>
-                <th class="btn"><button class="no" id="${res["date"][i]["serialnum"]}" onclick="no()">拒絕</button></th>
+                <th class="btn"><button class="no" id="${res["data"][i]["serialnum"]}" onclick="no()">拒絕</button></th>
             </tr>
             <tr>
                 <th class="btn"><button id="previous" onclick="previous()">上一個</button></th>
