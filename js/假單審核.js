@@ -1,13 +1,13 @@
 $(function() {
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
-
+/*
     if(sessionKey == null){
         alert("請重新登入1");
         window.location = window.location.origin;
     }
     loginCheck(userId,sessionKey);
-	
+	*/
     $.ajax({
         url: `http://eucan.ddns.net:3000/query`,
         type: 'POST',
@@ -63,9 +63,8 @@ $(function() {
 });
 
 var i = 0;
-
+console.log(i);
 function next(){
-    i += 1;
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
     $.ajax({
@@ -82,6 +81,7 @@ function next(){
         }),
     }).then(res=>{
         i += 1;
+        console.log(i);
         list.innerHTML = `
             <table>
                 <tr>
@@ -138,6 +138,7 @@ function previous(){
         }),
     }).then(res=>{
         i -= 1;
+        console.log(i);
         list.innerHTML = `
             <table>
                 <tr>
