@@ -89,7 +89,7 @@ function next(){
             <table>
                 <tr>
                     <th>流水號:</th>
-                    <th colspan="2" id="number">${res["data"][0]["serialnum"]}</th>
+                    <th colspan="2" id="number">${res["data"][i]["serialnum"]}</th>
                 </tr>
                 <tr>
                     <th></th>
@@ -147,7 +147,7 @@ function previous(){
             <table>
                 <tr>
                     <th>流水號:</th>
-                    <th colspan="2" id="number">${res["data"][0]["serialnum"]}</th>
+                    <th colspan="2" id="number">${res["data"][i]["serialnum"]}</th>
                 </tr>
                 <tr>
                     <th></th>
