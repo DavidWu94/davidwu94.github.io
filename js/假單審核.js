@@ -183,7 +183,7 @@ function yes(){
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
     const serialnum = document.getElementById("number");
-    console.log(serialnum.vaule);
+    console.log(serialnum);
     /*
     $.ajax({
         url: `http://eucan.ddns.net:3000/query`,
