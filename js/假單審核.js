@@ -18,7 +18,9 @@ $(function() {
             cookie:sessionKey,
         }),
     }).then(res=>{
-        console.log(res.length);
+        console.log(res["data"].length);
+        var serialnum = (res["data"][i]["serialnum"]).toString();
+        console.log(serialnum);
         var list = document.getElementById("list");
         list.innerHTML = `
             <table>
@@ -196,6 +198,7 @@ function previous(){
         `
     })
 }
+console.log(serialnum);
 /*
 function yes(){
     const sessionKey = readCookie("session");
