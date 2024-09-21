@@ -1,11 +1,13 @@
 $(function() {
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
+    /*
     if(sessionKey == null){
         alert("請重新登入1");
         window.location = window.location.origin;
     }
     loginCheck(userId,sessionKey);
+    */
     $.ajax({
         url: `http://eucan.ddns.net:3000/query`,
         type: 'POST',
@@ -23,7 +25,8 @@ $(function() {
         list.innerHTML = `
             <table>
                 <tr>
-                    <th colspan="3" id="number">流水號:${res["data"][0]["serialnum"]}</th>
+                    <th>流水號:</th>
+                    <th colspan="2" id="number">${res["data"][0]["serialnum"]}</th>
                 </tr>
                 <tr>
                     <th></th>
@@ -85,7 +88,8 @@ function next(){
         list.innerHTML = `
             <table>
                 <tr>
-                    <th colspan="3" id="number">流水號:${res["data"][i]["serialnum"]}</th>
+                    <th>流水號:</th>
+                    <th colspan="2" id="number">${res["data"][0]["serialnum"]}</th>
                 </tr>
                 <tr>
                     <th></th>
@@ -142,7 +146,8 @@ function previous(){
         list.innerHTML = `
             <table>
                 <tr>
-                    <th colspan="3" id="number">流水號:${res["data"][i]["serialnum"]}</th>
+                    <th>流水號:</th>
+                    <th colspan="2" id="number">${res["data"][0]["serialnum"]}</th>
                 </tr>
                 <tr>
                     <th></th>
@@ -183,7 +188,7 @@ function yes(){
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
     const serialnum = document.getElementById("number");
-    console.log(serialnum);
+    console.log(serialnum.innerHTML);
     /*
     $.ajax({
         url: `http://eucan.ddns.net:3000/query`,
