@@ -189,7 +189,6 @@ function yes(){
     const userId = readCookie("id");
     const serialnum = document.getElementById("number");
     console.log(serialnum.innerHTML);
-    /*
     $.ajax({
         url: `http://eucan.ddns.net:3000/query`,
         type: 'POST',
@@ -204,11 +203,14 @@ function yes(){
             permit: 1,
         }),
     })
-        */
     next();
 }
-/*
+
 function no(){
+    const sessionKey = readCookie("session");
+    const userId = readCookie("id");
+    const serialnum = document.getElementById("number");
+    console.log(serialnum.innerHTML);
     $.ajax({
         url: `http://eucan.ddns.net:3000/query`,
         type: 'POST',
@@ -220,8 +222,8 @@ function no(){
             account:userId,
             cookie:sessionKey,
             num: serialnum,
-            permit: 0,
+            permit: 1,
         }),
     })
     next();
-}*/
+}
