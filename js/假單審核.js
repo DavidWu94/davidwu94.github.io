@@ -182,7 +182,7 @@ function previous(){
 function yes(){
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
-    const serialnum = getElementById("number");
+    const serialnum = document.getElementById("number");
     console.log(serialnum.vaule);
     /*
     $.ajax({
