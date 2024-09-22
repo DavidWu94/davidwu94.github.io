@@ -1,13 +1,11 @@
 $(function() {
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
-    /*
     if(sessionKey == null){
         alert("請重新登入1");
         window.location = window.location.origin;
     }
     loginCheck(userId,sessionKey);
-    */
     $.ajax({
         url: `http://eucan.ddns.net:3000/query`,
         type: 'POST',
@@ -30,7 +28,7 @@ $(function() {
                 </tr>
                 <tr>
                     <th></th>
-                    <td id="woker_name">${res["data"][0]["id"]}</td>
+                    <td id="woker_name">${res["data"][0]["name"]}</td>
                     <th></th>
                 </tr>
                 <tr>
@@ -93,7 +91,7 @@ function next(){
                 </tr>
                 <tr>
                     <th></th>
-                    <td id="woker_name">${res["data"][i]["id"]}</td>
+                    <td id="woker_name">${res["data"][i]["name"]}</td>
                     <th></th>
                 </tr>
                 <tr>
@@ -151,7 +149,7 @@ function previous(){
                 </tr>
                 <tr>
                     <th></th>
-                    <td id="woker_name">${res["data"][i]["id"]}</td>
+                    <td id="woker_name">${res["data"][i]["name"]}</td>
                     <th></th>
                 </tr>
                 <tr>
