@@ -10,28 +10,32 @@
 		<link rel="stylesheet" href="./css/mainPage.css">
 		<link rel="icon" type="image/x-icon" href="./img/logo.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<img src="../img/logo.png" style="position: fixed;right: 1%;top:1%;width: 15%;">
     </head>
 	<body>
-		<div class="fullscreen">
-			<div class="field">
-				<h1>
-					祐肯企業<br>請假系統
-				</h1>
-				<div class="inputs">
-					<input type = "text" id = "code" placeholder = "輸入編號" />
+		<div class="wrapper">
+			<div class="fullscreen">
+				<div class="field">
+					<h1>
+						祐肯企業<br>請假系統
+					</h1>
+					<div class="inputs">
+						<input type = "text" id = "code" placeholder = "輸入編號" />
+					</div>
+					<div class="inputs">
+						<input type = "password" id = "pw" placeholder = "輸入密碼" />
+					</div>
+					<div class="inputs">
+						<button class="glow-on-hover" id="login">登入</button>
+					</div>
 				</div>
-				<div class="inputs">
-					<input type = "password" id = "pw" placeholder = "輸入密碼" />
-				</div>
-				<div class="inputs">
-					<button class="glow-on-hover" id="login">登入</button>
-				</div>
-			</div>
-			<div id="version">
-				<p>Version: Alpha 0.1.0 , system builder : 章凱昱 吳岱威</p>
 			</div>
 		</div>
+		
+		<footer class="footer">
+			<div id="version">
+				<small>Version: Alpha 0.1.0 , system builder : 章凱昱 吳岱威</small>
+			</div>
+		</footer>
 	</body>
 	
 </html>

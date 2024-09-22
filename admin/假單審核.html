@@ -8,58 +8,72 @@
 		<link rel="icon" type="image/x-icon" href="../img/logo.ico">
         <script src="../js/jquery-3.7.1.min.js"></script>
         <script src="../js/cookieOperation.js"></script>
-        <img src="../img/logo.png" style="position: fixed;right: 1%;top: 1%;width: 15%;">
         <link rel="stylesheet" href="../css/假單審核.css">
         <script src="../js/假單審核.js"></script>
     </head>
     <body>
-        <h1>假單審核</h1>
-        <div id="list">
-            <table>
-                <tr>
-                    <th>流水號:</th>
-                    <th colspan="2" id="number">0</th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="woker_name">員工姓名</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="leave">假別</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="reason">事由</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="time">2024/12/15/15:00-2024/12/15/18:00</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td>待審核</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th class="btn"><button onclick="yes()">核准</button></th>
-                    <th></th>
-                    <th class="btn"><button onclick="no()">拒絕</button></th>
-                </tr>
-                <tr>
-                    <th class="btn"><button id="previous" onclick="previous()">上一個</button></th>
-                    <th></th>
-                    <th class="btn"><button id="next" onclick="next()">下一個</button></th>
-                </tr>
-            </table>
-    </div>
-        <div id="version">
-            <p>Version: Alpha 0.1.0 , System Builder: 章凱昱 吳岱威</p>
+        <div class="wrapper">
+
+            <header class="header">
+                <span class="title">假單審核</span>
+                <span><img class="img" src="../img/logo.png"></span>
+            </header>
+
+            <aside>
+                <nav>
+                    <ul>
+                        <li><a href="../admin/員工資料維護.html">員工資料維護</a></li>
+                        <li><a href="../admin/員工請假資訊.html">員工請假資訊</a></li>
+                        <li><a href="../admin/假單審核.html">假單審核</a></li>
+                        <li><a href="../admin/休假行事曆.html">休假行事曆</a></li>
+                    </ul> 
+                </nav>
+                
+            </aside>
+
+            <div id="list">
+                <table>
+                    <tr>
+                        <th>流水號:</th>
+                        <th colspan="2" id="number">0</th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td id="woker_name">員工姓名</td>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td id="leave">假別</td>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td id="reason">事由</td>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td id="time">2024/12/15/15:00-2024/12/15/18:00</td>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th class="btn"><button onclick="yes()">核准</button></th>
+                        <th></th>
+                        <th class="btn"><button onclick="no()">拒絕</button></th>
+                    </tr>
+                    <tr>
+                        <th class="btn"><button id="previous" onclick="previous()">上一個</button></th>
+                        <th></th>
+                        <th class="btn"><button id="next" onclick="next()">下一個</button></th>
+                    </tr>
+                </table>
+            </div>
         </div>
+
+        <footer class="footer">
+			<small>Version: Alpha 0.1.0 , system builder : 章凱昱 吳岱威</small>
+		</footer>
         <script src="../js/假單審核.js"></script>
     </body>
 </html>

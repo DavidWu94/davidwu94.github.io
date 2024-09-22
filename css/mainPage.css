@@ -5,8 +5,15 @@
 
 body,html{
 	margin:0;
+    padding: 0;
 	height: 100%;
 }
+
+
+.wrapper{
+    min-height: 100%;
+}
+
 
 .fullscreen {
 	margin: 0 !important;
@@ -17,13 +24,14 @@ body,html{
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 100%;
-	width: 100%;
-	
+	width: 100%;	
 }
+
 
 .field {
 	margin: 150px 0;
 }
+
 
 h1 {
 	margin: 0 0 50px 0;
@@ -31,6 +39,7 @@ h1 {
 	color: white;
 	text-shadow: 0.1em 0.1em 0.2em black;
 }
+
 
 input {
 	/*margin: 10px 0px;*/
@@ -42,23 +51,27 @@ input {
 	border-radius: 5px
 }
 
+
 button {
 	width: 80px;
 	height: 40px;
 	font-size: 20px;
 }
 
+
 .inputs {
 	margin: 15px 0 15px 0;
 }
 
-#version {
-	color: black;
-	position: fixed;
-	right: 1%;
-	bottom: 0;
-    text-align: end;
+
+.footer{
+    color: white;
+    position: absolute;
+    bottom: 0;
+	right: 20px;
+	font-size: 20px;
 }
+
 
 p {
 	color: white;
