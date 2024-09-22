@@ -8,80 +8,91 @@
 		<link rel="icon" type="image/x-icon" href="../img/logo.ico">
         <script src="../js/jquery-3.7.1.min.js"></script>
         <script src="../js/cookieOperation.js"></script>
-        <img src="../img/logo.png" style="position: fixed;right: 1%;top: 1%;width: 300px;">
 		<link rel="stylesheet" href="../css/newDayoff.css"> 
 		<script src="../js/newDayoffPage.js"></script>
 	</head>
 	
 	<body>
-		<table>
-			<tr>
-				<th >
-					<div id="main">
-						<h1>員工請假專區</h1>
-						<!-- <form action="http://eucan.ddns.net:3000/request" method="post" enctype="multipart/form-data"> -->
-						<div id="dayofftypeD">
-							<select id="type">
-								<option>選擇假別</option>
-								<option>特休假</option>
-								<option>事假</option>
-								<option>家庭照顧假</option>
-								<option>普通傷病假</option>
-								<option>婚假</option>
-								<option>喪假</option>
-								<option>分娩假</option>
-								<option>產檢假</option>							
-								<option>流產假</option>
-								<option>陪產假</option>
-								<option>產假</option>
-							</select>
-						</div>
-						<div id="startD">
-							<p>開始時間</p>
-							<input id="start_day" type="date" min="2024-01-01" max="5000-12-31"/>						
-							<input id="start_time" type="time" />
-						</div>
+		<div class="wrapper">
 
-						<div id="endD">
-							<p>結束時間</p>
-							<input id="end_day" type="date" min="2024-01-01" max="5000-12-31"/>
-							<input id="end_time" type="time" />
-						</div>
-						<br>
-						<div id = "reasonD">
-							<input type="text" placeholder = "事由" id="reason"/>
-						</div>
+			<header class="header">
+                <span class="title">員工請假專區</span>
+                <span><img class="img" src="../img/logo.png"></span>
+            </header>
 
-						<!-- <p>
-							總請假時數: 0 小時
-						</p> -->
-						<!-- <input name = "file" type = "file"> -->
-						<br>
-						<button type="submit" id="submit">
-							確定
-						</button>
-						<!-- </form> -->
-						<br>
-						<a href="../employee/employee.html">
-							<button id="back">返回</button>
-						</a>
-					</div>
-				</th>
-				<td>
-					<img src="../img/注意事項.jpg" style="position: local;width: 600px;">	
-				</td>
-			</tr>
+            <aside>
+                <nav>
+                    <ul>
+                        <li><a href="./打卡.html">打卡</a></li>
+                        <li><a href="./休假行事曆.html">休假行事曆</a></li>
+                        <li><a href="./查看請假紀錄.html">查看請假紀錄</a></li>
+                        <li><a href="./請假.html">請假</a></li>
+                    </ul> 
+                </nav>
+            </aside>
 
-			<tr>
-				<th></th>
-				<td><img src="../img/勞基法特休假天數計算規定.jpg" style="position: scroll;width: 600px;"></td>
-			</tr>
-		</table>
-		
-		
-		<div id="version">
-			<p>Version: Alpha 0.1.0 , system builder : 章凱昱 吳岱威</p>
+			<div class="main">
+				<table>
+					<tr>
+						<th >
+							<div id="main">
+								<!-- <form action="http://eucan.ddns.net:3000/request" method="post" enctype="multipart/form-data"> -->
+								<div id="dayofftypeD">
+									<select id="type">
+										<option>選擇假別</option>
+										<option>特休假</option>
+										<option>事假</option>
+										<option>家庭照顧假</option>
+										<option>普通傷病假</option>
+										<option>婚假</option>
+										<option>喪假</option>
+										<option>分娩假</option>
+										<option>產檢假</option>
+										<option>流產假</option>
+										<option>陪產假</option>
+										<option>產假</option>
+									</select>
+								</div>
+								<div id="startD">
+									<p>開始時間</p>
+									<input id="start_day" type="date" min="2024-01-01" max="5000-12-31"/>						
+									<input id="start_time" type="time" />
+								</div>
+
+								<div id="endD">
+									<p>結束時間</p>
+									<input id="end_day" type="date" min="2024-01-01" max="5000-12-31"/>
+									<input id="end_time" type="time" />
+								</div>
+								<br>
+								<div id = "reasonD">
+									<input type="text" placeholder = "事由" id="reason"/>
+								</div>
+
+								<!-- <p>
+									總請假時數: 0 小時
+								</p> -->
+								<!-- <input name = "file" type = "file"> -->
+								<br>
+								<button type="submit" id="submit">確定</button>
+								<!-- </form> -->
+							</div>
+						</th>
+						<td>
+							<img src="../img/注意事項.jpg" style="position: local;width: 600px;">	
+						</td>
+					</tr>
+
+					<tr>
+						<th></th>
+						<td><img src="../img/勞基法特休假天數計算規定.jpg" style="position: scroll;width: 600px;"></td>
+					</tr>
+				</table>
+			</div>
 		</div>
-	</body>
 
+		<footer class="footer">
+			<small>Version: Alpha 0.1.0 , system builder : 章凱昱 吳岱威</small>
+		</footer>
+	</body>
 </html>

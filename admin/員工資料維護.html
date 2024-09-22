@@ -8,29 +8,69 @@
 		<link rel="icon" type="image/x-icon" href="../img/logo.ico">
         <script src="../js/jquery-3.7.1.min.js"></script>
         <script src="../js/cookieOperation.js"></script>
-        <img src="../img/logo.png" style="position: fixed;right: 1%;top: 1%;width: 15%;">
         <link rel="stylesheet" href="../css/員工資料維護.css">
         <script src="../js/新增員工.js"></script>
     </head>
     <body>
-        <div>
-            <h1 style="font-size: 50px;">員工資料維護</h1>
-            <input placeholder="員工編號" id="code" class="cpw"></input>
-            <input placeholder="身分證字號" id="pwd" class="cpw"></input>
-            <input placeholder="員工姓名" id="name" class="cpw"></input>
-            <span class="cpw">到職日期:&nbsp;</span>
-            <input type="date" min="2024-01-01" max="5000-12-31" id="joinDate" class="cpw"></input>
-            <input placeholder="電子信箱" id="email" class="cpw"></input>
-            <input placeholder="直屬主管" id="mgroup" class="cpw"></input>
-            <select id="審核確認" class="cpw">
-                <option>請假是否需要審核</option>
-                <option id="true">需要審核</option>
-                <option id="false">不需要審核</option>
-            </select>
-            <button id="confirm"  class="cpw">確認</button>
+        <div class="wrapper">
+
+            <header class="header">
+                <span class="title">員工請假資訊</span>
+                <span><img class="img" src="../img/logo.png"></span>
+            </header>
+
+            <aside>
+                <nav>
+                    <ul>
+                        <li><a href="./員工資料維護.html">員工資料維護</a></li>
+                        <li><a href="./員工請假資訊.html">員工請假資訊</a></li>
+                        <li><a href="./假單審核.html">假單審核</a></li>
+                        <li><a href="./休假行事曆.html">休假行事曆</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="main">
+                <table>
+                    <tr>
+                        <th><input placeholder="員工編號" id="code" class="cpw"></input></th>
+                    </tr>
+                    <tr>
+                        <th><input placeholder="身分證字號" id="pwd" class="cpw"></input></input></th>
+                    </tr>
+                    <tr>
+                        <th><input placeholder="員工姓名" id="name" class="cpw"></input></th>
+                    </tr>
+                    <tr>
+                        <th>到職日期:</th>
+                    </tr>
+                    <tr>
+                        <th><input type="date" min="2024-01-01" max="5000-12-31" id="joinDate" class="cpw"></input></th>
+                    </tr>
+                    <tr>
+                        <th><input placeholder="電子信箱" id="email" class="cpw"></input></th>
+                    </tr>
+                    <tr>
+                        <th><input placeholder="直屬主管" id="mgroup" class="cpw"></input></th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <select id="審核確認" class="cpw">
+                                <option>請假是否需要審核</option>
+                                <option id="true">需要審核</option>
+                                <option id="false">不需要審核</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th><button id="confirm"  class="cpw">確認</button></th>
+                    </tr>
+                </table>
+            </div>
         </div>
-        <div id="version">
-            <p>Version: Alpha 0.1.0 , system builder : 章凱昱 吳岱威</p>
-        </div>
+        
+        <footer class="footer">
+            <small>Version: Alpha 0.1.0 , system builder : 章凱昱 吳岱威</small>
+        </footer>
     </body>
 </html>

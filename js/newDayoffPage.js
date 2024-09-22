@@ -2,11 +2,13 @@ $(()=>{
 	const sessionKey = readCookie("session");
 	const userId = readCookie("id");
 	// // console.log(sessionKey);
+	/*
 	if(sessionKey == null){
 		alert("請重新登入");
 		window.location = window.location.origin;
 	}
 	loginCheck(userId,sessionKey);
+	*/
 	$("#start_time").on("change",()=>{
 		console.log($("#start_time").val())
 		if(!validTime($("#start_time").val())){

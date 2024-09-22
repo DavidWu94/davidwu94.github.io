@@ -1,12 +1,45 @@
 body,html{
-    position: fixed; 
-    left: 2%;
+    height: 100%;
+	padding: 0;
+  	margin: 0;
 }
 
 
-h1{
-    font-size: 230%;
-    line-height: 10%;
+.wrapper{
+    min-height: 100%;
+}
+
+
+.header{
+	padding: 10px;
+  	background-color: rgb(199, 199, 249);
+}
+
+
+.title{
+	font-size: 75px;
+}
+
+
+.img{
+	float:right;
+	width: 150px;
+}
+
+
+aside{
+    position: absolute;
+}
+
+
+nav{
+    font-size: 35px;
+}
+
+
+.main{
+    text-align: center;
+    padding: 15px;
 }
 
 
@@ -20,6 +53,8 @@ table{
     border-collapse: collapse;
     border: 2px solid rgb(140 140 140);
     font-size: 200%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -43,10 +78,9 @@ td{
 }
 
 
-#version {
-	color: black;
-	position: fixed;
-	right: 1%;
-	bottom: 0;
-    text-align: end;
+.footer{
+    position: absolute;
+    bottom: 0;
+	right: 20px;
+	font-size: 20px;
 }

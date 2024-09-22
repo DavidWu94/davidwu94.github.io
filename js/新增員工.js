@@ -7,6 +7,7 @@ $(function() {
         window.location = window.location.origin;
     }
     loginCheck(userId,sessionKey);
+
 	$("#confirm").on("click",()=>{
         $.ajax({
         url: `http://eucan.ddns.net:3000/register`,

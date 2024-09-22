@@ -1,3 +1,48 @@
+body,html{
+    height: 100%;
+	padding: 0;
+  	margin: 0;
+}
+
+
+.wrapper{
+    min-height: 100%;
+}
+
+
+.header{
+	padding: 10px;
+  	background-color: rgb(199, 199, 249);
+}
+
+
+.title{
+	font-size: 75px;
+}
+
+
+.img{
+	float:right;
+	width: 150px;
+}
+
+
+aside{
+    position: absolute;
+}
+
+
+nav{
+    font-size: 35px;
+}
+
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 #main{
     text-align: center; 
     position: scroll;
@@ -22,10 +67,9 @@
 }
 
 
-#version {
-	color: black;
-	position: fixed;
-	right: 1%;
-	bottom: 0;
-    text-align: end;
+.footer{
+    position: absolute;
+    bottom: 0;
+	right: 20px;
+	font-size: 20px;
 }
