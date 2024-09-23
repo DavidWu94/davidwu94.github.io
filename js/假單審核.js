@@ -201,7 +201,7 @@ function yes(){
             permit: 1,
         }),
     })
-    next();
+    window.location.reload();
 }
 
 function no(){
@@ -223,5 +223,5 @@ function no(){
             permit: 1,
         }),
     })
-    next();
+    window.location.reload();
 }
