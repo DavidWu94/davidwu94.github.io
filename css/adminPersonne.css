@@ -37,6 +37,47 @@ nav{
 }
 
 
+.main{
+    padding: 10px;
+}
+
+
+table{
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    font-size: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+th{
+    border: 2px solid rgb(160 160 160);
+    background-color: rgb(228 240 245);
+    text-align: left;
+    width: 220px;
+	height: 35px;
+}
+
+
+td{
+    border: 2px solid rgb(160 160 160);
+    text-align: left;
+    width: 220px;
+	height: 35px;
+}
+
+
+button{
+	font-size: 100%;
+}
+
+
+.btn{
+    text-align: center;
+}
+
+
 .footer{
     position: absolute;
     bottom: 0;
