@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>祐肯請假系統</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		
+        <script src="../js/jquery-3.7.1.min.js"></script>
+        <script src="../js/cookieOperation.js"></script>
+
+        <link rel="icon" type="image/x-icon" href="../img/logo.ico">
+        <link rel="stylesheet" href="../css/adminInformation.css">
+    </head>
+
+    <body>
+        <div class="wrapper">
+
+            <header class="header">
+                <span class="title">員工請假資訊</span>
+                <span><img class="img" src="../img/logo.png"></span>
+            </header>
+
+            <aside>
+                <nav>
+                    <ul>
+                        <li><a href="./maintain.html">員工資料維護</a></li>
+                        <li><a href="./information.html">員工請假資訊</a></li>
+                        <li><a href="./review.html">假單審核</a></li>
+                        <li><a href="./calendar.html">行事曆</a></li>
+                        <li><a href="./personnel.html">在職員工</a></li>
+                        <li><a href="./log.html">過審紀錄</a></li>
+                    </ul> 
+                </nav>
+            </aside>
+
+            <div class="main">
+                <div id="search">
+                    <input placeholder="員工編號" id="code" class="search">
+                    <input placeholder="年度" id="year" class="search">
+                    <button id="searching" class="button">搜尋</button>
+                </div>
+                <br>
+                <div id="info" class="info">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>當年度特休天數</th>
+                                <td><output id="當年度特休天數"></output></td>
+                            </tr>
+                            <tr>
+                                <th>假別</th>
+                                <th id="time">時數</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>特休假</th>
+                                <td><output id="特休假"></output></td>
+                            </tr>
+                            <tr>
+                                <th>事假</th>
+                                <td><output id="事假"></output></td>
+                            </tr>
+                            <tr>
+                                <th>家庭照顧假</th>
+                                <td><oupt id="家庭照顧假"></oupt></td>
+                            </tr>
+                            <tr>
+                                <th>普通傷病假</th>
+                                <td><output id="普通傷病假"></output></td>
+                            </tr>
+                            <tr>
+                                <th>婚假</th>
+                                <td><output id="婚假"></output></td>
+                            </tr>
+                            <tr>
+                                <th>喪假</th>
+                                <td><output id="喪假"></output></td>
+                            </tr>
+                            <tr>
+                                <th>分娩假</th>
+                                <td><output id="分娩假"></output></td>
+                            </tr>
+                            <tr>
+                                <th>產檢假</th>
+                                <td><output id="產檢假"></output></td>
+                            </tr>
+                            <tr>
+                                <th>流產假</th>
+                                <td><output id="流產假"></output></td>
+                            </tr>
+                            <tr>
+                                <th>陪產假</th>
+                                <td><output id="陪產假"></output></td>
+                            </tr>
+                            <tr>
+                                <th>產假</th>
+                                <td><output id="產假"></output>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="footer">
+            <small>Version: Alpha 0.1.0 , system builder : 章凱昱 吳岱威</small>
+        </footer>
+
+    </body>
+</html>

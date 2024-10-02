@@ -2,36 +2,39 @@
 <html>
     <head>
         <title>祐肯請假系統</title>
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 		<meta content="utf-8" http-equiv="encoding">
-		<link rel="icon" type="image/x-icon" href="../img/logo.ico">
+		
         <script src="../js/jquery-3.7.1.min.js"></script>
         <script src="../js/cookieOperation.js"></script>
-        <link rel="stylesheet" href="../css/休假行事曆.css">
-        <script src="../js/休假行事曆.js"></script> 
+
+        <link rel="icon" type="image/x-icon" href="../img/logo.ico">
+        <link rel="stylesheet" href="../css/calendar.css">
+        <script src="../js/calendar.js"></script>
     </head>
     <body>
         <div class="wrapper">
 
             <header class="header">
-                <span class="title">休假行事曆</span>
+                <span class="title">行事曆</span>
                 <span><img class="img" src="../img/logo.png"></span>
             </header>
 
             <aside>
                 <nav>
                     <ul>
-                        <li><a href="./打卡.html">打卡</a></li>
-                        <li><a href="./休假行事曆.html">休假行事曆</a></li>
-                        <li><a href="./查看請假紀錄.html">查看請假紀錄</a></li>
-                        <li><a href="./請假.html">請假</a></li>
-                    </ul> 
+                        <li><a href="./maintain.html">員工資料維護</a></li>
+                        <li><a href="./information.html">員工請假資訊</a></li>
+                        <li><a href="./review.html">假單審核</a></li>
+                        <li><a href="./calendar.html">行事曆</a></li>
+                        <li><a href="./personnel.html">在職員工</a></li>
+                        <li><a href="./log.html">過審紀錄</a></li>
+                    </ul>
                 </nav>
             </aside>
-
             <br>
-            
             <div class="calendar">
                 <table>
                     <tr>
@@ -141,5 +144,6 @@
         <footer class="footer">
             <small>Version: Alpha 0.1.0 , system builder : 章凱昱 吳岱威</small>
         </footer>
+        <script src="../js/calendar.js"></script>
     </body>
 </html>
