@@ -1,75 +1,29 @@
-body,html{
-    height: 100%;
-	padding: 0;
-  	margin: 0;
-}
-
-
-.wrapper{
-    min-height: 100%;
-}
-
-
-.header{
-	padding: 10px;
-  	background-color: rgb(199, 199, 249);
-}
-
-
-.title{
-	font-size: 75px;
-}
-
-
-.img{
-	float:right;
-	width: 150px;
-}
-
-
-aside{
-    position: absolute;
+header li{
+	margin: 0px 20px;
 }
 
 
 nav{
-    font-size: 35px;
-}
-
-
-table{
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-#main{
-    text-align: center; 
-    position: scroll;
-    font-size: 150%;
-    left: 25%;
-}
-
-
-.cpw {
-    display: block;
-    position: relative;
-    left: 50%;
-    margin: 20px 0;
-    transform: translate(-50%,0);
-}
-
-
-#inputFields {
-    margin-top: 70px;
-    width: 100%;
-    /* background-color: aliceblue; */
-}
-
-
-.footer{
-    position: absolute;
-    bottom: 0;
-	right: 20px;
 	font-size: 20px;
+}
+
+
+header img{
+	width: 130px;
+}
+
+
+.main{
+    margin-top: 5px;
+    font-size: 25px;
+}
+
+
+.input{
+    padding: 10px;
+}
+
+
+.btn{
+    font-size: 30px;
 }

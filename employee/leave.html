@@ -1,99 +1,110 @@
 <!DOCTYPE html>
 <html>
 	<head>
-        <title>祐肯請假系統</title>
+		<title>祐肯請假系統</title>
+        
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 		<meta content="utf-8" http-equiv="encoding">
-		<link rel="icon" type="image/x-icon" href="../img/logo.ico">
-        
-		<link rel="stylesheet" href="../css/employeeleave.css"> 
+		<link rel="icon" type="image/x-icon" href="../../img/logo.ico">
+		
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+		<link rel="stylesheet" href="../css/employeeleave.css">
 	</head>
-	
-	<body>
-		<div class="wrapper">
+    <body>
+		<header>
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<div class="container-fluid">
+						<a class="navbar-brand" href="./employeeMain.html"><img src="../img/logo.png"></a>
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon">
+								
+							</span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./leave.html">請假</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./documental.html">請假紀錄</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./checkIn.html">打卡</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./calendar.html">行事曆</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+		</header>
+		
+		
 
-			<header class="header">
-                <span class="title">員工請假專區</span>
-                <span><img class="img" src="../img/logo.png"></span>
-            </header>
-
-            <aside>
-                <nav>
-                    <ul>
-                        <li><a href="./checkIn.html">打卡</a></li>
-                        <li><a href="./calendar.html">行事曆</a></li>
-                        <li><a href="./documental.html">查看請假紀錄</a></li>
-                        <li><a href="./checkIn.html">請假</a></li>
-                    </ul> 
-                </nav>
-            </aside>
-
-			<div class="main">
-				<table>
-					<tr>
-						<th >
-							<div id="main">
-								<!-- <form action="http://eucan.ddns.net:3000/request" method="post" enctype="multipart/form-data"> -->
-								<div id="dayofftypeD">
-									<select id="type">
-										<option>選擇假別</option>
-										<option>特休假</option>
-										<option>事假</option>
-										<option>家庭照顧假</option>
-										<option>普通傷病假</option>
-										<option>婚假</option>
-										<option>喪假</option>
-										<option>分娩假</option>
-										<option>產檢假</option>
-										<option>流產假</option>
-										<option>陪產假</option>
-										<option>產假</option>
-									</select>
-								</div>
-								<div id="startD">
-									<p>開始時間</p>
-									<input id="start_day" type="date" min="2024-01-01" max="5000-12-31"/>						
-									<input id="start_time" type="time" />
-								</div>
-
-								<div id="endD">
-									<p>結束時間</p>
-									<input id="end_day" type="date" min="2024-01-01" max="5000-12-31"/>
-									<input id="end_time" type="time" />
-								</div>
-								<br>
-								<div id = "reasonD">
-									<input type="text" placeholder = "事由" id="reason"/>
-								</div>
-
-								<!-- <p>
-									總請假時數: 0 小時
-								</p> -->
-								<!-- <input name = "file" type = "file"> -->
-								<br>
-								<button type="submit" id="submit">確定</button>
-								<!-- </form> -->
+		<section>
+			<div class="container">
+				<div class="row align-items-start">
+					<div class="col">
+						<div class="main">
+							<h1>請假</h1>
+							<!-- <form action="http://eucan.ddns.net:3000/request" method="post" enctype="multipart/form-data"> -->
+							<div id="dayofftypeD"  class="input">
+								<select id="type">
+									<option>選擇假別</option>
+									<option>特休假</option>
+									<option>事假</option>
+									<option>家庭照顧假</option>
+									<option>普通傷病假</option>
+									<option>婚假</option>
+									<option>喪假</option>
+									<option>分娩假</option>
+									<option>產檢假</option>
+									<option>流產假</option>
+									<option>陪產假</option>
+									<option>產假</option>
+								</select>
 							</div>
-						</th>
-						<td>
-							<img src="../img/注意事項.jpg" style="position: local;width: 600px;">	
-						</td>
-					</tr>
 
-					<tr>
-						<th></th>
-						<td><img src="../img/勞基法特休假天數計算規定.jpg" style="position: scroll;width: 600px;"></td>
-					</tr>
-				</table>
+							<div id="startD"  class="input">
+								<p>開始時間</p>
+								<input id="start_day" type="date" min="2024-01-01" max="5000-12-31"/>						
+								<input id="start_time" type="time" />
+							</div>
+
+							<div id="endD"  class="input">
+								<p>結束時間</p>
+								<input id="end_day" type="date" min="2024-01-01" max="5000-12-31"/>
+								<input id="end_time" type="time" />
+							</div>
+							<br>
+							<div id = "reasonD"  class="input">
+								<input type="text" placeholder = "事由" id="reason"/>
+							</div>
+
+							<!-- <p>
+									總請假時數: 0 小時
+							</p> -->
+							<!-- <input name = "file" type = "file"> -->
+							<br>
+							<button type="submit" id="submit" class="input btn btn-secondary">確定</button>
+							<!-- </form> -->
+						</div>
+					</div>
+					<div class="col">
+						<img src="../img/勞基法特休假天數計算規定.jpg" class="img-thumbnail" alt="勞基法特休假天數計算規定">
+						<img src="../img/注意事項.jpg" class="img-thumbnail" alt="注意事項">
+					</div>
+				</div>
 			</div>
-		</div>
+		</section>
 
-		<footer class="footer">
-			<small>Version: Alpha 0.1.0 , system builder : 章凱昱 吳岱威</small>
-		</footer>
 		<script src="js/jquery-3.7.1.min.js"></script>
         <script src="js/cookieOperation.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
 		<script src="../js/employeeleave.js"></script>
 	</body>
 </html>

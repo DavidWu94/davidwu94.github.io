@@ -1,98 +1,13 @@
-body,html{
-    height: 100%;
-	padding: 0;
-  	margin: 0;
-}
-
-
-.wrapper{
-    min-height: 100%;
-}
-
-
-.header{
-	padding: 10px;
-  	background-color: rgb(199, 199, 249);
-}
-
-
-.title{
-	font-size: 75px;
-}
-
-
-.img{
-	float:right;
-	width: 150px;
-}
-
-
-aside{
-    position: absolute;
+header li{
+	margin: 0px 20px;
 }
 
 
 nav{
-    font-size: 35px;
-}
-
-
-table{
-    border-collapse: collapse;
-    border: 2px solid rgb(140 140 140);
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-th{
-    outline: 1px solid rgb(160 160 160);
-    background-color: rgb(228 240 245);
-    text-align: center;
-    height: 30px;
-}
-
-
-td{
-    outline: 1px solid rgb(160 160 160);
-    text-align: left;
-    width: 150px;
-    height: 100px;
-}
-
-
-.calenda{
-    text-align: center;
-    font-size: 15px;
-    padding: 10px;
-}
-
-
-.month_picker{
-    cursor: pointer;
-    
-}
-
-
-.year_picker{
-    display: flex;
-    align-items: center;
-}
-
-
-.year_change{
-    width: 150px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    margin: 0 200px;
-    cursor: pointer;
-}
-
-
-.footer{
-    position: absolute;
-    bottom: 0;
-	right: 20px;
 	font-size: 20px;
+}
+
+
+header img{
+	width: 130px;
 }

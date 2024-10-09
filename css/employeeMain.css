@@ -1,102 +1,18 @@
-* {
-	text-align: center;
+header li{
+	margin: 0px 20px;
 }
 
 
-body,html{
-	margin:0;
-	height: 100%;
-}
-
-#full{
-	position: relative;
-}
-
-#reason{
-	text-align: left;
-	resize: none;
-}
-
-#viewdata:hover{
-	opacity: 1;
-}
-
-#newdayoff:hover{
-	opacity: 1;
-}
-
-.btndiv{
-	float: inline-start;
-	width: 50%;
-	height: 40%;
-}
-
-.menubtn{
-	border: none;
-	cursor: pointer;
-	appearance: none;
-	background-color: inherit;
-	opacity: 0.7;
-}
-
-.menubtni{
-	width: 100%;
-	height: 300px;
-}
-
-/* 請假卡 */
-#card{
-	/* margin: 50px 0 0 0; */
-	background-color: aqua;
-	width: 100%;
-	height: 300px;
-}
-
-#profile{
-	background-color: rgb(255, 251, 0);
-	width: 100%;
-	height: 60px;
-}
-
-#time{
-	background-color: rgb(0, 255, 136);
-	width: 100%;
-	height: 180px;
-}
-
-#btn{
-	position: relative;
-	background-color: rgb(85, 0, 255);
-	width: 100%;
-	height: 60px;
-}
-
-#cancel{
-	position: absolute;
-	bottom: 12px;
-	right: 20px;
-	width: 100px;
-	height: 30px;
-}
-
-.cardFont{
-	position: relative;
-	padding: 0;
-	margin: 0;
-	margin: 0;
-}
-
-#offTime{
-	font-size: 30px;
-	top: 50%;
-    transform: translate(0,-50%);
-}
-
-#employeeID{
-	/* position: relative; */
-	padding-left: 10px;
+nav{
 	font-size: 20px;
-	top: 50%;
-	text-align: left;
-    transform: translate(0,-50%);
+}
+
+
+header img{
+	width: 130px;
+}
+
+
+section img{
+	width: 100vh;
 }
