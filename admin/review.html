@@ -1,80 +1,114 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>祐肯請假系統</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<title>祐肯請假系統</title>
+        
+		<meta name="viewport" content="width=device-width, initial-scale=1">
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 		<meta content="utf-8" http-equiv="encoding">
-		<link rel="icon" type="image/x-icon" href="../img/logo.ico">
-        
-        <link rel="stylesheet" href="../css/adminReview.css">
-    </head>
+		<link rel="icon" type="image/x-icon" href="../../img/logo.ico">
+		
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+		<link rel="stylesheet" href="../css/adminReview.css">
+	</head>
     <body>
-        <div class="wrapper">
+		<header>
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<div class="container-fluid">
+						<a class="navbar-brand" href="./adminMain.html"><img src="../img/logo.png"></a>
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon">
+								
+							</span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./review.html">假單審核</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./information.html">員工請假資訊</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./maintain.html">員工資料維護</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./personnel.html">在職員工</a>
+								</li>
+                                <li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./log.html">過審紀錄</a>
+								</li>
+                                <li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./calendar.html">行事曆</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+		</header>
+		
+		
 
-            <header class="header">
-                <span class="title">假單審核</span>
-                <span><img class="img" src="../img/logo.png"></span>
-            </header>
+		<section>
+			<div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1>假單審核</h1>
+                    </div>
+                    <div class="col">
+                        <div class="card" id="list">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">流水號:</li>
+                                <li class="list-group-item">員工姓名:</li>
+                                <li class="list-group-item">假別:</li>
+                                <li class="list-group-item">事由:</li>
+                                <li class="list-group-item">開始時間:</li>
+                                <li class="list-group-item">結束時間:</li>
+                            </ul>
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <button class="btn btn-success btn-lg" onclick="yes()">核准</button>
+                                        </div>
+                                        <div class="col">
 
-            <aside>
-                <nav>
-                    <ul>
-                        <li><a href="./maintain.html">員工資料維護</a></li>
-                        <li><a href="./information.html">員工請假資訊</a></li>
-                        <li><a href="./review.html">假單審核</a></li>
-                        <li><a href="./calendar.html">行事曆</a></li>
-                        <li><a href="./personnel.html">在職員工</a></li>
-                        <li><a href="./log.html">過審紀錄</a></li>
-                    </ul> 
-                </nav>
-            </aside>
+                                        </div>
+                                        <div class="col  text-center">
+                                            <button class="btn btn-danger btn-lg" onclick="no()">拒絕</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col  text-center">
+                                            <button id="previous" class="btn btn-primary btn-lg" onclick="previous()">上一個</button>
+                                        </div>
+                                        <div class="col">
 
-            <div id="list">
-                <table>
-                    <tr>
-                        <th>流水號:</th>
-                        <th colspan="2" id="number">0</th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td id="woker_name">員工姓名</td>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td id="leave">假別</td>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td id="reason">事由</td>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td id="time">2024/12/15/15:00-2024/12/15/18:00</td>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th class="btn"><button onclick="yes()">核准</button></th>
-                        <th></th>
-                        <th class="btn"><button onclick="no()">拒絕</button></th>
-                    </tr>
-                    <tr>
-                        <th class="btn"><button id="previous" onclick="previous()">上一個</button></th>
-                        <th></th>
-                        <th class="btn"><button id="next" onclick="next()">下一個</button></th>
-                    </tr>
-                </table>
+                                        </div>
+                                        <div class="col  text-center">
+                                            <button id="next" class="btn btn-primary btn-lg" onclick="next()">下一個</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+
+                    </div>
+                </div>
             </div>
-        </div>
+		</section>
 
-        <footer class="footer">
-			<small>Version: Alpha 0.1.0 , system builder : 章凱昱 吳岱威</small>
-		</footer>
-        <script src="js/jquery-3.7.1.min.js"></script>
+		<script src="js/jquery-3.7.1.min.js"></script>
         <script src="js/cookieOperation.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
         <script src="../js/adminReview.js"></script>
     </body>
 </html>

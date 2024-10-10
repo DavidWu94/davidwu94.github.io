@@ -25,7 +25,8 @@ $(function() {
             name:$("#name").val(),
             date:$("#joinDate").val(),
             type:"employee",
-            mgroup:parseInt($("#mgroup").val())
+            mgroup:parseInt($("#mgroup").val()),
+            permit:$("review").val()
         }),
     }).then(res=>{
         if(res==null){

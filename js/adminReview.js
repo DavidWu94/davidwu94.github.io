@@ -21,42 +21,44 @@ $(function() {
         console.log(res["data"].length);
         var list = document.getElementById("list");
         list.innerHTML = `
-            <table>
-                <tr>
-                    <th>流水號:</th>
-                    <th colspan="2" id="number">${res["data"][0]["serialnum"]}</th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="woker_name">${res["data"][0]["name"]}</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="leave">${res["data"][0]["type"]}</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="reason"></td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="time">${res["data"][0]["start"]}-${res["data"][0]["end"]}</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th class="btn"><button onclick="yes()">核准</button></th>
-                    <th></th>
-                    <th class="btn"><button onclick="no()">拒絕</button></th>
-                </tr>
-                <tr>
-                    <th class="btn"><button id="previous" onclick="previous()">上一個</button></th>
-                    <th></th>
-                    <th class="btn"><button id="next" onclick="next()">下一個</button></th>
-                </tr>
-            </table>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">流水號:${res["data"][0]["serialnum"]}</li>
+                <li class="list-group-item">員工姓名:${res["data"][0]["name"]}</li>
+                <li class="list-group-item">假別:${res["data"][0]["type"]}</li>
+                <li class="list-group-item">事由:</li>
+                <li class="list-group-item">開始時間:${res["data"][0]["start"]}</li>
+                <li class="list-group-item">結束時間:${res["data"][0]["end"]}</li>
+            </ul>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <button class="btn btn-success btn-lg" onclick="yes()">核准</button>
+                        </div>
+                        <div class="col">
+                        
+                        </div>
+                        <div class="col  text-center">
+                            <button class="btn btn-danger btn-lg" onclick="no()">拒絕</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col  text-center">
+                            <button id="previous" class="btn btn-primary btn-lg" onclick="previous()">上一個</button>
+                        </div>
+                        <div class="col">
+
+                        </div>
+                        <div class="col  text-center">
+                            <button id="next" class="btn btn-primary btn-lg" onclick="next()">下一個</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         `
     });
 
@@ -84,42 +86,44 @@ function next(){
         i += 1;
         console.log(i);
         list.innerHTML = `
-            <table>
-                <tr>
-                    <th>流水號:</th>
-                    <th colspan="2" id="number">${res["data"][i]["serialnum"]}</th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="woker_name">${res["data"][i]["name"]}</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="leave">${res["data"][i]["type"]}</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="reason"></td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="time">${res["data"][i]["start"]}-${res["data"][i]["end"]}</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th class="btn"><button onclick="yes()">核准</button></th>
-                    <th></th>
-                    <th class="btn"><button onclick="no()">拒絕</button></th>
-                </tr>
-                <tr>
-                    <th class="btn"><button id="previous" onclick="previous()">上一個</button></th>
-                    <th></th>
-                    <th class="btn"><button id="next" onclick="next()">下一個</button></th>
-                </tr>
-            </table>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">流水號:${res["data"][0]["serialnum"]}</li>
+                <li class="list-group-item">員工姓名:${res["data"][0]["name"]}</li>
+                <li class="list-group-item">假別:${res["data"][0]["type"]}</li>
+                <li class="list-group-item">事由:</li>
+                <li class="list-group-item">開始時間:${res["data"][0]["start"]}</li>
+                <li class="list-group-item">結束時間:${res["data"][0]["end"]}</li>
+            </ul>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <button class="btn btn-success btn-lg" onclick="yes()">核准</button>
+                        </div>
+                        <div class="col">
+                        
+                        </div>
+                        <div class="col  text-center">
+                            <button class="btn btn-danger btn-lg" onclick="no()">拒絕</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col  text-center">
+                            <button id="previous" class="btn btn-primary btn-lg" onclick="previous()">上一個</button>
+                        </div>
+                        <div class="col">
+
+                        </div>
+                        <div class="col  text-center">
+                            <button id="next" class="btn btn-primary btn-lg" onclick="next()">下一個</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         `
     })
 }
@@ -142,42 +146,44 @@ function previous(){
         i -= 1;
         console.log(i);
         list.innerHTML = `
-            <table>
-                <tr>
-                    <th>流水號:</th>
-                    <th colspan="2" id="number">${res["data"][i]["serialnum"]}</th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="woker_name">${res["data"][i]["name"]}</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="leave">${res["data"][i]["type"]}</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="reason"></td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td id="time">${res["data"][i]["start"]}-${res["data"][i]["end"]}</td>
-                    <th></th>
-                </tr>
-                <tr>
-                    <th class="btn"><button onclick="yes()">核准</button></th>
-                    <th></th>
-                    <th class="btn"><button onclick="no()">拒絕</button></th>
-                </tr>
-                <tr>
-                    <th class="btn"><button id="previous" onclick="previous()">上一個</button></th>
-                    <th></th>
-                    <th class="btn"><button id="next" onclick="next()">下一個</button></th>
-                </tr>
-            </table>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">流水號:${res["data"][0]["serialnum"]}</li>
+                <li class="list-group-item">員工姓名:${res["data"][0]["name"]}</li>
+                <li class="list-group-item">假別:${res["data"][0]["type"]}</li>
+                <li class="list-group-item">事由:</li>
+                <li class="list-group-item">開始時間:${res["data"][0]["start"]}</li>
+                <li class="list-group-item">結束時間:${res["data"][0]["end"]}</li>
+            </ul>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <button class="btn btn-success btn-lg" onclick="yes()">核准</button>
+                        </div>
+                        <div class="col">
+                        
+                        </div>
+                        <div class="col  text-center">
+                            <button class="btn btn-danger btn-lg" onclick="no()">拒絕</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col  text-center">
+                            <button id="previous" class="btn btn-primary btn-lg" onclick="previous()">上一個</button>
+                        </div>
+                        <div class="col">
+
+                        </div>
+                        <div class="col  text-center">
+                            <button id="next" class="btn btn-primary btn-lg" onclick="next()">下一個</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         `
     })
 }

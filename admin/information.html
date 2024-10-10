@@ -1,112 +1,135 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>祐肯請假系統</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<title>祐肯請假系統</title>
+        
+		<meta name="viewport" content="width=device-width, initial-scale=1">
         <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 		<meta content="utf-8" http-equiv="encoding">
-		<link rel="icon" type="image/x-icon" href="../img/logo.ico">
-        
-        <link rel="stylesheet" href="../css/adminInformation.css">
-    </head>
-
+		<link rel="icon" type="image/x-icon" href="../../img/logo.ico">
+		
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+		<link rel="stylesheet" href="../css/adminInformation.css">
+	</head>
     <body>
-        <div class="wrapper">
+		<header>
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<div class="container-fluid">
+						<a class="navbar-brand" href="./adminMain.html"><img src="../img/logo.png"></a>
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon">
+								
+							</span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./review.html">假單審核</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./information.html">員工請假資訊</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./maintain.html">員工資料維護</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./personnel.html">在職員工</a>
+								</li>
+                                <li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./log.html">過審紀錄</a>
+								</li>
+                                <li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="./calendar.html">行事曆</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+		</header>
+		
+		
 
-            <header class="header">
-                <span class="title">員工請假資訊</span>
-                <span><img class="img" src="../img/logo.png"></span>
-            </header>
+		<section>
+			<div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div id="search" >
+                            <h1>員工請假資訊</h1>
+                            <input placeholder="員工編號" id="code" class="search">
+                            <input placeholder="年度" id="year" class="search">
+                            <button id="searching" class="search">搜尋</button>
+                        </div>
 
-            <aside>
-                <nav>
-                    <ul>
-                        <li><a href="./maintain.html">員工資料維護</a></li>
-                        <li><a href="./information.html">員工請假資訊</a></li>
-                        <li><a href="./review.html">假單審核</a></li>
-                        <li><a href="./calendar.html">行事曆</a></li>
-                        <li><a href="./personnel.html">在職員工</a></li>
-                        <li><a href="./log.html">過審紀錄</a></li>
-                    </ul> 
-                </nav>
-            </aside>
-
-            <div class="main">
-                <div id="search">
-                    <input placeholder="員工編號" id="code" class="search">
-                    <input placeholder="年度" id="year" class="search">
-                    <button id="searching" class="button">搜尋</button>
-                </div>
-                <br>
-                <div id="info" class="info">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>當年度特休天數</th>
-                                <td><output id="當年度特休天數"></output></td>
-                            </tr>
-                            <tr>
-                                <th>假別</th>
-                                <th id="time">時數</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>特休假</th>
-                                <td><output id="特休假"></output></td>
-                            </tr>
-                            <tr>
-                                <th>事假</th>
-                                <td><output id="事假"></output></td>
-                            </tr>
-                            <tr>
-                                <th>家庭照顧假</th>
-                                <td><oupt id="家庭照顧假"></oupt></td>
-                            </tr>
-                            <tr>
-                                <th>普通傷病假</th>
-                                <td><output id="普通傷病假"></output></td>
-                            </tr>
-                            <tr>
-                                <th>婚假</th>
-                                <td><output id="婚假"></output></td>
-                            </tr>
-                            <tr>
-                                <th>喪假</th>
-                                <td><output id="喪假"></output></td>
-                            </tr>
-                            <tr>
-                                <th>分娩假</th>
-                                <td><output id="分娩假"></output></td>
-                            </tr>
-                            <tr>
-                                <th>產檢假</th>
-                                <td><output id="產檢假"></output></td>
-                            </tr>
-                            <tr>
-                                <th>流產假</th>
-                                <td><output id="流產假"></output></td>
-                            </tr>
-                            <tr>
-                                <th>陪產假</th>
-                                <td><output id="陪產假"></output></td>
-                            </tr>
-                            <tr>
-                                <th>產假</th>
-                                <td><output id="產假"></output>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <div>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>當年度特休天數</th>
+                                        <td><output id="當年度特休天數"></output></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="table-dark">假別</th>
+                                        <th id="time" class="table-dark">時數</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>特休假</th>
+                                        <td><output id="特休假"></output></td>
+                                    </tr>
+                                    <tr>
+                                        <th>事假</th>
+                                        <td><output id="事假"></output></td>
+                                    </tr>
+                                    <tr>
+                                        <th>家庭照顧假</th>
+                                        <td><oupt id="家庭照顧假"></oupt></td>
+                                    </tr>
+                                    <tr>
+                                        <th>普通傷病假</th>
+                                        <td><output id="普通傷病假"></output></td>
+                                    </tr>
+                                    <tr>
+                                        <th>婚假</th>
+                                        <td><output id="婚假"></output></td>
+                                    </tr>
+                                    <tr>
+                                        <th>喪假</th>
+                                        <td><output id="喪假"></output></td>
+                                    </tr>
+                                    <tr>
+                                        <th>分娩假</th>
+                                        <td><output id="分娩假"></output></td>
+                                    </tr>
+                                    <tr>
+                                        <th>產檢假</th>
+                                        <td><output id="產檢假"></output></td>
+                                    </tr>
+                                    <tr>
+                                        <th>流產假</th>
+                                        <td><output id="流產假"></output></td>
+                                    </tr>
+                                    <tr>
+                                        <th>陪產假</th>
+                                        <td><output id="陪產假"></output></td>
+                                    </tr>
+                                    <tr>
+                                        <th>產假</th>
+                                        <td><output id="產假"></output>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
+		</section>
 
-        </div>
-
-        <footer class="footer">
-            <small>Version: Alpha 0.1.0 , system builder : 章凱昱 吳岱威</small>
-        </footer>
-        <script src="js/jquery-3.7.1.min.js"></script>
+		<script src="js/jquery-3.7.1.min.js"></script>
         <script src="js/cookieOperation.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
     </body>
 </html>
