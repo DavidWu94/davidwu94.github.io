@@ -1,0 +1,11 @@
+# version: "27"
+services:
+  website:
+    build: .
+    ports:
+      - "8000:8000"
+    restart: always
+    cpus: 0.5
+    mem_limit: 100M
+    volumes:
+      - "./logs:/var/log/nginx"
