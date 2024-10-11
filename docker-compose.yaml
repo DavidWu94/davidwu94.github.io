@@ -1,0 +1,7 @@
+# version: "27"
+services:
+  website:
+    build: .
+    ports:
+      - "8000:8000"
+    restart: always
