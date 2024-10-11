@@ -7,3 +7,5 @@ services:
     restart: always
     cpus: 0.5
     mem_limit: 100M
+    volumes:
+      - "./logs:/var/log/nginx"
