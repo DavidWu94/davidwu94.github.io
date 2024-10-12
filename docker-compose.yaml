@@ -5,7 +5,7 @@ services:
     ports:
       - "8000:8000"
     restart: always
-    cpus: 0.5
+    cpus: 0.1
     mem_limit: 100M
     volumes:
       - "./logs:/var/log/nginx"
