@@ -45,7 +45,8 @@ $(()=>{
 				type:$("#type").val(),
 				start:startDate,
 				end:endDate,
-				totalTime:a
+				totalTime:a,
+				
 			}),
 		}).then(res=>{
 			alert("已發送請假審核");
