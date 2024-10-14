@@ -23,7 +23,7 @@ $(function() {
 			document.cookie = `session=${res["sessionKey"]};`;
 			addCookie("session",res["sessionKey"]);
 			addCookie("id",$("#code").val());
-			window.location = `${window.location.origin}/${res["accountType"]=="employee"?"employee/employeeMain.html":res["accountType"]=="admin"?"admin/adminMain.html":""}`
+			window.location = `${window.location.origin}/${res["accountType"]=="employee"?"employee/employeeMain.html":res["accountType"]=="admin"?"admin/personnel.html":""}`
 		}).catch(rej=>{
 			alert("帳號或密碼錯誤");
 		});
