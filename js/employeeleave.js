@@ -26,7 +26,7 @@ $(()=>{
 		const startDate = `${$("#start_day").val()} ${$("#start_time").val()}`
 		const endDate = `${$("#end_day").val()} ${$("#end_time").val()}`
 		const a = caculateTime(startDate,endDate);
-		alert(`總請假時數: ${a} 小時`);
+		const reason = $("#start_day").val();
 		$.ajax({
 			url: 'http://eucan.ddns.net:3000/request',
 			type: 'POST',
@@ -40,16 +40,19 @@ $(()=>{
 				// "type":"sick",
 				// "start":"2024-08-09",
 				// "end":"2024-08-10"
+				// "reason":"test01"
 				account:userId,
 				cookie:sessionKey,
 				type:$("#type").val(),
 				start:startDate,
 				end:endDate,
 				totalTime:a,
+				reason:reason,
 				
 			}),
 		}).then(res=>{
-			alert("已發送請假審核");
+			console.log(res);
+			alert(`已發送請假審核，總請假時數: ${a} 小時`);
 		})
 	});
 });
