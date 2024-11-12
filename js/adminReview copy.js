@@ -6,7 +6,6 @@ $(function() {
         window.location = window.location.origin;
     }
     loginCheck(userId,sessionKey);
-    document.getElementById("card-body").innerHTML="";
     $.ajax({
         url: `http://eucan.ddns.net:3000/query`,
         type: 'POST',
@@ -20,151 +19,49 @@ $(function() {
         }),
     }).then(res=>{
         //看截圖
-        const data = res["data"];
-        console.log(data[0]["serialnum"])
+        const data = res.data;
+        console.log(data);
         for(let d of data){
-            console.log(d["serialnum"])
+            console.log(d.serialnum)
 
-            let cardBox = document.createElement("div");
-            cardBox.classList.add("card");
+            let cardBox = $("<div>").addClass("card");
 
-            let cardTitle = document.createElement("h5");
-            cardTitle.classList.add("card-title");
-            cardTitle.innerHTML = d["serialnum"];
+            let cardTitle = $("<h5>").addClass("card-title").html(d.serialnum);
+            
+            let cardUl = $("<ul>").addClass("card-ul");
 
-            cardBox.append(cardTitle);
+            let cardLi1 = $("<li>").addClass("card-name").html(d.name);
 
-            document.getElementById("card-body").appendChild(cardBox);
+            let cardLi2 = $("<li>").addClass("card-type").html(d.type);
+
+            let cardLi3 = $("<li>").addClass("card-reason").html(d.reason);
+
+            let cardLi4 = $("<li>").addClass("card-time-start").html(d.start);
+
+            let cardLi5 = $("<li>").addClass("card-time-start").html(d.end);
+
+            let cardLi6 = $("<li>").addClass("card-button");
+
+            let cardButtonNo = $("<button>").addClass("No").html("拒絕");
+
+            let cardButtonYes = $("<button>").addClass("Yes").html("核准");
+
+            cardLi6.append(cardButtonNo, cardButtonYes);
+            cardUl.append(cardLi1, cardLi2, cardLi3, cardLi4, cardLi5, cardLi6);
+            cardBox.append(cardTitle, cardUl);
+
+            $("#card-body").append(cardBox);
         }
         
     });
 
 });
+
+
+
+
+
 /*
-var i = 0;
-console.log(i);
-
-function next(){
-    const sessionKey = readCookie("session");
-    const userId = readCookie("id");
-    $.ajax({
-        url: `http://eucan.ddns.net:3000/query`,
-        type: 'POST',
-        dataType: 'json',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        data: JSON.stringify({
-            account:userId,
-            cookie:sessionKey,
-            
-        }),
-    }).then(res=>{
-        i += 1;
-        console.log(i);
-        list.innerHTML = `
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">流水號:${res["data"][0]["serialnum"]}</li>
-                <li class="list-group-item">員工姓名:${res["data"][0]["name"]}</li>
-                <li class="list-group-item">假別:${res["data"][0]["type"]}</li>
-                <li class="list-group-item">事由:</li>
-                <li class="list-group-item">開始時間:${res["data"][0]["start"]}</li>
-                <li class="list-group-item">結束時間:${res["data"][0]["end"]}</li>
-            </ul>
-            <div class="card-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col text-center">
-                            <button class="btn btn-success btn-lg" onclick="yes()">核准</button>
-                        </div>
-                        <div class="col">
-                        
-                        </div>
-                        <div class="col  text-center">
-                            <button class="btn btn-danger btn-lg" onclick="no()">拒絕</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col  text-center">
-                            <button id="previous" class="btn btn-primary btn-lg" onclick="previous()">上一個</button>
-                        </div>
-                        <div class="col">
-
-                        </div>
-                        <div class="col  text-center">
-                            <button id="next" class="btn btn-primary btn-lg" onclick="next()">下一個</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `
-    })
-}
-
-function previous(){
-    const sessionKey = readCookie("session");
-    const userId = readCookie("id");
-    $.ajax({
-        url: `http://eucan.ddns.net:3000/query`,
-        type: 'POST',
-        dataType: 'json',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        data: JSON.stringify({
-            account:userId,
-            cookie:sessionKey,
-        }),
-    }).then(res=>{
-        i -= 1;
-        console.log(i);
-        list.innerHTML = `
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">流水號:${res["data"][0]["serialnum"]}</li>
-                <li class="list-group-item">員工姓名:${res["data"][0]["name"]}</li>
-                <li class="list-group-item">假別:${res["data"][0]["type"]}</li>
-                <li class="list-group-item">事由:</li>
-                <li class="list-group-item">開始時間:${res["data"][0]["start"]}</li>
-                <li class="list-group-item">結束時間:${res["data"][0]["end"]}</li>
-            </ul>
-            <div class="card-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col text-center">
-                            <button class="btn btn-success btn-lg" onclick="yes()">核准</button>
-                        </div>
-                        <div class="col">
-                        
-                        </div>
-                        <div class="col  text-center">
-                            <button class="btn btn-danger btn-lg" onclick="no()">拒絕</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col  text-center">
-                            <button id="previous" class="btn btn-primary btn-lg" onclick="previous()">上一個</button>
-                        </div>
-                        <div class="col">
-
-                        </div>
-                        <div class="col  text-center">
-                            <button id="next" class="btn btn-primary btn-lg" onclick="next()">下一個</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `
-    })
-}
-
 function yes(){
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
