@@ -26,7 +26,7 @@ $(()=>{
 		const startDate = `${$("#start_day").val()} ${$("#start_time").val()}`
 		const endDate = `${$("#end_day").val()} ${$("#end_time").val()}`
 		const a = caculateTime(startDate,endDate);
-		const reason = $("#start_day").val();
+		const reason = $("#reason").val();
 		$.ajax({
 			url: 'http://eucan.ddns.net:3000/request',
 			type: 'POST',

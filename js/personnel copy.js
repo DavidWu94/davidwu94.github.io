@@ -18,7 +18,6 @@ $(function() {
             cookie:sessionKey,
         }),
     }).then(res=>{
-        //看截圖
         const data = res.data;
         console.log(data);
         for(let d of data){
@@ -54,55 +53,3 @@ $(function() {
     });
 
 });
-
-$("No").click(function(){
-    alert("5")
-});
-
-
-
-/*
-function yes(){
-    const sessionKey = readCookie("session");
-    const userId = readCookie("id");
-    const serialnum = document.getElementById("number");
-    console.log(serialnum.innerHTML);
-    $.ajax({
-        url: `http://eucan.ddns.net:3000/query`,
-        type: 'POST',
-        dataType: 'json',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        data: JSON.stringify({
-            account:userId,
-            cookie:sessionKey,
-            num: serialnum,
-            permit: 1,
-        }),
-    })
-    window.location.reload();
-}
-
-function no(){
-    const sessionKey = readCookie("session");
-    const userId = readCookie("id");
-    const serialnum = document.getElementById("number");
-    console.log(serialnum.innerHTML);
-    $.ajax({
-        url: `http://eucan.ddns.net:3000/query`,
-        type: 'POST',
-        dataType: 'json',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        data: JSON.stringify({
-            account:userId,
-            cookie:sessionKey,
-            num: serialnum,
-            permit: 1,
-        }),
-    })
-    window.location.reload();
-}
-    */
