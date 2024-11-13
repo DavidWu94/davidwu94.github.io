@@ -7,7 +7,7 @@ $(function() {
     }
     loginCheck(userId,sessionKey);
     $.ajax({
-        url: `http://eucan.ddns.net:3000/query`,
+        url: `http://eucan.ddns.net:3000/users`,
         type: 'POST',
         dataType: 'json',
         headers: {
@@ -20,34 +20,59 @@ $(function() {
     }).then(res=>{
         const data = res.data;
         console.log(data);
+        data.sort(function (a, b) {
+            var nameA = a.id.toUpperCase(); // ignore upper and lowercase
+            var nameB = b.id.toUpperCase(); // ignore upper and lowercase
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+          
+            // names must be equal
+            return 0;
+          });
+        console.log(data);
         for(let d of data){
-            let cardBox = $("<div>").addClass("card");
+            let tableBox = $("<tr>").addClass("");
 
-            let cardTitle = $("<h5>").addClass("card-title").html("流水號: " + d.serialnum);
+            let tableId = $("<td>").addClass("").html(d.id);
+
+            let tablePwd = $("<td>").addClass("").html(d.pwd);
+
+            let tableName = $("<td>").addClass("c").html(d.name);
+
+            let tableJoinTime = $("<td>").addClass("").html(d.joinTime);
+
+            let tableEmail = $("<td>").addClass("").html(d.email);
+
+            let tableMgroup;
+            if(d.mgroup == 1){
+                tableMgroup = $("<td>").addClass("").html("CAT");
+            }
+            else if(d.mgroup == 0){
+                tableMgroup = $("<td>").addClass("").html("JEFF");
+            }
+            else{
+                tableMgroup = $("<td>").addClass("").html("");
+            }
+
+            let tablePermit;
+            if(d.permit == 1){
+                tablePermit = $("<td>").addClass("").html("須審核");
+            }
+            else if(d.permit == 0){
+                tablePermit = $("<td>").addClass("").html("無須審核");
+            }
+            else{
+                tablePermit = $("<td>").addClass("").html("");
+            }
             
-            let cardUl = $("<ul>").addClass("card-ul");
 
-            let cardLi1 = $("<li>").addClass("card-name").html("員工姓名: " + d.name);
+            tableBox.append(tableId, tablePwd, tableName, tableJoinTime, tableEmail, tableMgroup, tablePermit);
 
-            let cardLi2 = $("<li>").addClass("card-type").html("請假類別: " + d.type);
-
-            let cardLi3 = $("<li>").addClass("card-reason").html("請假事由: " + d.reason);
-
-            let cardLi4 = $("<li>").addClass("card-time-start").html("開始時間: " + d.start);
-
-            let cardLi5 = $("<li>").addClass("card-time-start").html("結束時間: " + d.end);
-
-            let cardLi6 = $("<li>").addClass("card-button");
-
-            let cardButtonNo = $("<button>").addClass("No " + d.serialnum).html("拒絕");
-
-            let cardButtonYes = $("<button>").addClass("Yes " + d.serialnum).html("核准");
-
-            cardLi6.append(cardButtonNo, cardButtonYes);
-            cardUl.append(cardLi1, cardLi2, cardLi3, cardLi4, cardLi5, cardLi6);
-            cardBox.append(cardTitle, cardUl);
-
-            $("#card-body").append(cardBox);
+            $("#table").append(tableBox);
         }
         
     });

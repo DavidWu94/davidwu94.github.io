@@ -18,7 +18,6 @@ $(function() {
             cookie:sessionKey,
         }),
     }).then(res=>{
-        //看截圖
         const data = res.data;
         console.log(data);
         for(let d of data){
@@ -40,9 +39,15 @@ $(function() {
 
             let cardLi6 = $("<li>").addClass("card-button");
 
-            let cardButtonNo = $("<button>").addClass("No " + d.serialnum).html("拒絕");
+            let cardButtonNo = $("<button>").addClass("no").html("拒絕").click(function() {
+                no(d.serialnum);
+                console.log("拒絕按鈕被點擊，序號:", d.serialnum);
+            });
 
-            let cardButtonYes = $("<button>").addClass("Yes " + d.serialnum).html("核准");
+            let cardButtonYes = $("<button>").addClass("yes").html("核准").click(function() {
+                yes(d.serialnum);
+                console.log("核准按鈕被點擊，序號:", d.serialnum);
+            });
 
             cardLi6.append(cardButtonNo, cardButtonYes);
             cardUl.append(cardLi1, cardLi2, cardLi3, cardLi4, cardLi5, cardLi6);
@@ -55,18 +60,9 @@ $(function() {
 
 });
 
-$("No").click(function(){
-    alert("5")
-});
-
-
-
-/*
-function yes(){
+function yes(serialnum){
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
-    const serialnum = document.getElementById("number");
-    console.log(serialnum.innerHTML);
     $.ajax({
         url: `http://eucan.ddns.net:3000/query`,
         type: 'POST',
@@ -84,11 +80,11 @@ function yes(){
     window.location.reload();
 }
 
-function no(){
+
+
+function no(serialnum){
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
-    const serialnum = document.getElementById("number");
-    console.log(serialnum.innerHTML);
     $.ajax({
         url: `http://eucan.ddns.net:3000/query`,
         type: 'POST',
@@ -105,4 +101,3 @@ function no(){
     })
     window.location.reload();
 }
-    */
