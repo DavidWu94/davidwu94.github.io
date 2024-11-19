@@ -25,7 +25,7 @@ $(function() {
 
             let cardTitle = $("<h5>").addClass("card-title").html("流水號: " + d.serialnum);
             
-            let cardUl = $("<ul>").addClass("card-ul");
+            let cardUl = $("<ul>").addClass("card-ul list-group list-group-flush list-unstyled");
 
             let cardLi1 = $("<li>").addClass("card-name").html("員工姓名: " + d.name);
 
