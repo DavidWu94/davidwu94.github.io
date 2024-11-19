@@ -96,7 +96,7 @@ function no(serialnum){
             account:userId,
             cookie:sessionKey,
             num: serialnum,
-            permit: 1,
+            permit: 0,
         }),
     })
     window.location.reload();
