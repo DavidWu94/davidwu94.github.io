@@ -100,5 +100,4 @@ function no(serialnum){
         }),
     })
     window.location.reload();
-    
 }
