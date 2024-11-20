@@ -19,7 +19,12 @@ $(function() {
         }),
     }).then(res=>{
         const data = res.data;
-        console.log(data);
+        const dataL = data.length;
+        //console.log(dataL);
+        //console.log(data);
+        let dataLong = $("<h2>").addClass("dataLong").html("假單總數:" + dataL);
+        $("#dataLong").append(dataLong);
+
         for(let d of data){
             let cardBox = $("<div>").addClass("card");
 
@@ -96,7 +101,7 @@ function no(serialnum){
             account:userId,
             cookie:sessionKey,
             num: serialnum,
-            permit: 1,
+            permit: 0,
         }),
     })
     window.location.reload();
