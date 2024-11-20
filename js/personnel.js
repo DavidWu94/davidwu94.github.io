@@ -36,7 +36,8 @@ $(function() {
 
         let currentPage = 0; // 目前頁數，從第 0 頁開始
         const itemsPerPage = 10; // 每頁顯示 10 筆資料
-        
+    
+        displayPage(currentPage);
         // 顯示特定頁數的資料
         function displayPage(page) {
 
@@ -49,6 +50,7 @@ $(function() {
       
             // 顯示對應頁數的資料
             const pageData = data.slice(start, end);
+            console.log(pageData);
             for(let d of pageData){
                 console.log(d.id);
                 let tableBox = $("<tr>").addClass("");
@@ -85,25 +87,39 @@ $(function() {
                     tablePermit = $("<td>").addClass("").html("");
                 }
 
-                let tablenext = $("<button>").addClass("button").html("下一頁").click(function() {
-                    nextPage();
-                    console.log("0");
-                });
-
-                tableBox.append(tableId, tablePwd, tableName, tableJoinTime, tableEmail, tableMgroup, tablePermit, tablenext);
+                tableBox.append(tableId, tablePwd, tableName, tableJoinTime, tableEmail, tableMgroup, tablePermit);
                 $("#table").append(tableBox);
             }
 
             // 更新頁面訊息
             $('#pageInfo').text(`Page ${page + 1} of ${Math.ceil(data.length / itemsPerPage)}`);
-            }
+
+            let tableButton = $("<tr>").addClass("");
+
+            let tableButtonTd = $("<td>").addClass("text-center").attr("colspan", 7);
+
+            let tablenext = $("<button>").addClass("").html("下一個").click(function() {
+                nextPage();
+                console.log("next"); 
+            })
+
+            let tablePage = $("<nobr>").addClass("").html("目前在第" + currentPage + "頁");
+
+            let tablePrev = $("<button>").addClass("").html("下一個").click(function() {
+                prevPage();
+                console.log("prev");
+            })
+
+            tableButtonTd.append(tablenext, tablePage, tablePrev);
+            tableButton.append(tableButtonTd);
+            $("#table").append(tableButton);
+
+
+        }
         
             
         // 更新頁面訊息
         $('#pageInfo').text(`Page ${page + 1} of ${Math.ceil(data.length / itemsPerPage)}`);
-      
-        // 初始化顯示第一頁資料
-        displayPage(currentPage);
           
         //下一頁
         function nextPage(){
