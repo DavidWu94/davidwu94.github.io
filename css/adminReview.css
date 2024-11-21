@@ -12,9 +12,12 @@ header img{
 	width: 130px;
 }
 
-
+.card-title{
+    font-size: 25px;
+    font-weight: bold;
+}
 .card{
-    width: 50rem;
+    width: 30rem;
     font-size: 25px;
     margin-top: 60px;
     font-weight: bold;
@@ -23,4 +26,10 @@ header img{
 
 .btn{
     font-size: 30px;
+}
+
+
+.card-button{
+    display: flex;
+    justify-content: space-between;
 }
