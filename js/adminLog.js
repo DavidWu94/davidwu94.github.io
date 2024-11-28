@@ -78,6 +78,7 @@ $(function() {
                 else{
                     tableMgroup = $("<td>").addClass("").html("");
                 }
+                
     
                 let tablePermit;
                 if(d.permit == 1){
