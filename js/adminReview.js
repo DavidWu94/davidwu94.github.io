@@ -82,7 +82,10 @@ function yes(serialnum){
             permit: 1,
         }),
     })
-    window.location.reload();
+    window.setTimeout(function (){
+        window.location.reload();
+    },1000);
+    
 }
 
 
@@ -104,5 +107,7 @@ function no(serialnum){
             permit: 0,
         }),
     })
-    window.location.reload();
+    window.setTimeout(function (){
+        window.location.reload();
+    },1000);
 }

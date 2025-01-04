@@ -27,7 +27,7 @@ $(()=>{
 		const endDate = `${$("#end_day").val()} ${$("#end_time").val()}`
 		const a = caculateTime(startDate,endDate);
 		const reason = $("#reason").val();
-		console.log(startDate);
+		console.log(data);
 		$.ajax({
 			url: 'http://eucan.ddns.net:3000/request',
 			type: 'POST',
@@ -51,10 +51,13 @@ $(()=>{
 				reason:reason,
 				
 			}),
-		}).then(res=>{
-			console.log(res);
-			
+			success: function(data) {
+				console.log(data);
+				alert(`已發送請假審核，總請假時數: ${a} 小時`);
+			}
 		})
+		
+
 	});
 });
 
