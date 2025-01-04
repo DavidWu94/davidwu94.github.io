@@ -110,7 +110,7 @@ $(function() {
                 console.log("prev");
             })
 
-            tableButtonTd.append(tablenext, tablePage, tablePrev);
+            tableButtonTd.append(tablePrev, tablePage, tablenext);
             tableButton.append(tableButtonTd);
             $("#table").append(tableButton);
 

@@ -8,7 +8,7 @@ $(function() {
     }
     loginCheck(userId,sessionKey);
     $.ajax({
-        url: `http://eucan.ddns.net:3000/permit`,
+        url: `http://eucan.ddns.net:3000/approved`,
         type: 'POST',
         dataType: 'json',
         headers: {
@@ -16,26 +16,15 @@ $(function() {
         },
         data: JSON.stringify({
             account:userId,
-            cookie:sessionKey,
-            id:$("#code").val(),
-            year:$("#year").val()
+            cookie:sessionKey
+            /*id:$("#code").val(),
+            year:$("#year").val()*/
         }),
     }).then(res=>{
+
+        
         const data = res.data;
         console.log(data);
-
-        data.sort(function (a, b) {
-            var nameA = a.id.toUpperCase(); // ignore upper and lowercase
-            var nameB = b.id.toUpperCase(); // ignore upper and lowercase
-            if (nameA < nameB) {
-              return -1;
-            }
-            if (nameA > nameB) {
-              return 1;
-            }
-            // names must be equal
-            return 0;
-        });
 
         let currentPage = 0; // 目前頁數，從第 0 頁開始
         const itemsPerPage = 10; // 每頁顯示 10 筆資料
@@ -55,43 +44,24 @@ $(function() {
             const pageData = data.slice(start, end);
             console.log(pageData);
             for(let d of pageData){
-                console.log(d.id);
+                console.log(d.serialnum);
                 let tableBox = $("<tr>").addClass("");
     
-                let tableId = $("<td>").addClass("").html(d.id);
-                
-                let tablePwd = $("<td>").addClass("").html(d.pwd);
-            
-                let tableName = $("<td>").addClass("c").html(d.name);
-    
-                let tableJoinTime = $("<td>").addClass("").html(d.joinTime);
-    
-                let tableEmail = $("<td>").addClass("").html(d.email);
-    
-                let tableMgroup;
-                if(d.mgroup == 1){
-                    tableMgroup = $("<td>").addClass("").html("CAT");
-                }
-                else if(d.mgroup == 0){
-                    tableMgroup = $("<td>").addClass("").html("JEFF");
-                }
-                else{
-                    tableMgroup = $("<td>").addClass("").html("");
-                }
-                
-    
-                let tablePermit;
-                if(d.permit == 1){
-                    tablePermit = $("<td>").addClass("").html("須審核");
-                }
-                else if(d.permit == 0){
-                    tablePermit = $("<td>").addClass("").html("無須審核");
-                }
-                else{
-                    tablePermit = $("<td>").addClass("").html("");
-                }
+                let tableSerialnum = $("<td>").addClass("").html(d.serialnum);
 
-                tableBox.append(tableId, tablePwd, tableName, tableJoinTime, tableEmail, tableMgroup, tablePermit);
+                let tableName = $("<td>").addClass("").html(d.name);
+                
+                let tableType = $("<td>").addClass("").html(d.type);
+            
+                let tableStart = $("<td>").addClass("c").html(d.start);
+    
+                let tableEnd = $("<td>").addClass("").html(d.end);
+
+                let tableTotalTime = $("<td>").addClass("").html(d.totalTime);
+    
+                let tableReason = $("<td>").addClass("").html(d.reason);
+
+                tableBox.append(tableSerialnum, tableName, tableType, tableStart, tableEnd, tableTotalTime, tableReason);
                 $("#table").append(tableBox);
             }
 
@@ -114,7 +84,7 @@ $(function() {
                 console.log("prev");
             })
 
-            tableButtonTd.append(tablenext, tablePage, tablePrev);
+            tableButtonTd.append(tablePrev, tablePage, tablenext);
             tableButton.append(tableButtonTd);
             $("#table").append(tableButton);
 
@@ -146,7 +116,7 @@ $(function() {
                 alert("已經是第一頁！");
             }
         }
-        
+       
     });
 
 });
