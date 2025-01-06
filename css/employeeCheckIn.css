@@ -14,10 +14,16 @@ header img{
 
 
 section img{
-	width: 60vh;
+	width: 40vh;
 }
 
 
 .btn{
 	margin-top: 10vh;
+}
+
+
+.table{
+    font-size: 25px;
+    border: 1px solid rgb(140 140 140);
 }

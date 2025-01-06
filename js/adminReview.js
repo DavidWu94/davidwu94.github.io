@@ -65,11 +65,11 @@ $(function() {
 
 });
 
-function yes(serialnum){
+function yes(serialnum){    
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
     $.ajax({
-        url: `http://eucan.ddns.net:3000/query`,
+        url: `http://eucan.ddns.net:3000/permit`,
         type: 'POST',
         dataType: 'json',
         headers: {
@@ -82,7 +82,10 @@ function yes(serialnum){
             permit: 1,
         }),
     })
-    window.location.reload();
+    window.setTimeout(function (){
+        window.location.reload();
+    },1000);
+    
 }
 
 
@@ -91,7 +94,7 @@ function no(serialnum){
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
     $.ajax({
-        url: `http://eucan.ddns.net:3000/query`,
+        url: `http://eucan.ddns.net:3000/permit`,
         type: 'POST',
         dataType: 'json',
         headers: {
@@ -104,5 +107,7 @@ function no(serialnum){
             permit: 0,
         }),
     })
-    window.location.reload();
+    window.setTimeout(function (){
+        window.location.reload();
+    },1000);
 }

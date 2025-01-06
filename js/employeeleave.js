@@ -27,6 +27,15 @@ $(()=>{
 		const endDate = `${$("#end_day").val()} ${$("#end_time").val()}`
 		const a = caculateTime(startDate,endDate);
 		const reason = $("#reason").val();
+		console.log({
+			account:userId,
+			cookie:sessionKey,
+			type:$("#type").val(),
+			start:startDate,
+			end:endDate,
+			totalTime:a,
+			reason:reason,
+		})
 		$.ajax({
 			url: 'http://eucan.ddns.net:3000/request',
 			type: 'POST',
@@ -50,57 +59,15 @@ $(()=>{
 				reason:reason,
 				
 			}),
-		}).then(res=>{
-			console.log(res);
-			alert(`已發送請假審核，總請假時數: ${a} 小時`);
+			success: function(data) {
+				console.log(data);
+				alert(`已發送請假審核，總請假時數: ${a} 小時`);
+			}
 		})
+		
+
 	});
 });
-
-function caculateTime(time1,time2){
-	const date1 = new Date(Date.parse(time1));
-	const date2 = new Date(Date.parse(time2));
-	const spl = [date1.getHours()>12?1:0,date2.getHours()>12?1:0];
-	console.log(spl)
-	const n = date2.getDay()-date1.getDay();
-	const sum = spl[0]+spl[1];
-	var timeElapse = (date2.getTime()-date1.getTime())/1000/60/60;
-	if(n==0){
-		// same day
-		switch(sum){
-			case 0:
-				return timeElapse>3?4:timeElapse;
-				// break;
-			case 1:
-				if(date1.getHours()==8){
-					timeElapse += 0.5
-				}
-				return (timeElapse-1.5);
-				// break;
-			case 2:
-				return timeElapse;
-		}
-	}else{
-		switch(sum){
-			case 0:
-				if(date2.getHours()==12)
-					timeElapse+=0.5;
-				if(date1.getHours()==8){
-					return timeElapse-16*(n);
-				}else{
-					return timeElapse-16.5*(n);
-				}
-			case 1:
-				if(spl[0]==0){
-					return timeElapse-16*n-1.5+(date1.getHours()==8?0.5:0);
-				}else{
-					return timeElapse-15*n-1.5*(n-1)+(date2.getHours()==12?0.5:0);
-				}
-			case 2:
-				return timeElapse-16*n;
-		}
-	}
-}
 
 function validTime(time){
 	const T = time.split(":");
