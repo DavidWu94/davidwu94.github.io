@@ -16,6 +16,7 @@ $(function() {
         data: JSON.stringify({
             account:userId,
             cookie:sessionKey,
+            
         }),
     }).then(res=>{
         const data = res.data;

@@ -25,7 +25,7 @@ $(()=>{
 	$("#submit").on("click",()=>{
 		const startDate = `${$("#start_day").val()} ${$("#start_time").val()}`
 		const endDate = `${$("#end_day").val()} ${$("#end_time").val()}`
-		const a = caculateTime(startDate,endDate);
+
 		const reason = $("#reason").val();
 		console.log({
 			account:userId,
@@ -33,7 +33,6 @@ $(()=>{
 			type:$("#type").val(),
 			start:startDate,
 			end:endDate,
-			totalTime:a,
 			reason:reason,
 		})
 		$.ajax({
@@ -55,7 +54,6 @@ $(()=>{
 				type:$("#type").val(),
 				start:startDate,
 				end:endDate,
-				totalTime:a,
 				reason:reason,
 				
 			}),
