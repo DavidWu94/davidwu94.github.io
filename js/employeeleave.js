@@ -1,3 +1,4 @@
+/// <reference path="jquery-3.7.1.min.js"/>
 $(()=>{
 	const sessionKey = readCookie("session");
 	const userId = readCookie("id");
@@ -25,7 +26,6 @@ $(()=>{
 	$("#submit").on("click",()=>{
 		const startDate = `${$("#start_day").val()} ${$("#start_time").val()}`
 		const endDate = `${$("#end_day").val()} ${$("#end_time").val()}`
-		const a = caculateTime(startDate,endDate);
 		const reason = $("#reason").val();
 		console.log({
 			account:userId,
@@ -33,7 +33,6 @@ $(()=>{
 			type:$("#type").val(),
 			start:startDate,
 			end:endDate,
-			totalTime:a,
 			reason:reason,
 		})
 		$.ajax({
@@ -55,16 +54,14 @@ $(()=>{
 				type:$("#type").val(),
 				start:startDate,
 				end:endDate,
-				totalTime:a,
 				reason:reason,
 				
-			}),
-			success: function(data) {
-				console.log(data);
-				alert(`已發送請假審核，總請假時數: ${a} 小時`);
-			}
+			})
+			
+		}).catch(res=>{
+				console.log(res);
+				alert(`已發送請假申請`);
 		})
-		
 
 	});
 });
