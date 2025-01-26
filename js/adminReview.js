@@ -82,6 +82,7 @@ function yes(serialnum){
             permit: 1,
         }),
     })
+    alert("核准中");
     window.setTimeout(function (){
         window.location.reload();
     },1000);
@@ -107,6 +108,7 @@ function no(serialnum){
             permit: 0,
         }),
     })
+    alert("拒絕中");
     window.setTimeout(function (){
         window.location.reload();
     },1000);

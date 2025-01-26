@@ -88,7 +88,15 @@ $(function() {
                     tablePermit = $("<td>").addClass("").html("");
                 }
 
-                tableBox.append(tableId, tablePwd, tableName, tableJoinTime, tableEmail, tableMgroup, tablePermit);
+                let tableFunction = $("<td>").addClass("");
+
+                let tableDelete = $("<button>").addClass("").html("刪除員工").click(function() {
+                    deleteUser(d.id);
+                })
+
+                tableFunction.append(tableDelete);
+
+                tableBox.append(tableId, tablePwd, tableName, tableJoinTime, tableEmail, tableMgroup, tablePermit, tableFunction);
                 $("#table").append(tableBox);
             }
 
@@ -97,7 +105,7 @@ $(function() {
 
             let tableButton = $("<tr>").addClass("");
 
-            let tableButtonTd = $("<td>").addClass("text-center").attr("colspan", 7);
+            let tableButtonTd = $("<td>").addClass("text-center").attr("colspan", 8);
 
             let tablenext = $("<button>").addClass("").html("下一個").click(function() {
                 nextPage();
@@ -147,3 +155,27 @@ $(function() {
     });
 
 });
+
+
+function deleteUser(id){
+    console.log(id);
+    const sessionKey = readCookie("session");
+    const userId = readCookie("id");
+    $.ajax({
+        url: `http://eucan.ddns.net:3000/delete`,
+        type: 'POST',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        data: JSON.stringify({
+            account:userId,
+            cookie:sessionKey,
+            user:id
+        }),
+    })
+    alert("刪除中");
+    window.setTimeout(function (){
+        window.location.reload();
+    },1000);
+}
