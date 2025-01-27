@@ -1,11 +1,14 @@
-$(function() {
+$(function () {
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
-    if(sessionKey == null){
-        alert("請重新登入1");
+
+    if (sessionKey == null) {
+        alert("請重新登入！");
         window.location = window.location.origin;
     }
-    loginCheck(userId,sessionKey);
+
+    loginCheck(userId, sessionKey);
+
     $.ajax({
         url: `http://eucan.ddns.net:3000/users`,
         type: 'POST',
@@ -14,168 +17,99 @@ $(function() {
             'Content-Type': 'application/json',
         },
         data: JSON.stringify({
-            account:userId,
-            cookie:sessionKey,
-            
+            account: userId,
+            cookie: sessionKey,
         }),
-    }).then(res=>{
-        const data = res.data;
-        console.log(data);
+    }).then((res) => {
+        let data = res.data;
 
-        data.sort(function (a, b) {
-            var nameA = a.id.toUpperCase(); // ignore upper and lowercase
-            var nameB = b.id.toUpperCase(); // ignore upper and lowercase
-            if (nameA < nameB) {
-              return -1;
-            }
-            if (nameA > nameB) {
-              return 1;
-            }
-            // names must be equal
-            return 0;
-        });
+        // 排序資料
+        data.sort((a, b) => a.id.localeCompare(b.id, 'zh-Hant'));
 
-        let currentPage = 0; // 目前頁數，從第 0 頁開始
-        const itemsPerPage = 10; // 每頁顯示 10 筆資料
-    
+        let currentPage = 0; // 當前頁碼
+        const itemsPerPage = 10; // 每頁顯示的項目數
+
+        // 初始化頁面
         displayPage(currentPage);
-        // 顯示特定頁數的資料
-        function displayPage(page) {
 
-            // 計算起始和結束索引
+        // 分頁顯示
+        function displayPage(page) {
             const start = page * itemsPerPage;
             const end = start + itemsPerPage;
-      
-            // 清空目前顯示內容
-            $('#table').empty();
-      
-            // 顯示對應頁數的資料
             const pageData = data.slice(start, end);
-            console.log(pageData);
-            for(let d of pageData){
-                console.log(d.id);
-                let tableBox = $("<tr>").addClass("");
-    
-                let tableId = $("<td>").addClass("").html(d.id);
-                
-                let tablePwd = $("<td>").addClass("").html(d.pwd);
-            
-                let tableName = $("<td>").addClass("c").html(d.name);
-    
-                let tableJoinTime = $("<td>").addClass("").html(d.joinTime);
-    
-                let tableEmail = $("<td>").addClass("").html(d.email);
-    
-                let tableMgroup;
-                if(d.mgroup == 1){
-                    tableMgroup = $("<td>").addClass("").html("CAT");
-                }
-                else if(d.mgroup == 0){
-                    tableMgroup = $("<td>").addClass("").html("JEFF");
-                }
-                else{
-                    tableMgroup = $("<td>").addClass("").html("");
-                }
-    
-                let tablePermit;
-                if(d.permit == 1){
-                    tablePermit = $("<td>").addClass("").html("須審核");
-                }
-                else if(d.permit == 0){
-                    tablePermit = $("<td>").addClass("").html("無須審核");
-                }
-                else{
-                    tablePermit = $("<td>").addClass("").html("");
-                }
 
-                let tableFunction = $("<td>").addClass("");
+            // 清空表格內容
+            $('#table').empty();
 
-                let tableDelete = $("<button>").addClass("").html("刪除員工").click(function() {
-                    deleteUser(d.id);
-                })
+            pageData.forEach((d) => {
+                const tableRow = $("<tr>");
 
-                tableFunction.append(tableDelete);
+                tableRow.append(
+                    $("<td>").html(d.id),
+                    $("<td>").html(d.pwd),
+                    $("<td>").html(d.name),
+                    $("<td>").html(d.joinTime),
+                    $("<td>").html(d.email),
+                    $("<td>").html(d.mgroup === 1 ? "CAT" : d.mgroup === 0 ? "JEFF" : ""),
+                    $("<td>").html(d.permit === 1 ? "須審核" : d.permit === 0 ? "無須審核" : ""),
+                    $("<td>")
+                        .append(
+                            $("<button>")
+                                .html("刪除員工")
+                                .click(() => deleteUser(d.id))
+                        )
+                );
 
-                tableBox.append(tableId, tablePwd, tableName, tableJoinTime, tableEmail, tableMgroup, tablePermit, tableFunction);
-                $("#table").append(tableBox);
-            }
+                $('#table').append(tableRow);
+            });
 
-            // 更新頁面訊息
-            $('#pageInfo').text(`Page ${page + 1} of ${Math.ceil(data.length / itemsPerPage)}`);
-
-            let tableButton = $("<tr>").addClass("");
-
-            let tableButtonTd = $("<td>").addClass("text-center").attr("colspan", 8);
-
-            let tablenext = $("<button>").addClass("").html("下一個").click(function() {
-                nextPage();
-                console.log("next"); 
-            })
-
-            let tablePage = $("<nobr>").addClass("").html("目前在第" + currentPage + "頁");
-
-            let tablePrev = $("<button>").addClass("").html("下一個").click(function() {
-                prevPage();
-                console.log("prev");
-            })
-
-            tableButtonTd.append(tablePrev, tablePage, tablenext);
-            tableButton.append(tableButtonTd);
-            $("#table").append(tableButton);
-
-
+            // 更新分頁按鈕狀態
+            updatePaginationButtons();
         }
-        
-            
-        // 更新頁面訊息
-        $('#pageInfo').text(`Page ${page + 1} of ${Math.ceil(data.length / itemsPerPage)}`);
-          
-        //下一頁
-        function nextPage(){
+
+        // 更新分頁按鈕狀態
+        function updatePaginationButtons() {
+            $('#prevPage').prop('disabled', currentPage === 0);
+            $('#nextPage').prop('disabled', (currentPage + 1) * itemsPerPage >= data.length);
+            $('#pageInfo').text(`目前在第 ${currentPage + 1} 頁，共 ${Math.ceil(data.length / itemsPerPage)} 頁`);
+        }
+
+        // 下一頁
+        $('#nextPage').click(() => {
             if ((currentPage + 1) * itemsPerPage < data.length) {
                 currentPage++;
                 displayPage(currentPage);
-            } 
-            else {
-                alert("已經是最後一頁！");
             }
-        }  
-          
-        //上一頁
-        function prevPage(){
+        });
+
+        // 上一頁
+        $('#prevPage').click(() => {
             if (currentPage > 0) {
                 currentPage--;
                 displayPage(currentPage);
-            } 
-            else {
-                alert("已經是第一頁！");
             }
+        });
+
+        // 刪除用戶
+        function deleteUser(id) {
+            $.ajax({
+                url: `http://eucan.ddns.net:3000/delete`,
+                type: 'POST',
+                dataType: 'json',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                data: JSON.stringify({
+                    account: userId,
+                    cookie: sessionKey,
+                    user: id,
+                }),
+            }).then(() => {
+                // 從資料中移除該用戶並重新顯示
+                data = data.filter((item) => item.id !== id);
+                alert("刪除成功！");
+                displayPage(currentPage);
+            });
         }
-        
     });
-
 });
-
-
-function deleteUser(id){
-    console.log(id);
-    const sessionKey = readCookie("session");
-    const userId = readCookie("id");
-    $.ajax({
-        url: `http://eucan.ddns.net:3000/delete`,
-        type: 'POST',
-        dataType: 'json',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        data: JSON.stringify({
-            account:userId,
-            cookie:sessionKey,
-            user:id
-        }),
-    })
-    alert("刪除中");
-    window.setTimeout(function (){
-        window.location.reload();
-    },1000);
-}
