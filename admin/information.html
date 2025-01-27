@@ -30,7 +30,7 @@
 									<a class="nav-link active" aria-current="page" href="./information.html">員工請假資訊</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link active" aria-current="page" href="./maintain.html">員工資料維護</a>
+									<a class="nav-link active" aria-current="page" href="./maintain.html">新增員工</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link active" aria-current="page" href="./personnel.html">在職員工</a>
@@ -56,66 +56,67 @@
                         <div id="search" >
                             <h1>員工請假資訊</h1>
                             <input placeholder="員工編號" id="code" class="search">
-                            <input placeholder="年度" id="year" class="search">
                             <button id="searching" class="search">搜尋</button>
                         </div>
 
                         <div>
                             <table class="table table-bordered table-striped">
                                 <thead>
-                                    <tr>
-                                        <th>當年度特休天數</th>
-                                        <td colspan="2"><output id="當年度特休天數"></output></td>
+                                    <tr id="year">
+                                        <th>年資</th>
+                                    </tr>
+                                    <tr id="quota">
+                                        <th>總特休時數(hr)</th>
                                     </tr>
                                     <tr>
                                         <th class="table-dark">假別</th>
-                                        <th id="time" class="table-dark">時數</th>
-                                        <th class="table-dark">修改欄位</th>
+                                        <th id="time" class="table-dark">時數(hr)</th>
+                                        <th class="table-dark">修改(hr)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr id="annual">
-                                        <th>特休假</th>
+                                        <th>已請特休假</th>
                                         
                                     </tr>
                                     <tr id="personnel">
-                                        <th>事假</th>
+                                        <th>已請事假</th>
                                         
                                     </tr>
                                     <tr id="care">
-                                        <th>家庭照顧假</th>
+                                        <th>已請家庭照顧假</th>
                                         
                                     </tr>
                                     <tr id="sick">
-                                        <th>普通傷病假</th>
+                                        <th>已請普通傷病假</th>
                                         
                                     </tr>
                                     <tr id="wedding">
-                                        <th>婚假</th>
+                                        <th>已請婚假</th>
                                         
                                     </tr>
                                     <tr id="funeral">
-                                        <th>喪假</th>
+                                        <th>已請喪假</th>
                                         
                                     </tr>
                                     <tr id="birth">
-                                        <th>分娩假</th>
+                                        <th>已請分娩假</th>
                                         
                                     </tr>
                                     <tr id="pcheckuo">
-                                        <th>產檢假</th>
+                                        <th>已請產檢假</th>
                                         
                                     </tr>
                                     <tr id="miscarriage">
-                                        <th>流產假</th>
+                                        <th>已請流產假</th>
                                         
                                     </tr>
                                     <tr id="paternity">
-                                        <th>陪產假</th>
+                                        <th>已請陪產假</th>
                                         
                                     </tr>
                                     <tr id="maternity">
-                                        <th>產假</th>
+                                        <th>已請產假</th>
                                     </tr>
                                 </tbody>
                             </table>
