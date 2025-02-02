@@ -1,35 +1,84 @@
-header li{
-	margin: 0px 20px;
+/* 🔹 Header 樣式 */
+header li {
+    margin: 0 20px; /* 保持原來的間距 */
 }
 
-
-nav{
-	font-size: 20px;
+nav {
+    font-size: 20px;
 }
 
-
-header img{
-	width: 130px;
+header img {
+    width: 130px;
 }
 
-.card-title{
-    font-size: 25px;
-    font-weight: bold;
-}
-.card{
+/* 🔹 卡片樣式 */
+.card {
     width: 30rem;
-    font-size: 25px;
-    margin-top: 60px;
+    font-size: 22px;  /* 適當調整大小，避免文字過大 */
+    margin-top: 50px;
     font-weight: bold;
+    border-radius: 10px; /* 增加圓角，使外觀更柔和 */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 添加陰影增強立體感 */
+    padding: 20px;
+    background: #fff; /* 白色背景，確保清晰可讀 */
 }
 
-
-.btn{
-    font-size: 30px;
+.card-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: #333; /* 讓標題顏色更顯眼 */
 }
 
+/* 🔹 按鈕樣式 */
+.btn {
+    font-size: 24px; /* 適當縮小，避免過大 */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
 
-.card-button{
+/* 核准按鈕 */
+.btn-yes {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-yes:hover {
+    background-color: #1e7e34;
+}
+
+/* 拒絕按鈕 */
+.btn-no {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-no:hover {
+    background-color: #a71d2a;
+}
+
+/* 🔹 卡片內部按鈕區塊 */
+.card-button {
     display: flex;
     justify-content: space-between;
+    margin-top: 15px;
+}
+
+/* 🔹 響應式設計，適用於手機 */
+@media (max-width: 768px) {
+    nav {
+        font-size: 18px;
+    }
+
+    .card {
+        width: 100%; /* 讓卡片在小螢幕上自適應 */
+        font-size: 20px;
+    }
+
+    .btn {
+        font-size: 20px;
+        padding: 10px 16px;
+    }
 }

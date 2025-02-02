@@ -1,29 +1,41 @@
-header li{
-	margin: 0px 20px;
+header li {
+    margin: 0px 20px;
 }
 
-
-nav{
-	font-size: 20px;
+nav {
+    font-size: 20px;
 }
 
-
-header img{
-	width: 130px;
+header img {
+    width: 130px;
 }
 
-
-section img{
-	width: 40vh;
+section img {
+    width: 40vh;
 }
 
-
-.btn{
-	margin-top: 10vh;
+.btn {
+    margin-top: 10vh;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: transform 0.2s;
 }
 
+.btn:active {
+    transform: scale(0.95);
+}
 
-.table{
+.table {
     font-size: 25px;
-    border: 1px solid rgb(140 140 140);
+    border: 1px solid rgb(140, 140, 140);
+    text-align: center;
+}
+
+#time {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 10px;
 }
