@@ -83,7 +83,7 @@ function handleApproval(serialnum, permit) {
         }),
     })
     .done(() => {
-        const message = permit ? "核准成功" : "拒絕成功";
+        const message = permit ? "核准成功，請按下確定鍵" : "拒絕成功，請按下確定鍵";
 
         // 顯示提醒
         setTimeout(() => {

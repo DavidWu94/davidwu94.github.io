@@ -1,5 +1,7 @@
 /// <reference path="jquery-3.7.1.min.js"/>
 $(()=>{
+	const now = new Date();
+    const year = now.getFullYear();
 	const sessionKey = readCookie("session");
 	const userId = readCookie("id");
 	// // console.log(sessionKey);
@@ -23,6 +25,39 @@ $(()=>{
 			return;
 		}
 	});
+
+	$.ajax({
+		url: `http://eucan.ddns.net:3000/quota`,
+		type: 'POST',
+        dataType: 'json',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        data: JSON.stringify({
+            account:userId,
+            cookie:sessionKey
+        }),
+	}).then(res => {
+		$("#quota").append("總特休時數:" + res.quota * 24 + "(hr)");
+	})
+
+	$.ajax({
+		url: `http://eucan.ddns.net:3000/dayoff`,
+		type: 'POST',
+		dataType: 'json',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		data: JSON.stringify({
+			account:userId,
+			cookie:sessionKey,
+			year:year
+		}),
+	}).then(res => {
+		$("#annual").append("已請特休時數:" + res.annual + "(hr)");
+	})
+
+
 	$("#submit").on("click",()=>{
 		const startDate = `${$("#start_day").val()} ${$("#start_time").val()}`
 		const endDate = `${$("#end_day").val()} ${$("#end_time").val()}`
