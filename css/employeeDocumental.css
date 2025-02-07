@@ -1,13 +1,48 @@
-header li{
-	margin: 0px 20px;
+/* 🔹 Header 樣式 */
+header li {
+    margin: 0 20px; /* 保持原來的間距 */
+}
+
+nav {
+    font-size: 20px;
+}
+
+header img {
+    width: 130px;
+}
+
+/* 🔹 卡片樣式 */
+.card {
+    width: 30rem;
+    font-size: 22px;  /* 適當調整大小，避免文字過大 */
+    margin-top: 50px;
+    font-weight: bold;
+    border-radius: 10px; /* 增加圓角，使外觀更柔和 */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 添加陰影增強立體感 */
+    padding: 20px;
+    background: #fff; /* 白色背景，確保清晰可讀 */
+}
+
+.card-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: #333; /* 讓標題顏色更顯眼 */
 }
 
 
-nav{
-	font-size: 20px;
-}
+/* 🔹 響應式設計，適用於手機 */
+@media (max-width: 768px) {
+    nav {
+        font-size: 18px;
+    }
 
+    .card {
+        width: 100%; /* 讓卡片在小螢幕上自適應 */
+        font-size: 20px;
+    }
 
-header img{
-	width: 130px;
+    .btn {
+        font-size: 20px;
+        padding: 10px 16px;
+    }
 }
