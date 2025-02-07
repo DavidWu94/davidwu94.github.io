@@ -27,18 +27,18 @@ $(()=>{
 		const startDate = `${$("#start_day").val()} ${$("#start_time").val()}`
 		const endDate = `${$("#end_day").val()} ${$("#end_time").val()}`
 		const reason = $("#reason").val();
-		console.log({
+		/*console.log({
 			account:userId,
 			cookie:sessionKey,
 			type:$("#type").val(),
 			start:startDate,
 			end:endDate,
 			reason:reason,
-		})
+		})*/
 		$.ajax({
 			url: 'http://eucan.ddns.net:3000/request',
 			type: 'POST',
-			dataType: 'json',
+			dataType: 'text',
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -58,10 +58,19 @@ $(()=>{
 				
 			})
 			
-		}).catch(res=>{
-				console.log(res);
-				alert(`已發送請假申請`);
-		})
+		}).done((res) => {
+			console.log("請求成功，回應內容:", res);
+			try {
+				let jsonResponse = JSON.parse(res); // 手動解析 JSON
+				alert("已發送請假申請");
+			} catch (e) {
+				console.error("JSON 解析失敗", e);
+				alert("請求成功，但回應格式錯誤");
+			}
+		}).fail((xhr) => {
+			console.log("XHR 內容", xhr);
+			alert(`請求失敗，錯誤代碼：${xhr.status}`);
+		});
 		
 	});
 });
