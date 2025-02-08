@@ -1,0 +1,25 @@
+header li{
+	margin: 0px 20px;
+}
+
+
+nav{
+	font-size: 20px;
+}
+
+
+header img{
+	width: 130px;
+}
+
+
+.search{
+    margin: 10px;
+    font-size: 35px;
+}
+
+
+.table{
+    font-size: 25px;
+    border: 1px solid rgb(140 140 140);
+}

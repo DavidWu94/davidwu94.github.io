@@ -1,4 +1,7 @@
 $(function() {
+    // 取得當前年分
+    const now = new Date();
+    const year = now.getFullYear();
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
     if(sessionKey == null){
@@ -23,9 +26,10 @@ $(function() {
         }).then(res=>{
             console.log(res);
             
-            let year = $("<td>").addClass("").html("");
-            let quota = $("<td>").addClass("text-end").html(res.quota * 24);
+            let year = $("<td>").addClass("text-end").html(( res.month / 12) + res.years + "(年)");
+            let quota = $("<td>").addClass("text-end").html(res.quota + "(hr)");
             $("#quota").append(quota);
+            $("#year").append(year);
 
         })
         $.ajax({
@@ -39,7 +43,7 @@ $(function() {
                 account:userId,
                 cookie:sessionKey,
                 user:$("#code").val(),
-                year:2024
+                year:year
             }),
         }).then(res=>{
             console.log(res);

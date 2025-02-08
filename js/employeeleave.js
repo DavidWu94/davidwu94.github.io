@@ -38,7 +38,7 @@ $(()=>{
             cookie:sessionKey
         }),
 	}).then(res => {
-		$("#quota").append("總特休時數:" + res.quota * 24 + "(hr)");
+		$("#quota").append("總特休時數:" + res.quota + "(hr)");
 	})
 
 	$.ajax({
