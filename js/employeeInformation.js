@@ -13,6 +13,7 @@ $(function() {
     }
     loginCheck(userId,sessionKey);
 	
+    $("#quota td, #year td, #annual td, #personal td, #care td, #sick td, #wedding td, #funeral td, #birth td, #pcheckup td, #miscarriage td, #paternity td, #maternity td").remove();
 
     $.ajax({
         url: `http://eucan.ddns.net:3000/quota`,
@@ -30,10 +31,10 @@ $(function() {
         console.log(res);
         
 
-        let year = $("<td>").addClass("text-end").html(( res.month / 12) + res.years + "(年)");
+        let yearValue = $("<td>").addClass("text-end").html(((res.month / 12) + res.years).toFixed(2) + " 年");
         let quota = $("<td>").addClass("text-end").html(res.quota + "(hr)");
         $("#quota").append(quota);
-        $("#year").append(year);
+        $("#year").append(yearValue);
 
     })
     $.ajax({
