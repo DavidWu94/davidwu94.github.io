@@ -32,10 +32,14 @@ $(function() {
         data: JSON.stringify({ account: userId, cookie: sessionKey, type: 0 }),
     })
     .done(res => {
-        if (res.length > 0) {
-            $("#work").text(res[0]?.time || "尚未打卡");
-            $("#rest").text(res[1]?.time || "尚未打卡");
-        }
+        console.log(res);
+
+        let work = res.find(v => v.type == '1');
+        let rest = res.find(v => v.type == '-1');
+
+        $("#work").text(work?.time || "尚未打卡");
+        $("#rest").text(rest?.time || "尚未打卡");
+        
     })
     .fail(() => {
         alert("無法取得打卡紀錄，請稍後再試！");
