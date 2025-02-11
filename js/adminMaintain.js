@@ -7,8 +7,11 @@ $(function() {
         window.location = window.location.origin;
     }
     loginCheck(userId,sessionKey);
-
 	$("#confirm").on("click",()=>{
+        let mgroupOption = $("#mgroup option:selected"); // 獲取 mgroup
+        let mgroupId = mgroupOption.attr("id"); // 獲取 mgroup 的 id 屬性值
+        let reviewOption = $("#review option:selected"); // 獲取review
+        let reviewId = reviewOption.attr("id"); // 獲取 review 的 id 屬性值
         $.ajax({
         url: `http://eucan.ddns.net:3000/register`,
         type: 'POST',
@@ -25,8 +28,8 @@ $(function() {
             name:$("#name").val(),
             date:$("#joinDate").val(),
             type:"employee",
-            mgroup:parseInt($("#mgroup").val()),
-            permit:$("review").val()
+            mgroup:mgroupId,
+            permit:reviewId
         }),
     }).then(res=>{
         if(res==null){
