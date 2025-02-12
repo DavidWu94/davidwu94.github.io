@@ -50,79 +50,88 @@
                 </div>
             </div>
 		</section>
+			<div class="container">
+				<div class="row">
+					<div class="col-4">
+						<!-- 正在審核的假單 -->
+						<section class="my-4" id="wait">
+							<div class="container">
+								<div class="text-center">
+									<h1 class="mb-3">正在審核的假單</h1>
+									<h2 id="dataLong" class="text-muted"></h2>
+								</div>
+					
+								<!-- 加載動畫 -->
+								<div id="loading" class="text-center mt-3" style="display: none;">
+									<div class="spinner-border text-primary" role="status">
+										<span class="visually-hidden">載入中...</span>
+									</div>
+								</div>
+					
+								<!-- 假單顯示區 -->
+								<div class="d-flex justify-content-center">
+									<div id="card-body-wait" class="text-nowrap p-3 border rounded shadow-sm bg-light" style="max-height: 500px; overflow-y: auto; min-width: 300px;">
+										<p class="text-center text-muted">目前無待審核的假單</p>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+					<div class="col-4">
+						<!-- 核准的假單 -->
+						<section class="my-4" id="approve">
+							<div class="container">
+								<div class="text-center">
+									<h1 class="mb-3">核准的假單</h1>
+									<h2 id="dataLong" class="text-muted"></h2>
+								</div>
+					
+								<!-- 加載動畫 -->
+								<div id="loading" class="text-center mt-3" style="display: none;">
+									<div class="spinner-border text-primary" role="status">
+										<span class="visually-hidden">載入中...</span>
+									</div>
+								</div>
+					
+								<!-- 假單顯示區 -->
+								<div class="d-flex justify-content-center">
+									<div id="card-body-approve" class="text-nowrap p-3 border rounded shadow-sm bg-light" style="max-height: 500px; overflow-y: auto; min-width: 300px;">
+										<p class="text-center text-muted">目前無核准的假單</p>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+					<div class="col-4">
+						<!-- 被拒絕的假單 -->
+						<section class="my-4" id="reject">
+							<div class="container">
+								<div class="text-center">
+									<h1 class="mb-3">被拒絕的假單</h1>
+									<h2 id="dataLong" class="text-muted"></h2>
+								</div>
+					
+								<!-- 加載動畫 -->
+								<div id="loading" class="text-center mt-3" style="display: none;">
+									<div class="spinner-border text-primary" role="status">
+										<span class="visually-hidden">載入中...</span>
+									</div>
+								</div>
+					
+								<!-- 假單顯示區 -->
+								<div class="d-flex justify-content-center">
+									<div id="card-body-reject" class="text-nowrap p-3 border rounded shadow-sm bg-light" style="max-height: 500px; overflow-y: auto; min-width: 300px;">
+										<p class="text-center text-muted">目前無被拒絕的假單</p>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		<section>
+
 		
-		<!-- 正在審核的假單 -->
-		<section class="my-4" id="wait">
-			<div class="container">
-				<div class="text-center">
-					<h1 class="mb-3">正在審核的假單</h1>
-					<h2 id="dataLong" class="text-muted"></h2>
-				</div>
-	
-				<!-- 加載動畫 -->
-				<div id="loading" class="text-center mt-3" style="display: none;">
-					<div class="spinner-border text-primary" role="status">
-						<span class="visually-hidden">載入中...</span>
-					</div>
-				</div>
-	
-				<!-- 假單顯示區 -->
-				<div class="d-flex justify-content-center">
-					<div id="card-body-wait" class="text-nowrap p-3 border rounded shadow-sm bg-light" style="max-height: 500px; overflow-y: auto; min-width: 300px;">
-						<p class="text-center text-muted">目前無待審核的假單</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- 核准的假單 -->
-		<section class="my-4" id="approve">
-			<div class="container">
-				<div class="text-center">
-					<h1 class="mb-3">核准的假單</h1>
-					<h2 id="dataLong" class="text-muted"></h2>
-				</div>
-	
-				<!-- 加載動畫 -->
-				<div id="loading" class="text-center mt-3" style="display: none;">
-					<div class="spinner-border text-primary" role="status">
-						<span class="visually-hidden">載入中...</span>
-					</div>
-				</div>
-	
-				<!-- 假單顯示區 -->
-				<div class="d-flex justify-content-center">
-					<div id="card-body-approve" class="text-nowrap p-3 border rounded shadow-sm bg-light" style="max-height: 500px; overflow-y: auto; min-width: 300px;">
-						<p class="text-center text-muted">目前無核准的假單</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- 被拒絕的假單 -->
-		<section class="my-4" id="reject">
-			<div class="container">
-				<div class="text-center">
-					<h1 class="mb-3">被拒絕的假單</h1>
-					<h2 id="dataLong" class="text-muted"></h2>
-				</div>
-	
-				<!-- 加載動畫 -->
-				<div id="loading" class="text-center mt-3" style="display: none;">
-					<div class="spinner-border text-primary" role="status">
-						<span class="visually-hidden">載入中...</span>
-					</div>
-				</div>
-	
-				<!-- 假單顯示區 -->
-				<div class="d-flex justify-content-center">
-					<div id="card-body-reject" class="text-nowrap p-3 border rounded shadow-sm bg-light" style="max-height: 500px; overflow-y: auto; min-width: 300px;">
-						<p class="text-center text-muted">目前無被拒絕的假單</p>
-					</div>
-				</div>
-			</div>
-		</section>
-
 		<section>
 			<div class="container">
                 <div class="col">
