@@ -99,3 +99,7 @@ function handleApproval(serialnum, permit) {
         alert("操作失敗，請稍後再試");
     });
 }
+
+$(function () {
+    $("#navbar-container").load("../admin/navbar.html");
+});
