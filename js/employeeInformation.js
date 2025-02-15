@@ -60,10 +60,10 @@ $(function() {
             const leaveTypes = {
                 annual: "已請特休假",
                 personal: "已請事假",
-                care: "已請家庭照顧假",
                 sick: "已請普通傷病假",
                 wedding: "已請婚假",
                 funeral: "已請喪假",
+                care: "已請家庭照顧假",
                 birth: "已請分娩假",
                 pcheckup: "已請產檢假",
                 miscarriage: "已請流產假",
