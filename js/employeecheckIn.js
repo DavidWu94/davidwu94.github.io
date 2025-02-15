@@ -34,11 +34,9 @@ $(function() {
     .done(res => {
         console.log(res);
 
-        let work = res.find(v => v.type == '1');
-        let rest = res.find(v => v.type == '-1');
 
-        $("#work").text(work?.time || "尚未打卡");
-        $("#rest").text(rest?.time || "尚未打卡");
+        $("#work").text(res[0]?.clockin || "尚未打卡");
+        $("#rest").text(res[0]?.clockout || "尚未打卡");
         
     })
     .fail(() => {
