@@ -128,3 +128,7 @@ function validTime(time){
 		return false;
 	}
 }
+
+$(function () {
+	$("#navbar-container").load("../employee/navbar.html");
+});
