@@ -86,7 +86,7 @@ $(function () {
                     $("<td>").html(d.permit === 1 ? "須審核" : d.permit === 0 ? "無須審核" : ""),
                     $("<td>").append(
                         $("<button>")
-                            .html("刪除員工")
+                            .html("刪除")
                             .click(() => deleteUser(d.id))
                     )
                 );
