@@ -1,7 +1,4 @@
 $(function () {
-    // 取得當前年分
-    const now = new Date();
-    const year = now.getFullYear();
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
 
@@ -18,6 +15,7 @@ $(function () {
 
         // 取得員工編號
         const userCode = $("#code").val();
+        const year = $("#date").val();
 
         if (!userCode) {
             alert("請輸入員工編號！");
@@ -36,6 +34,7 @@ $(function () {
                 account: userId,
                 cookie: sessionKey,
                 user: userCode,
+                year: year,
             }),
         }).then((res) => {
             console.log(res);
@@ -67,10 +66,10 @@ $(function () {
             const leaveTypes = {
                 annual: "已請特休假",
                 personal: "已請事假",
-                care: "已請家庭照顧假",
                 sick: "已請普通傷病假",
                 wedding: "已請婚假",
                 funeral: "已請喪假",
+                care: "已請家庭照顧假",
                 birth: "已請分娩假",
                 pcheckup: "已請產檢假",
                 miscarriage: "已請流產假",

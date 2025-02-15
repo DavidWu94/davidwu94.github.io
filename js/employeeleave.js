@@ -38,6 +38,7 @@ $(()=>{
             cookie:sessionKey
         }),
 	}).then(res => {
+		console.log(res);
 		$("#quota").append("總特休時數:" + res.quota + "(hr)");
 	})
 
@@ -54,6 +55,7 @@ $(()=>{
 			year:year
 		}),
 	}).then(res => {
+		console.log(res);
 		$("#annual").append("已請特休時數:" + res.annual + "(hr)");
 	})
 
@@ -100,7 +102,7 @@ $(()=>{
 				alert("已發送請假申請");
 			} catch (e) {
 				console.error("JSON 解析失敗", e);
-				alert("請求成功，但回應格式錯誤");
+				alert("已發送請假申請");
 			}
 		}).fail((xhr) => {
 			console.log("XHR 內容", xhr);
