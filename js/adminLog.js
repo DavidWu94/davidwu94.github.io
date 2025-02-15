@@ -1,164 +1,91 @@
-$(function() {
+$(function () {
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
-    if(sessionKey == null){
-        alert("請重新登入1");
+
+    if (!sessionKey) {
+        alert("請重新登入！");
         window.location = window.location.origin;
     }
-    loginCheck(userId,sessionKey);
-    $.ajax({
-        url: `http://eucan.ddns.net:3000/approved`,
-        type: 'POST',
-        dataType: 'json',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        data: JSON.stringify({
-            account:userId,
-            cookie:sessionKey,
-            id:$("#code").val(),
-            year:$("#year").val(),
-            limit:10
-        })
-    }).then(res=>{
-        const data = res.data;
-        console.log(data);
 
-        for(let d of data){
-            console.log(d.serialnum);
-            let tableBox = $("<tr>").addClass("");
+    loginCheck(userId, sessionKey);
+    $("#navbar-container").load("../admin/navbar.html"); // 載入導覽列
 
-            let tableSerialnum = $("<td>").addClass("").html(d.serialnum);
+    let data = []; // 儲存 API 回傳的資料
+    let currentPage = 0;
+    const itemsPerPage = 10;
 
-            let tableName = $("<td>").addClass("").html(d.name);
-                
-            let tableType = $("<td>").addClass("").html(d.type);
-                
-            let tableStart = $("<td>").addClass("c").html(d.start);
-        
-            let tableEnd = $("<td>").addClass("").html(d.end);
+    // 初始化與搜尋資料
+    function fetchData() {
+        $.ajax({
+            url: `http://eucan.ddns.net:3000/approved`,
+            type: 'POST',
+            dataType: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            data: JSON.stringify({
+                account: userId,
+                cookie: sessionKey,
+                id: $("#code").val(),
+                year: $("#year").val(),
+                limit: itemsPerPage
+            }),
+        }).then(res => {
+            data = res.data;
+            currentPage = 0; // 重置頁碼
+            displayPage(currentPage);
+        });
+    }
 
-            let tableTotalTime = $("<td>").addClass("").html(d.totalTime);
-        
-            let tableReason = $("<td>").addClass("").html(d.reason);
+    // **顯示表格**
+    function displayPage(page) {
+        const start = page * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageData = data.slice(start, end);
 
-            tableBox.append(tableSerialnum, tableName, tableType, tableStart, tableEnd, tableTotalTime, tableReason);
-            $("#table").append(tableBox);
+        $("#table").empty(); // 清空表格
+        pageData.forEach(d => {
+            $("#table").append(`
+                <tr>
+                    <td>${d.serialnum}</td>
+                    <td>${d.name}</td>
+                    <td>${d.type}</td>
+                    <td>${d.start}</td>
+                    <td>${d.end}</td>
+                    <td>${d.totalTime}</td>
+                    <td>${d.reason}</td>
+                </tr>
+            `);
+        });
+
+        updatePagination();
+    }
+
+    // **更新分頁按鈕**
+    function updatePagination() {
+        const totalPages = Math.ceil(data.length / itemsPerPage);
+        $("#pageInfo").text(`目前在第 ${currentPage + 1} 頁，共 ${totalPages} 頁`);
+
+        $("#prevPage").prop("disabled", currentPage === 0);
+        $("#nextPage").prop("disabled", (currentPage + 1) * itemsPerPage >= data.length);
+    }
+
+    // **分頁按鈕**
+    $("#prevPage").click(() => {
+        if (currentPage > 0) {
+            currentPage--;
+            displayPage(currentPage);
         }
     });
+
+    $("#nextPage").click(() => {
+        if ((currentPage + 1) * itemsPerPage < data.length) {
+            currentPage++;
+            displayPage(currentPage);
+        }
+    });
+
+    // **搜尋按鈕**
+    $("#searching").click(fetchData);
+
+    // 頁面載入時先抓取資料
+    fetchData();
 });
-
-
-$("#searching").on("click",()=>{
-    const sessionKey = readCookie("session");
-    const userId = readCookie("id");
-    $.ajax({
-        url: `http://eucan.ddns.net:3000/approved`,
-        type: 'POST',
-        dataType: 'json',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        data: JSON.stringify({
-            account:userId,
-            cookie:sessionKey,
-            id:$("#code").val(),
-            year:$("#year").val()
-        }),
-    }).then(res=>{
-        const data = res.data;
-        console.log(data);
-
-        let currentPage = 0; // 目前頁數，從第 0 頁開始
-        const itemsPerPage = 10; // 每頁顯示 10 筆資料
-    
-        displayPage(currentPage);
-        // 顯示特定頁數的資料
-        function displayPage(page) {
-
-            // 計算起始和結束索引
-            const start = page * itemsPerPage;
-            const end = start + itemsPerPage;
-    
-            // 清空目前顯示內容
-            $('#table').empty();
-    
-            // 顯示對應頁數的資料
-            const pageData = data.slice(start, end);
-            console.log(pageData);
-            for(let d of pageData){
-                console.log(d.serialnum);
-                let tableBox = $("<tr>").addClass("");
-    
-                let tableSerialnum = $("<td>").addClass("").html(d.serialnum);
-
-                let tableName = $("<td>").addClass("").html(d.name);
-                
-                let tableType = $("<td>").addClass("").html(d.type);
-            
-                let tableStart = $("<td>").addClass("c").html(d.start);
-    
-                let tableEnd = $("<td>").addClass("").html(d.end);
-
-                let tableTotalTime = $("<td>").addClass("").html(d.totalTime);
-    
-                let tableReason = $("<td>").addClass("").html(d.reason);
-
-                tableBox.append(tableSerialnum, tableName, tableType, tableStart, tableEnd, tableTotalTime, tableReason);
-                $("#table").append(tableBox);
-            }
-
-            // 更新頁面訊息
-            $('#pageInfo').text(`Page ${page + 1} of ${Math.ceil(data.length / itemsPerPage)}`);
-
-            let tableButton = $("<tr>").addClass("");
-
-            let tableButtonTd = $("<td>").addClass("text-center").attr("colspan", 7);
-
-            let tablenext = $("<button>").addClass("").html("下一個").click(function() {
-                nextPage();
-                console.log("next"); 
-            })
-
-            let tablePage = $("<nobr>").addClass("").html("目前在第" + currentPage + "頁");
-
-            let tablePrev = $("<button>").addClass("").html("下一個").click(function() {
-                prevPage();
-                console.log("prev");
-            })
-
-            tableButtonTd.append(tablePrev, tablePage, tablenext);
-            tableButton.append(tableButtonTd);
-            $("#table").append(tableButton);
-
-
-        }
-        
-            
-        // 更新頁面訊息
-        $('#pageInfo').text(`Page ${page + 1} of ${Math.ceil(data.length / itemsPerPage)}`);
-        
-        //下一頁
-        function nextPage(){
-            if ((currentPage + 1) * itemsPerPage < data.length) {
-                currentPage++;
-                displayPage(currentPage);
-            } 
-            else {
-                alert("已經是最後一頁！");
-            }
-        }  
-        
-        //上一頁
-        function prevPage(){
-            if (currentPage > 0) {
-                currentPage--;
-                displayPage(currentPage);
-            } 
-            else {
-                alert("已經是第一頁！");
-            }
-        }
-    
-    });
-})

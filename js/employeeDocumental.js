@@ -75,3 +75,7 @@ $(function() {
         alert("資料加載失敗，請稍後再試！");
     });
 });
+
+$(function () {
+    $("#navbar-container").load("../employee/navbar.html");
+});
