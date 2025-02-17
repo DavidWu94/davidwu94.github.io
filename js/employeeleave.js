@@ -39,7 +39,7 @@ $(()=>{
         }),
 	}).then(res => {
 		console.log(res);
-		$("#quota").append("總特休時數:" + res.quota + "(hr)");
+		$("#quota").append("當年度特休假總時數:" + res.quota + "(hr)");
 	})
 
 	$.ajax({
@@ -56,7 +56,7 @@ $(()=>{
 		}),
 	}).then(res => {
 		console.log(res);
-		$("#annual").append("已請特休時數:" + res.annual + "(hr)");
+		$("#annual").append("當年度特休假已休時數:" + res.annual + "(hr)");
 	})
 
 
