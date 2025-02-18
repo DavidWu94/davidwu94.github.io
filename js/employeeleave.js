@@ -1,134 +1,151 @@
 /// <reference path="jquery-3.7.1.min.js"/>
-$(()=>{
-	const now = new Date();
+$(() => {
+    const now = new Date();
     const year = now.getFullYear();
-	const sessionKey = readCookie("session");
-	const userId = readCookie("id");
-	// // console.log(sessionKey);
-	if(sessionKey == null){
-		alert("請重新登入");
-		window.location = window.location.origin;
-	}
-	loginCheck(userId,sessionKey);
-	$("#start_time").on("change",()=>{
-		console.log($("#start_time").val())
-		if(!validTime($("#start_time").val())){
-			$("#start_time").val("");
-			alert("時間有錯誤，請修正");
-			return;
-		}
-	});
-	$("#end_time").on("change",()=>{
-		if(!validTime($("#end_time").val())){
-			$("#end_time").val("");
-			alert("時間有錯誤，請修正");
-			return;
-		}
-	});
+    const sessionKey = readCookie("session");
+    const userId = readCookie("id");
 
-	$.ajax({
-		url: `http://eucan.ddns.net:3000/quota`,
-		type: 'POST',
-        dataType: 'json',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        data: JSON.stringify({
-            account:userId,
-            cookie:sessionKey
-        }),
-	}).then(res => {
-		console.log(res);
-		$("#quota").append("當年度特休假總時數:" + res.quota + "(hr)");
-	})
+    if (!sessionKey) {
+        alert("請重新登入");
+        window.location = window.location.origin;
+    }
 
-	$.ajax({
-		url: `http://eucan.ddns.net:3000/dayoff`,
-		type: 'POST',
-		dataType: 'json',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		data: JSON.stringify({
-			account:userId,
-			cookie:sessionKey,
-			year:year
-		}),
-	}).then(res => {
-		console.log(res);
-		$("#annual").append("當年度特休假已休時數:" + res.annual + "(hr)");
-	})
+    loginCheck(userId, sessionKey);
 
+    // 取得當年度特休假總時數
+    fetchQuota(userId, sessionKey);
 
-	$("#submit").on("click",()=>{
-		const startDate = `${$("#start_day").val()} ${$("#start_time").val()}`
-		const endDate = `${$("#end_day").val()} ${$("#end_time").val()}`
-		const reason = $("#reason").val();
-		/*console.log({
-			account:userId,
-			cookie:sessionKey,
-			type:$("#type").val(),
-			start:startDate,
-			end:endDate,
-			reason:reason,
-		})*/
-		$.ajax({
-			url: 'http://eucan.ddns.net:3000/request',
-			type: 'POST',
-			dataType: 'text',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			data: JSON.stringify({
-				// "account":"david",
-				// "cookie":"bbbe040c61",
-				// "type":"sick",
-				// "start":"2024-08-09",
-				// "end":"2024-08-10"
-				// "reason":"test01"
-				account:userId,
-				cookie:sessionKey,
-				type:$("#type").val(),
-				start:startDate,
-				end:endDate,
-				reason:reason,
-				
-			})
-			
-		}).done((res) => {
-			console.log("請求成功，回應內容:", res);
-			try {
-				let jsonResponse = JSON.parse(res); // 手動解析 JSON
-				alert("已發送請假申請");
-			} catch (e) {
-				console.error("JSON 解析失敗", e);
-				alert("已發送請假申請");
-			}
-		}).fail((xhr) => {
-			console.log("XHR 內容", xhr);
-			alert(`請求失敗，錯誤代碼：${xhr.status}`);
-		});
-		
-	});
+    // 取得當年度已休時數
+    fetchDayOff(userId, sessionKey, year);
+
+    // 送出請假申請
+    $("#submit").on("click", submitLeaveRequest);
+
+    // 載入導覽列
+    $("#navbar-container").load("../employee/navbar.html");
 });
 
-function validTime(time){
-	const T = time.split(":");
-	// if(0<=date.getHours()<=8)
-	if(8 <= parseInt(T[0]) &&  parseInt(T[0]) <= 17){
-		if(T[0]=='08' && T[1]=="00"){
-			return false;
-		}
-		if(T[1]!="00" && T[1]!="30"){
-			return false;
-		}else{
-			return true;
-		}
-	}else{
-		return false;
-	}
+/**
+ * 取得特休假總時數
+ */
+function fetchQuota(userId, sessionKey) {
+    $.ajax({
+        url: "http://eucan.ddns.net:3000/quota",
+        type: "POST",
+        dataType: "json",
+        headers: { "Content-Type": "application/json" },
+        data: JSON.stringify({ account: userId, cookie: sessionKey })
+    }).done(res => {
+        console.log("✅ 取得特休假總時數:", res);
+        $("#quota").text(`當年度特休假總時數: ${res.quota} (hr)`);
+    }).fail(xhr => {
+        console.error("❌ 取得特休假總時數失敗:", xhr);
+    });
 }
 
-$(function () {
-	$("#navbar-container").load("../employee/navbar.html");
-});
+/**
+ * 取得當年度已休時數
+ */
+function fetchDayOff(userId, sessionKey, year) {
+    $.ajax({
+        url: "http://eucan.ddns.net:3000/dayoff",
+        type: "POST",
+        dataType: "json",
+        headers: { "Content-Type": "application/json" },
+        data: JSON.stringify({ account: userId, cookie: sessionKey, year })
+    }).done(res => {
+        console.log("✅ 取得已休假時數:", res);
+        $("#annual").text(`當年度特休假已休時數: ${res.annual} (hr)`);
+    }).fail(xhr => {
+        console.error("❌ 取得已休時數失敗:", xhr);
+    });
+}
+
+/**
+ * 送出請假申請
+ */
+function submitLeaveRequest() {
+    const userId = readCookie("id");
+    const sessionKey = readCookie("session");
+
+    const startDate = $("#start_day").val();
+    const startTime = $("#start_time").val();
+    const endDate = $("#end_day").val();
+    const endTime = $("#end_time").val();
+    const reason = $("#reason").val();
+    const leaveType = $("#type").val();
+
+    // 檢查時間格式是否正確
+    if (!validTime(startTime)) {
+        alert("起始時間格式有誤，請重新輸入！");
+        return reloadPage();
+    }
+    if (!validTime(endTime)) {
+        alert("結束時間格式有誤，請重新輸入！");
+        return reloadPage();
+    }
+
+    const requestData = {
+        account: userId,
+        cookie: sessionKey,
+        type: leaveType,
+        start: `${startDate} ${startTime}`,
+        end: `${endDate} ${endTime}`,
+        reason
+    };
+
+    console.log("🚀 發送請假申請:", requestData);
+
+    $.ajax({
+        url: "http://eucan.ddns.net:3000/request",
+        type: "POST",
+        dataType: "text", // 設為 text，讓我們可以手動解析 JSON
+        headers: { "Content-Type": "application/json" },
+        data: JSON.stringify(requestData)
+    }).done(res => {
+        console.log("✅ 請假申請成功:", res);
+        try {
+            let jsonResponse = JSON.parse(res); // 手動解析 JSON
+            alert("已發送請假申請");
+        } catch (e) {
+            console.error("⚠️ JSON 解析失敗:", e);
+            alert("已發送請假申請");
+        }
+        reloadPage();
+    }).fail(xhr => {
+        console.error("❌ 請假申請失敗:", xhr);
+        alert(`請求失敗，錯誤代碼：${xhr.status}`);
+        reloadPage();
+    });
+}
+
+/**
+ * 驗證時間格式是否符合規範 (08:30 - 17:30, 只允許整點與半點)
+ */
+function validTime(time) {
+    const [hour, minute] = time.split(":").map(Number);
+    if (hour < 8 || hour > 17) return false;
+    if (hour === 8 && minute === 0) return false;
+    return minute === 0 || minute === 30;
+}
+
+
+/**
+ * 重新載入頁面
+ */
+function reloadPage() {
+    setTimeout(() => {
+        window.location.reload();
+    }, 500);
+}
+
+/* 範例請假申請 JSON
+{
+    "account": "david",
+    "cookie": "bbbe040c61",
+    "type": "sick",
+    "start": "2024-08-09",
+    "end": "2024-08-10",
+    "reason": "test01"
+}
+*/
