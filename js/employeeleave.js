@@ -129,6 +129,7 @@ function validTime(time) {
     return minute === 0 || minute === 30;
 }
 
+
 /**
  * 重新載入頁面
  */
