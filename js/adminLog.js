@@ -24,7 +24,7 @@ $(function () {
             data: JSON.stringify({
                 account: userId,
                 cookie: sessionKey,
-                id: $("#code").val(),
+                user: $("#code").val(),
                 year: $("#year").val(),
                 limit: itemsPerPage
             }),
