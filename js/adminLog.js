@@ -14,13 +14,13 @@ $(function () {
     let currentPage = 0;
     const itemsPerPage = 10;
 
-    // 初始化與搜尋資料
+    // **初始化與搜尋資料**
     function fetchData() {
         $.ajax({
-            url: `http://eucan.ddns.net:3000/approved`,
-            type: 'POST',
-            dataType: 'json',
-            headers: { 'Content-Type': 'application/json' },
+            url: "http://eucan.ddns.net:3000/approved",
+            type: "POST",
+            dataType: "json",
+            headers: { "Content-Type": "application/json" },
             data: JSON.stringify({
                 account: userId,
                 cookie: sessionKey,
@@ -29,9 +29,19 @@ $(function () {
                 limit: itemsPerPage
             }),
         }).then(res => {
-            data = res.data;
-            currentPage = 0; // 重置頁碼
-            displayPage(currentPage);
+            if (!res || !res.data || res.data.length === 0) {
+                data = [];
+                $("#table").html("<tr><td colspan='8'>沒有符合條件的資料</td></tr>");
+                $("#pageInfo").text("目前無資料");
+            } else {
+                data = res.data;
+                currentPage = 0; // 重置頁碼
+                displayPage(currentPage);
+            }
+            updatePagination();
+        }).fail(err => {
+            console.error("❌ 資料獲取失敗:", err);
+            alert("查詢失敗，請稍後再試！");
         });
     }
 
@@ -42,27 +52,43 @@ $(function () {
         const pageData = data.slice(start, end);
 
         $("#table").empty(); // 清空表格
+        if (pageData.length === 0) {
+            $("#table").html("<tr><td colspan='8'>沒有符合條件的資料</td></tr>");
+            return;
+        }
+
         pageData.forEach(d => {
-            $("#table").append(`
-                <tr>
-                    <td>${d.serialnum}</td>
-                    <td>${d.name}</td>
-                    <td>${d.type}</td>
-                    <td>${d.start}</td>
-                    <td>${d.end}</td>
-                    <td>${d.totalTime}</td>
-                    <td>${d.reason}</td>
-                </tr>
-            `);
+            const tableTr = $("<tr>").append(
+                $("<td>").text(d.serialnum),
+                $("<td>").text(d.name),
+                $("<td>").text(d.type),
+                $("<td>").text(d.start),
+                $("<td>").text(d.end),
+                $("<td>").text(d.totalTime),
+                $("<td>").text(d.reason),
+                $("<td>").append(
+                    $("<button>", { text: "刪除", click: () => cardDelete(d.serialnum) }),
+                    $("<button>", { text: "修改", click: () => cardRevise(d.serialnum) })
+                )
+            );
+            $("#table").append(tableTr);
         });
 
         updatePagination();
     }
 
+    function cardDelete(serialnum) {
+        alert(`刪除功能開發中 (ID: ${serialnum})`);
+    }
+
+    function cardRevise(serialnum) {
+        alert(`修改功能開發中 (ID: ${serialnum})`);
+    }
+
     // **更新分頁按鈕**
     function updatePagination() {
         const totalPages = Math.ceil(data.length / itemsPerPage);
-        $("#pageInfo").text(`目前在第 ${currentPage + 1} 頁，共 ${totalPages} 頁`);
+        $("#pageInfo").text(totalPages > 0 ? `目前在第 ${currentPage + 1} 頁，共 ${totalPages} 頁` : "目前無資料");
 
         $("#prevPage").prop("disabled", currentPage === 0);
         $("#nextPage").prop("disabled", (currentPage + 1) * itemsPerPage >= data.length);
