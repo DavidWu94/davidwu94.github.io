@@ -13,7 +13,7 @@ header img {
 
 /* 🔹 卡片樣式 */
 .card {
-    width: 30rem;
+    width: 330px;
     font-size: 22px;  /* 適當調整大小，避免文字過大 */
     margin-top: 50px;
     font-weight: bold;

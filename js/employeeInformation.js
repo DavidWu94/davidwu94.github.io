@@ -84,5 +84,5 @@ $(function() {
 });
 
 $(function () {
-    $("#navbar-container").load("../navbar.html");
+    $("#navbar-container").load("../employee/navbar.html");
 });
