@@ -13,7 +13,7 @@ $(() => {
     loginCheck(userId, sessionKey);
 
     // 取得當年度特休假總時數
-    fetchQuota(userId, sessionKey);
+    fetchQuota(userId, sessionKey, year);
 
     // 取得當年度已休時數
     fetchDayOff(userId, sessionKey, year);
@@ -28,13 +28,13 @@ $(() => {
 /**
  * 取得特休假總時數
  */
-function fetchQuota(userId, sessionKey) {
+function fetchQuota(userId, sessionKey, year) {
     $.ajax({
         url: "http://eucan.ddns.net:3000/quota",
         type: "POST",
         dataType: "json",
         headers: { "Content-Type": "application/json" },
-        data: JSON.stringify({ account: userId, cookie: sessionKey })
+        data: JSON.stringify({ account: userId, cookie: sessionKey, year })
     }).done(res => {
         console.log("✅ 取得特休假總時數:", res);
         $("#quota").text(`當年度特休假總時數: ${res.quota} (hr)`);
