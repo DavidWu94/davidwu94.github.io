@@ -5,6 +5,7 @@ $(function () {
     if (!sessionKey) {
         alert("請重新登入！");
         window.location = window.location.origin;
+        return;
     }
 
     loginCheck(userId, sessionKey);
@@ -26,7 +27,6 @@ $(function () {
                 cookie: sessionKey,
                 user: $("#code").val(),
                 year: $("#year").val(),
-                limit: itemsPerPage
             }),
         }).then(res => {
             if (!res || !res.data || res.data.length === 0) {
@@ -34,7 +34,8 @@ $(function () {
                 $("#table").html("<tr><td colspan='8'>沒有符合條件的資料</td></tr>");
                 $("#pageInfo").text("目前無資料");
             } else {
-                data = res.data;
+                // 根據流水號 `serialnum` 降冪排序 (數字越大排越前面)
+                data = res.data.sort((a, b) => Number(b.serialnum) - Number(a.serialnum));
                 currentPage = 0; // 重置頁碼
                 displayPage(currentPage);
             }
@@ -51,29 +52,25 @@ $(function () {
         const end = start + itemsPerPage;
         const pageData = data.slice(start, end);
 
-        $("#table").empty(); // 清空表格
-        if (pageData.length === 0) {
-            $("#table").html("<tr><td colspan='8'>沒有符合條件的資料</td></tr>");
-            return;
-        }
+        const tableContent = pageData.length
+            ? pageData.map(d => `
+                <tr>
+                    <td>${d.serialnum}</td>
+                    <td>${d.name}</td>
+                    <td>${d.type}</td>
+                    <td>${d.start}</td>
+                    <td>${d.end}</td>
+                    <td>${d.totalTime}</td>
+                    <td>${d.reason}</td>
+                    <td>
+                        <button onclick="cardDelete(${d.serialnum})">刪除</button>
+                        <button onclick="cardRevise(${d.serialnum})">修改</button>
+                    </td>
+                </tr>
+            `).join("")
+            : "<tr><td colspan='8'>沒有符合條件的資料</td></tr>";
 
-        pageData.forEach(d => {
-            const tableTr = $("<tr>").append(
-                $("<td>").text(d.serialnum),
-                $("<td>").text(d.name),
-                $("<td>").text(d.type),
-                $("<td>").text(d.start),
-                $("<td>").text(d.end),
-                $("<td>").text(d.totalTime),
-                $("<td>").text(d.reason),
-                $("<td>").append(
-                    $("<button>", { text: "刪除", click: () => cardDelete(d.serialnum) }),
-                    $("<button>", { text: "修改", click: () => cardRevise(d.serialnum) })
-                )
-            );
-            $("#table").append(tableTr);
-        });
-
+        $("#table").html(tableContent);
         updatePagination();
     }
 
@@ -97,15 +94,13 @@ $(function () {
     // **分頁按鈕**
     $("#prevPage").click(() => {
         if (currentPage > 0) {
-            currentPage--;
-            displayPage(currentPage);
+            displayPage(--currentPage);
         }
     });
 
     $("#nextPage").click(() => {
         if ((currentPage + 1) * itemsPerPage < data.length) {
-            currentPage++;
-            displayPage(currentPage);
+            displayPage(++currentPage);
         }
     });
 
