@@ -9,36 +9,28 @@ $(function () {
     }
 
     loginCheck(userId, sessionKey);
-    $("#navbar-container").load("../admin/navbar.html"); // 載入導覽列
+    $("#navbar-container").load("../admin/navbar.html");
 
-    let data = []; // 儲存 API 回傳的資料
+    let data = [];
     let currentPage = 0;
     const itemsPerPage = 10;
 
-    // **初始化與搜尋資料**
-    function fetchData() {
+    function loadData() {
         $.ajax({
             url: "http://eucan.ddns.net:3000/approved",
             type: "POST",
             dataType: "json",
-            headers: { "Content-Type": "application/json" },
+            contentType: "application/json",
             data: JSON.stringify({
                 account: userId,
                 cookie: sessionKey,
                 user: $("#code").val(),
                 year: $("#year").val(),
             }),
-        }).then(res => {
-            if (!res || !res.data || res.data.length === 0) {
-                data = [];
-                $("#table").html("<tr><td colspan='8'>沒有符合條件的資料</td></tr>");
-                $("#pageInfo").text("目前無資料");
-            } else {
-                // 根據流水號 `serialnum` 降冪排序 (數字越大排越前面)
-                data = res.data.sort((a, b) => Number(b.serialnum) - Number(a.serialnum));
-                currentPage = 0; // 重置頁碼
-                displayPage(currentPage);
-            }
+        }).done(res => {
+            data = res?.data?.length ? res.data.sort((a, b) => Number(b.serialnum) - Number(a.serialnum)) : [];
+            currentPage = 0;
+            data.length ? displayPage() : showNoData();
             updatePagination();
         }).fail(err => {
             console.error("❌ 資料獲取失敗:", err);
@@ -46,67 +38,102 @@ $(function () {
         });
     }
 
-    // **顯示表格**
-    function displayPage(page) {
-        const start = page * itemsPerPage;
-        const end = start + itemsPerPage;
-        const pageData = data.slice(start, end);
-
-        const tableContent = pageData.length
-            ? pageData.map(d => `
-                <tr>
-                    <td>${d.serialnum}</td>
-                    <td>${d.name}</td>
-                    <td>${d.type}</td>
-                    <td>${d.start}</td>
-                    <td>${d.end}</td>
-                    <td>${d.totalTime}</td>
-                    <td>${d.reason}</td>
-                    <td>
-                        <button onclick="cardDelete(${d.serialnum})">刪除</button>
-                        <button onclick="cardRevise(${d.serialnum})">修改</button>
-                    </td>
-                </tr>
-            `).join("")
-            : "<tr><td colspan='8'>沒有符合條件的資料</td></tr>";
-
-        $("#table").html(tableContent);
+    function displayPage() {
+        const pageData = data.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+        $('#table').html(pageData.map(d => `
+            <tr id="${d.serialnum}">
+                <td>${d.serialnum}</td>
+                <td>${d.name}</td>
+                <td id="${d.serialnum}Type">${d.type}</td>
+                <td id="${d.serialnum}Start">${d.start}</td>
+                <td id="${d.serialnum}End">${d.end}</td>
+                <td>${d.totalTime}</td>
+                <td>${d.reason}</td>
+                <td id="${d.serialnum}Button">
+                    <button class="delete-btn" data-id="${d.serialnum}" data-start="${d.start}" data-end="${d.end}" data-type="${d.type}">刪除</button>
+                    <button class="revise-btn" data-id="${d.serialnum}" data-start="${d.start}" data-end="${d.end}">修改</button>
+                </td>
+            </tr>
+        `).join(''));
         updatePagination();
     }
 
-    function cardDelete(serialnum) {
-        alert(`刪除功能開發中 (ID: ${serialnum})`);
+    function showNoData() {
+        $("#table").html("<tr><td colspan='8'>沒有符合條件的資料</td></tr>");
+        $("#pageInfo").text("目前無資料");
     }
 
-    function cardRevise(serialnum) {
-        alert(`修改功能開發中 (ID: ${serialnum})`);
-    }
+    $(document).on("click", ".delete-btn", function () {
+        const serialnum = $(this).data("id");
+        const start = $(this).data("start");
+        const end = $(this).data("end");
+        const type = $(this).data("type");
+        $.ajax({
+            url: "http://eucan.ddns.net:3000/tmodify",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({ account: userId, cookie: sessionKey, serialnum, state: 1, action: 0, type: type, start: start, end: end}),
+        }).done(res => {
+            console.log("刪除成功", res);
+            alert(`刪除成功 (ID: ${serialnum})`);
+            loadData();
+        }).fail(err => {
+            console.error("刪除失敗:", err);
+            alert("刪除失敗，請稍後再試！");
+        });
+    });
 
-    // **更新分頁按鈕**
+    $(document).on("click", ".revise-btn", function () {
+        const serialnum = $(this).data("id");
+        const start = $(this).data("start");
+        const end = $(this).data("end");
+
+        $(`#${serialnum}Type`).html(`
+            <select id="type" class="input">
+                <option>特休假</option><option>事假</option><option>普通傷病假</option>
+                <option>婚假</option><option>喪假</option><option>家庭照顧假</option>
+                <option>分娩假</option><option>產檢假</option><option>流產假</option>
+                <option>陪產假</option><option>產假</option>
+            </select>
+        `);
+        $(`#${serialnum}Start`).html(`<input id="startDate" placeholder="${start}" class="input">`);
+        $(`#${serialnum}End`).html(`<input id="endDate" placeholder="${end}" class="input">`);
+        $(`#${serialnum}Button`).html(`<button class="confirm-revise" data-id="${serialnum}" data-start="${start}" data-end="${end}">確定修改</button>`);
+    });
+
+    $(document).on("click", ".confirm-revise", function () {
+        const serialnum = $(this).data("id");
+        const newType = $("#type").val();
+        const newStart = $("#startDate").val() || $(this).data("start");
+        const newEnd = $("#endDate").val() || $(this).data("end");
+
+        $.ajax({
+            url: "http://eucan.ddns.net:3000/tmodify",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({ account: userId, cookie: sessionKey, serialnum, state: 1, action: 1, type: newType, start: newStart, end: newEnd}),
+        }).done(res => {
+            console.log("修改成功", res);
+            alert(`修改成功 (ID: ${serialnum})`);
+            loadData();
+        }).fail(err => {
+            console.error("修改失敗:", err);
+            alert("修改失敗，請稍後再試！");
+        });
+
+    });
+
     function updatePagination() {
         const totalPages = Math.ceil(data.length / itemsPerPage);
-        $("#pageInfo").text(totalPages > 0 ? `目前在第 ${currentPage + 1} 頁，共 ${totalPages} 頁` : "目前無資料");
-
+        $("#pageInfo").text(totalPages > 0 ? `目前第 ${currentPage + 1} 頁，共 ${totalPages} 頁` : "目前無資料");
         $("#prevPage").prop("disabled", currentPage === 0);
-        $("#nextPage").prop("disabled", (currentPage + 1) * itemsPerPage >= data.length);
+        $("#nextPage").prop("disabled", currentPage >= totalPages - 1);
     }
 
-    // **分頁按鈕**
-    $("#prevPage").click(() => {
-        if (currentPage > 0) {
-            displayPage(--currentPage);
-        }
-    });
-
-    $("#nextPage").click(() => {
-        if ((currentPage + 1) * itemsPerPage < data.length) {
-            displayPage(++currentPage);
-        }
-    });
-
-    // **搜尋按鈕**
-    $("#searching").click(fetchData);
-
-    // 頁面載入時先抓取資料
-    fetchData();
+    $("#prevPage").click(() => { if (currentPage > 0) { currentPage--; displayPage(); } });
+    $("#nextPage").click(() => { if ((currentPage + 1) * itemsPerPage < data.length) { currentPage++; displayPage(); } });
+    $("#searching").click(loadData);
+    loadData();
 });
