@@ -78,7 +78,6 @@ function submitLeaveRequest() {
     console.log(leaveType);
 
     // 檢查時間格式是否正確
-/*
     if (!validTime(startTime)) {
         alert("起始時間格式有誤，請重新輸入！");
         return reloadPage();
@@ -87,7 +86,7 @@ function submitLeaveRequest() {
         alert("結束時間格式有誤，請重新輸入！");
         return reloadPage();
     }
-*/
+
     if (!validType(leaveType)) {
         alert("假別有誤，請重新輸入！");
         return reloadPage();
@@ -103,7 +102,7 @@ function submitLeaveRequest() {
     };
 
     console.log("🚀 發送請假申請:", requestData);
-/*
+
     $.ajax({
         url: "http://eucan.ddns.net:3000/request",
         type: "POST",
@@ -124,7 +123,7 @@ function submitLeaveRequest() {
         console.error("❌ 請假申請失敗:", xhr);
         alert(`請求失敗，錯誤代碼：${xhr.status}`);
         reloadPage();
-    });*/
+    });
 }
 
 /**
