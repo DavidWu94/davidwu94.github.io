@@ -85,6 +85,11 @@ function submitLeaveRequest() {
         return reloadPage();
     }
 
+    if (!validType(leaveType)) {
+        alert("假別有誤，請重新輸入！");
+        return reloadPage();
+    }
+
     const requestData = {
         account: userId,
         cookie: sessionKey,
@@ -128,6 +133,11 @@ function validTime(time) {
     if (hour === 8 && minute === 0) return false;
     return minute === 0 || minute === 30;
 }
+
+//檢查是否填寫假別
+function validType(type) {
+    if (type == "選擇假別") return false;
+} 
 
 
 /**
