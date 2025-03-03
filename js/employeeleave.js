@@ -34,7 +34,7 @@ function fetchQuota(userId, sessionKey, year) {
         type: "POST",
         dataType: "json",
         headers: { "Content-Type": "application/json" },
-        data: JSON.stringify({ account: userId, cookie: sessionKey, year })
+        data: JSON.stringify({ account: userId, cookie: sessionKey, year: year })
     }).done(res => {
         console.log("✅ 取得特休假總時數:", res);
         $("#quota").text(`當年度特休假總時數: ${res.quota} (hr)`);
@@ -52,7 +52,7 @@ function fetchDayOff(userId, sessionKey, year) {
         type: "POST",
         dataType: "json",
         headers: { "Content-Type": "application/json" },
-        data: JSON.stringify({ account: userId, cookie: sessionKey, year })
+        data: JSON.stringify({ account: userId, cookie: sessionKey, year: year })
     }).done(res => {
         console.log("✅ 取得已休假時數:", res);
         $("#annual").text(`當年度特休假已休時數: ${res.annual} (hr)`);
