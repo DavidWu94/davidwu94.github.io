@@ -12,23 +12,28 @@ $(function () {
 
     const now = new Date();
     const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0'); // 轉換為兩位數格式
+    const month = String(now.getMonth() + 1); // 轉換為兩位數格式
 
-    $.ajax({
-        url: "http://eucan.ddns.net:3000/clrecord",
-        type: "POST",
-        dataType: "json",
-        contentType: "application/json",
-        data: JSON.stringify({
-            account: userId,
-            cookie: sessionKey,
-            year: year,
-            month: month
-        }),
-    }).done((res) => {
-        console.log("✅ 資料獲取成功:", res);
-    }).fail((err) => {
-        console.error("❌ 資料獲取失敗:", err);
-        alert("查詢失敗，請稍後再試！");
-    });
+    $("#upData").on("click" , () =>{
+        $.ajax({
+            url: `http://eucan.ddns.net:3000/clrecord`,
+            type: "POST",
+            dataType: "json",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: JSON.stringify({
+                account: userId,
+                cookie: sessionKey,
+                year: year,
+                month: month,
+            }),
+        }).done((res) => {
+            alert("打卡資料獲取成功，今日晚上十二點後將會上線")
+            console.log("✅ 日曆資料獲取成功:", res);
+        }).fail((err) => {
+            console.error("❌ 打卡資料獲取失敗:", err);
+            alert("查詢失敗，請稍後再試！");
+        }); 
+    })
 });
