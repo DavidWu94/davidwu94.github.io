@@ -112,7 +112,6 @@ function submitLeaveRequest() {
     }).done(res => {
         console.log("✅ 請假申請成功:", res);
         try {
-            let jsonResponse = JSON.parse(res); // 手動解析 JSON
             alert("已發送請假申請");
         } catch (e) {
             console.error("⚠️ JSON 解析失敗:", e);
