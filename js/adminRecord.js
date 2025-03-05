@@ -12,7 +12,7 @@ $(function () {
 
     const now = new Date();
     const year = now.getFullYear();
-    const month = String(now.getMonth() + 1); // 轉換為兩位數格式
+    const month = now.getMonth() + 1;
 
     $("#upData").on("click" , () =>{
         $.ajax({

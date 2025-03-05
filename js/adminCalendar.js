@@ -12,13 +12,11 @@ $(function () {
 
     const now = new Date();
     const year = now.getFullYear();
-    const month = String(now.getMonth() + 1);
-    console.log(year);
-    console.log(month);
+    const month = now.getMonth() + 1;
 
     $("#upData").on("click" , () =>{
         $.ajax({
-            url: `http://eucan.ddns.net:3000/calender`,
+            url: `http://eucan.ddns.net:3000/calendar`,
             type: "POST",
             dataType: "json",
             headers: {
