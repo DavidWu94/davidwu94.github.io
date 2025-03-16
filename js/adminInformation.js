@@ -9,6 +9,27 @@ $(function () {
 
     loginCheck(userId, sessionKey);
 
+    $("#upData").on("click", () => {
+        const userCode = $("#code").val();
+        const year = $("#date").val();
+        $.ajax({
+            url: `http://eucan.ddns.net:3000/sync`,
+            type: "POST",
+            dataType: "json",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            data: JSON.stringify({
+                account: userId,
+                cookie: sessionKey,
+                user: userCode,
+                year: year,
+            }),
+        }).then((res) =>{
+            console.log(res);
+        })
+    })
+
     $("#searching").on("click", () => {
         // 清空表格中的舊數據
         $("#quota td, #year td, #annual td, #personal td, #care td, #sick td, #wedding td, #funeral td, #birth td, #pcheckup td, #miscarriage td, #paternity td, #maternity td").remove();
