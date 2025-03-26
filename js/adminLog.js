@@ -110,8 +110,8 @@ $(function () {
     $(document).on("click", ".confirm-revise", function () {
         const serialnum = $(this).data("id");
         const newType = $("#type").val();
-        const newStart = $("#startDate").val() || $(this).data("start");
-        const newEnd = $("#endDate").val() || $(this).data("end");
+        const newStart = $("#startDate").val().trim() || $(this).data("start");
+        const newEnd = $("#endDate").val().trim() || $(this).data("end");
 
         $.ajax({
             url: "http://eucan.ddns.net:3000/tmodify",
