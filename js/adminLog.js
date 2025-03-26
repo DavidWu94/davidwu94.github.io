@@ -29,6 +29,11 @@ $(function () {
             }),
         }).done(res => {
             data = res?.data?.length ? res.data.sort((a, b) => Number(b.serialnum) - Number(a.serialnum)) : [];
+            
+            if ($("#month").val() != "") {
+                data = data.filter(d => d.start.substring(5, 7) == $("#month").val());
+            }
+            
             currentPage = 0;
             data.length ? displayPage() : showNoData();
             updatePagination();
