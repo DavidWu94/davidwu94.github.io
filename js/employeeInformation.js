@@ -37,6 +37,9 @@ $(function() {
             console.log(res);
         })
         $("#quota td, #year td, #annual td, #personal td, #care td, #sick td, #wedding td, #funeral td, #birth td, #pcheckup td, #miscarriage td, #paternity td, #maternity td").remove();
+
+        $("#joinTime h2").remove();
+
         $.ajax({
             url: `http://eucan.ddns.net:3000/quota`,
             type: 'POST',
@@ -55,8 +58,11 @@ $(function() {
 
             let yearValue = $("<td>").addClass("text-end").html(((res.month / 12) + res.years).toFixed(2) + " 年");
             let quota = $("<td>").addClass("text-end").html(res.quota + "(hr)");
+            let joinTime = $("<h2>").addClass("").html("到職日:" + res.joinTime);
+
             $("#quota").append(quota);
             $("#year").append(yearValue);
+            $("#joinTime").append(joinTime);
 
         })
         $.ajax({

@@ -29,6 +29,11 @@ $(function () {
             }),
         }).done(res => {
             data = res?.data?.length ? res.data.sort((a, b) => Number(b.serialnum) - Number(a.serialnum)) : [];
+            
+            if ($("#month").val() != "") {
+                data = data.filter(d => d.start.substring(5, 7) == $("#month").val());
+            }
+            
             currentPage = 0;
             data.length ? displayPage() : showNoData();
             updatePagination();
@@ -105,8 +110,8 @@ $(function () {
     $(document).on("click", ".confirm-revise", function () {
         const serialnum = $(this).data("id");
         const newType = $("#type").val();
-        const newStart = $("#startDate").val() || $(this).data("start");
-        const newEnd = $("#endDate").val() || $(this).data("end");
+        const newStart = $("#startDate").val().trim() || $(this).data("start");
+        const newEnd = $("#endDate").val().trim() || $(this).data("end");
 
         $.ajax({
             url: "http://eucan.ddns.net:3000/tmodify",
