@@ -36,7 +36,7 @@ $(function() {
         }).then(res=>{
             console.log(res);
         })
-        $("#quota td, #year td, #annual td, #personal td, #care td, #sick td, #wedding td, #funeral td, #birth td, #pcheckup td, #miscarriage td, #paternity td, #maternity td").remove();
+        $("#quota td, #year td, #annual td, #personal td, #care td, #sick td, #wedding td, #funeral td, #birth td, #pcheckup td, #miscarriage td, #paternity td, #maternity td, #official td").remove();
 
         $("#joinTime h2").remove();
 
@@ -90,7 +90,8 @@ $(function() {
                 pcheckup: "已請產檢假",
                 miscarriage: "已請流產假",
                 paternity: "已請陪產假",
-                maternity: "已請產假"
+                maternity: "已請產假",
+                official: "已請公假",
             };
                 
             Object.keys(leaveTypes).forEach(type => {
