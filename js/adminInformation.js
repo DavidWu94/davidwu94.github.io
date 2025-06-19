@@ -102,6 +102,7 @@ $(function () {
                 miscarriage: "已請流產假",
                 paternity: "已請陪產假",
                 maternity: "已請產假",
+                official: "已請公假",
             };
 
             Object.keys(leaveTypes).forEach(type => {
