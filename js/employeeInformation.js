@@ -36,7 +36,10 @@ $(function() {
         }).then(res=>{
             console.log(res);
         })
-        $("#quota td, #year td, #annual td, #personal td, #care td, #sick td, #wedding td, #funeral td, #birth td, #pcheckup td, #miscarriage td, #paternity td, #maternity td").remove();
+        $("#quota td, #year td, #annual td, #personal td, #care td, #sick td, #wedding td, #funeral td, #birth td, #pcheckup td, #miscarriage td, #paternity td, #maternity td, #official td").remove();
+
+        $("#joinTime h2").remove();
+
         $.ajax({
             url: `http://eucan.ddns.net:3000/quota`,
             type: 'POST',
@@ -55,8 +58,11 @@ $(function() {
 
             let yearValue = $("<td>").addClass("text-end").html(((res.month / 12) + res.years).toFixed(2) + " 年");
             let quota = $("<td>").addClass("text-end").html(res.quota + "(hr)");
+            let joinTime = $("<h2>").addClass("").html("到職日:" + res.joinTime);
+
             $("#quota").append(quota);
             $("#year").append(yearValue);
+            $("#joinTime").append(joinTime);
 
         })
         $.ajax({
@@ -84,7 +90,8 @@ $(function() {
                 pcheckup: "已請產檢假",
                 miscarriage: "已請流產假",
                 paternity: "已請陪產假",
-                maternity: "已請產假"
+                maternity: "已請產假",
+                official: "已請公假",
             };
                 
             Object.keys(leaveTypes).forEach(type => {

@@ -12,9 +12,20 @@ $(function () {
 
     const now = new Date();
     const year = String(now.getFullYear());
-    const month = String(now.getMonth() + 1);
+    const nowmonth = String(now.getMonth() + 1);
 
-    $("#upData").on("click" , () =>{
+    $("#upDataMonth").click(function () {
+        upCalendar(nowmonth);
+    });
+
+    $("#upDataYear").click(function () {
+        for (var i = 1; i <= 12; i++) {
+            upCalendar(i); // 依序傳入 1 到 12 月
+        }
+    });
+
+
+    function upCalendar(month) {
         $.ajax({
             url: "http://eucan.ddns.net:3000/calendar",
             type: "POST",
@@ -38,9 +49,7 @@ $(function () {
             console.error("❌ 行事曆資料獲取失敗:", xhr);
             alert(`查詢失敗，請稍後再試！錯誤代碼：${xhr.status}`);
         });
-        
-        
-        
-    })
-    
+
+    }
+
 });

@@ -29,6 +29,11 @@ $(function () {
             }),
         }).done(res => {
             data = res?.data?.length ? res.data.sort((a, b) => Number(b.serialnum) - Number(a.serialnum)) : [];
+
+            if ($("#month").val() != "") {
+                data = data.filter(d => d.start.substring(5, 7) == $("#month").val());
+            }
+
             currentPage = 0;
             data.length ? displayPage() : showNoData();
             updatePagination();
@@ -48,10 +53,10 @@ $(function () {
                 <td id="${d.serialnum}Start">${d.start}</td>
                 <td id="${d.serialnum}End">${d.end}</td>
                 <td>${d.totalTime}</td>
-                <td>${d.reason}</td>
+                <td id="${d.serialnum}reason">${d.reason}</td>
                 <td id="${d.serialnum}Button">
-                    <button class="delete-btn" data-id="${d.serialnum}" data-start="${d.start}" data-end="${d.end}" data-type="${d.type}">刪除</button>
-                    <button class="revise-btn" data-id="${d.serialnum}" data-start="${d.start}" data-end="${d.end}">修改</button>
+                    <button class="delete-btn" data-id="${d.serialnum}" data-start="${d.start}" data-end="${d.end}" data-type="${d.type}" data-reason="${d.reason}">刪除</button>
+                    <button class="revise-btn" data-id="${d.serialnum}" data-start="${d.start}" data-end="${d.end}" data-type="${d.type}" data-reason="${d.reason}">修改</button>
                 </td>
             </tr>
         `).join(''));
@@ -68,12 +73,14 @@ $(function () {
         const start = $(this).data("start");
         const end = $(this).data("end");
         const type = $(this).data("type");
+        const reason = $(this).data("reason");
+
         $.ajax({
             url: "http://eucan.ddns.net:3000/tmodify",
             type: "POST",
             dataType: "json",
             contentType: "application/json",
-            data: JSON.stringify({ account: userId, cookie: sessionKey, serialnum, state: 1, action: 0, type: type, start: start, end: end}),
+            data: JSON.stringify({ account: userId, cookie: sessionKey, serialnum, state: 1, action: 0, type: type, start: start, end: end, reason: reason }),
         }).done(res => {
             console.log("刪除成功", res);
             alert(`刪除成功 (ID: ${serialnum})`);
@@ -88,32 +95,38 @@ $(function () {
         const serialnum = $(this).data("id");
         const start = $(this).data("start");
         const end = $(this).data("end");
+        const type = $(this).data("type");
+        const reason = $(this).data("reason");
+        console.log(reason);
 
         $(`#${serialnum}Type`).html(`
             <select id="type" class="input">
+                <option>${type}</option>
                 <option>特休假</option><option>事假</option><option>普通傷病假</option>
                 <option>婚假</option><option>喪假</option><option>家庭照顧假</option>
                 <option>分娩假</option><option>產檢假</option><option>流產假</option>
-                <option>陪產假</option><option>產假</option>
+                <option>陪產假</option><option>產假</option><option>公假</option>
             </select>
         `);
         $(`#${serialnum}Start`).html(`<input id="startDate" placeholder="${start}" class="input">`);
         $(`#${serialnum}End`).html(`<input id="endDate" placeholder="${end}" class="input">`);
-        $(`#${serialnum}Button`).html(`<button class="confirm-revise" data-id="${serialnum}" data-start="${start}" data-end="${end}">確定修改</button>`);
+        $(`#${serialnum}reason`).html(`<input id="reason" placeholder="${reason}" class="input">`);
+        $(`#${serialnum}Button`).html(`<button class="confirm-revise" data-id="${serialnum}" data-start="${start}" data-end="${end}" data-reason="${reason}">確定修改</button>`);
     });
 
     $(document).on("click", ".confirm-revise", function () {
         const serialnum = $(this).data("id");
         const newType = $("#type").val();
-        const newStart = $("#startDate").val() || $(this).data("start");
-        const newEnd = $("#endDate").val() || $(this).data("end");
+        const newStart = $("#startDate").val().trim() || $(this).data("start");
+        const newEnd = $("#endDate").val().trim() || $(this).data("end");
+        const newreason = $("#reason").val().trim() || $(this).data("reason");
 
         $.ajax({
             url: "http://eucan.ddns.net:3000/tmodify",
             type: "POST",
             dataType: "json",
             contentType: "application/json",
-            data: JSON.stringify({ account: userId, cookie: sessionKey, serialnum, state: 1, action: 1, type: newType, start: newStart, end: newEnd}),
+            data: JSON.stringify({ account: userId, cookie: sessionKey, serialnum, state: 1, action: 1, type: newType, start: newStart, end: newEnd, reason: newreason}),
         }).done(res => {
             console.log("修改成功", res);
             alert(`修改成功 (ID: ${serialnum})`);

@@ -34,6 +34,8 @@ $(function () {
         // 清空表格中的舊數據
         $("#quota td, #year td, #annual td, #personal td, #care td, #sick td, #wedding td, #funeral td, #birth td, #pcheckup td, #miscarriage td, #paternity td, #maternity td").remove();
 
+        $("#joinTime h2").remove();
+
         // 取得員工編號
         const userCode = $("#code").val();
         const year = $("#date").val();
@@ -62,9 +64,13 @@ $(function () {
 
             let yearValue = $("<td>").addClass("text-end").html(((res.month / 12) + res.years).toFixed(2) + " 年");
             let quotaValue = $("<td>").addClass("text-end").html(res.quota + "(hr)");
+            let joinTime = $("<h2>").addClass("").html("到職日:" + res.joinTime);
+
+            console.log(joinTime);
 
             $("#year").append(yearValue);
             $("#quota").append(quotaValue);
+            $("#joinTime").append(joinTime);
 
             // 第二次 AJAX 請求：取得請假資訊
             return $.ajax({
@@ -96,6 +102,7 @@ $(function () {
                 miscarriage: "已請流產假",
                 paternity: "已請陪產假",
                 maternity: "已請產假",
+                official: "已請公假",
             };
 
             Object.keys(leaveTypes).forEach(type => {
