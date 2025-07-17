@@ -32,7 +32,7 @@ $(function () {
 
     $("#searching").on("click", () => {
         // 清空表格中的舊數據
-        $("#quota td, #year td, #annual td, #personal td, #care td, #sick td, #wedding td, #funeral td, #birth td, #pcheckup td, #miscarriage td, #paternity td, #maternity td").remove();
+        $("#quota td, #year td, #annual td, #personal td, #care td, #sick td, #wedding td, #funeral td, #birth td, #pcheckup td, #miscarriage td, #paternity td, #maternity td, #official td, #typhoon td").remove();
 
         $("#joinTime h2").remove();
 
@@ -93,7 +93,7 @@ $(function () {
             const leaveTypes = {
                 annual: "已請特休假",
                 personal: "已請事假",
-                sick: "已請普通傷病假",
+                sick: "已請病假",
                 wedding: "已請婚假",
                 funeral: "已請喪假",
                 care: "已請家庭照顧假",
