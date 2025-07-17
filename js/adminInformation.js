@@ -32,7 +32,7 @@ $(function () {
 
     $("#searching").on("click", () => {
         // 清空表格中的舊數據
-        $("#quota td, #year td, #annual td, #personal td, #care td, #sick td, #wedding td, #funeral td, #birth td, #pcheckup td, #miscarriage td, #paternity td, #maternity td").remove();
+        $("#quota td, #year td, #annual td, #personal td, #care td, #sick td, #wedding td, #funeral td, #birth td, #pcheckup td, #miscarriage td, #paternity td, #maternity td, #official td, #typhoon td").remove();
 
         $("#joinTime h2").remove();
 
