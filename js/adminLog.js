@@ -102,10 +102,11 @@ $(function () {
         $(`#${serialnum}Type`).html(`
             <select id="type" class="input">
                 <option>${type}</option>
-                <option>特休假</option><option>事假</option><option>普通傷病假</option>
+                <option>特休假</option><option>事假</option><option>病假</option>
                 <option>婚假</option><option>喪假</option><option>家庭照顧假</option>
                 <option>分娩假</option><option>產檢假</option><option>流產假</option>
                 <option>陪產假</option><option>產假</option><option>公假</option>
+                <option>颱風假</option>
             </select>
         `);
         $(`#${serialnum}Start`).html(`<input id="startDate" placeholder="${start}" class="input">`);

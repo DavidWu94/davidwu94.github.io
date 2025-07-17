@@ -82,7 +82,7 @@ $(function() {
             const leaveTypes = {
                 annual: "已請特休假",
                 personal: "已請事假",
-                sick: "已請普通傷病假",
+                sick: "已請病假",
                 wedding: "已請婚假",
                 funeral: "已請喪假",
                 care: "已請家庭照顧假",
