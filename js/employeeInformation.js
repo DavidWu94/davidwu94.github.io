@@ -17,7 +17,7 @@ $(function() {
     information (years, month);
 
     $("#searching").on("click", () => {
-        information ($("#date").val(), $("#month").val())
+        information ($("#date").val(), $("#month").val() || new Date().getMonth() + 1);
     })
     
     function information (year, month) {
@@ -58,8 +58,9 @@ $(function() {
             console.log(res);
             
             const yeardata = (res.month / 12).toFixed(2);
-            if (res.year >= 1) {
-                yeardata += res.year;
+            if (res.years >= 1) {
+                console.log(res.years);
+                yeardata = (parseFloat(yeardata) + res.years).toFixed(2);
             }
             let yearValue = $("<td>").addClass("text-end").html(yeardata + " 年");
             let quota = $("<td>").addClass("text-end").html(res.quota + "(hr)");
