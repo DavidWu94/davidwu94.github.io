@@ -92,7 +92,7 @@ $(function() {
                 paternity: "已請陪產假",
                 maternity: "已請產假",
                 official: "已請公假",
-                typhoon: "已請颱風假",
+                typhoon: "停班停課",
             };
                 
             Object.keys(leaveTypes).forEach(type => {
