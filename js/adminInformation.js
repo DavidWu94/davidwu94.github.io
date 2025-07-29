@@ -39,6 +39,7 @@ $(function () {
         // 取得員工編號
         const userCode = $("#code").val();
         const year = $("#date").val();
+        const month = $("#month").val();
 
         if (!userCode) {
             alert("請輸入員工編號！");
@@ -58,11 +59,16 @@ $(function () {
                 cookie: sessionKey,
                 user: userCode,
                 year: year,
+                month: month,
             }),
         }).then((res) => {
             console.log(res);
 
-            let yearValue = $("<td>").addClass("text-end").html(res.years + " 年");
+            const yeardata = (res.month / 12).toFixed(2);
+            if (res.year >= 1) {
+                yeardata += res.year;
+            }
+            let yearValue = $("<td>").addClass("text-end").html(yeardata + " 年");
             let quotaValue = $("<td>").addClass("text-end").html(res.quota + "(hr)");
             let joinTime = $("<h2>").addClass("").html("到職日:" + res.joinTime);
 

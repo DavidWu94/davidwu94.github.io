@@ -2,6 +2,7 @@ $(function() {
     // 取得當前年分
     const now = new Date();
     const years = now.getFullYear();
+    const month = now.getMonth() + 1; // 月份從0開始計算，所以需要加1
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
 
@@ -13,13 +14,13 @@ $(function() {
     }
     loginCheck(userId,sessionKey);
 	
-    information (years)
+    information (years, month);
 
     $("#searching").on("click", () => {
-        information ($("#date").val())
+        information ($("#date").val(), $("#month").val())
     })
     
-    function information (year) {
+    function information (year, month) {
         $.ajax({
             url: `http://eucan.ddns.net:3000/sync`,
             type: 'POST',
@@ -50,13 +51,17 @@ $(function() {
             data: JSON.stringify({
                 account:userId,
                 cookie:sessionKey,
-                year:year
+                year:year,
+                month:month,
             }),
         }).then(res=>{
             console.log(res);
             
-
-            let yearValue = $("<td>").addClass("text-end").html(((res.month / 12) + res.years).toFixed(2) + " 年");
+            const yeardata = (res.month / 12).toFixed(2);
+            if (res.year >= 1) {
+                yeardata += res.year;
+            }
+            let yearValue = $("<td>").addClass("text-end").html(yeardata + " 年");
             let quota = $("<td>").addClass("text-end").html(res.quota + "(hr)");
             let joinTime = $("<h2>").addClass("").html("到職日:" + res.joinTime);
 
