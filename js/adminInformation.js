@@ -62,7 +62,7 @@ $(function () {
         }).then((res) => {
             console.log(res);
 
-            let yearValue = $("<td>").addClass("text-end").html(((res.month / 12) + res.years).toFixed(2) + " 年");
+            let yearValue = $("<td>").addClass("text-end").html(res.years + " 年");
             let quotaValue = $("<td>").addClass("text-end").html(res.quota + "(hr)");
             let joinTime = $("<h2>").addClass("").html("到職日:" + res.joinTime);
 
