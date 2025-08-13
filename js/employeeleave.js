@@ -55,7 +55,7 @@ function fetchDayOff(userId, sessionKey, year) {
         data: JSON.stringify({ account: userId, cookie: sessionKey, year: year })
     }).done(res => {
         console.log("✅ 取得已休假時數:", res);
-        $("#annual").text(`當年度特休假已休時數: ${res.annual} (hr)`);
+        $("#annual").text(`當年度特休假已休時數: ${res.data[0].annual} (hr)`);
     }).fail(xhr => {
         console.error("❌ 取得已休時數失敗:", xhr);
     });
