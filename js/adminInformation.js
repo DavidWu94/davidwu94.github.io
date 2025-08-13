@@ -41,7 +41,7 @@ $(function () {
         const year = $("#date").val();
         const month = $("#month").val() || new Date().getMonth() + 1; // 如果沒有選擇月份，則使用當前月份
         
-        console.log(userCode, year, month);
+        //console.log(userCode, year, month);
 
         if (!userCode) {
             alert("請輸入員工編號！");
@@ -64,18 +64,18 @@ $(function () {
                 month: month,
             }),
         }).then((res) => {
-            console.log(res);
+            //console.log(res);
 
             let yeardata = (res.month / 12).toFixed(2);
             if (res.years >= 1) {
-                console.log(res.years);
-                yeardata = (parseFloat(yeardata) + res.years).toFixed(2);
+                //console.log(res.years);
+                yeardata = (parseFloat(yeardata) + Math.trunc(res.years)).toFixed(2);
             }
             let yearValue = $("<td>").addClass("text-end").html(yeardata + " 年");
             let quotaValue = $("<td>").addClass("text-end").html(res.quota + "(hr)");
             let joinTime = $("<h2>").addClass("").html("到職日:" + res.joinTime);
 
-            console.log(joinTime);
+            //console.log(joinTime);
 
             $("#year").append(yearValue);
             $("#quota").append(quotaValue);

@@ -6,7 +6,7 @@ $(function() {
     const sessionKey = readCookie("session");
     const userId = readCookie("id");
 
-    console.log(userId);
+    //console.log(userId);
 
     if(sessionKey == null){
         alert("請重新登入");
@@ -35,7 +35,7 @@ $(function() {
                 user:userId
             }),
         }).then(res=>{
-            console.log(res);
+            //console.log(res);
         })
         $("#quota td, #year td, #annual td, #personal td, #care td, #sick td, #wedding td, #funeral td, #birth td, #pcheckup td, #miscarriage td, #paternity td, #maternity td, #official td, #typhoon td").remove();
 
@@ -55,12 +55,12 @@ $(function() {
                 month:month,
             }),
         }).then(res=>{
-            console.log(res);
+            //console.log(res);
             
             const yeardata = (res.month / 12).toFixed(2);
             if (res.years >= 1) {
-                console.log(res.years);
-                yeardata = (parseFloat(yeardata) + res.years).toFixed(2);
+                //console.log(res.years);
+                yeardata = (parseFloat(yeardata) + Math.trunc(res.years)).toFixed(2);
             }
             let yearValue = $("<td>").addClass("text-end").html(yeardata + " 年");
             let quota = $("<td>").addClass("text-end").html(res.quota + "(hr)");
@@ -84,7 +84,7 @@ $(function() {
                 year:year
             }),
         }).then(res=>{
-            console.log(res);
+            //console.log(res);
             const leaveTypes = {
                 annual: "已請特休假",
                 personal: "已請事假",
