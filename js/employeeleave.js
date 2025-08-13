@@ -37,7 +37,7 @@ function fetchQuota(userId, sessionKey, year, month) {
         data: JSON.stringify({ account: userId, cookie: sessionKey, year: year})
     }).done(res => {
         console.log("✅ 取得特休假總時數:", res);
-        $("#quota").text(`當年度特休假總時數: ${res.quota} (hr)`);
+        $("#quota").text(`當年度特休假總時數: ${res.data[0].quota} (hr)`);
     }).fail(xhr => {
         console.error("❌ 取得特休假總時數失敗:", xhr);
     });
