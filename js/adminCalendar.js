@@ -14,14 +14,48 @@ $(function () {
     const year = String(now.getFullYear());
     const nowmonth = String(now.getMonth() + 1);
 
-    $("#upDataMonth").click(function () {
-        upCalendar(nowmonth);
-    });
-
-    $("#upDataYear").click(function () {
-        for (var i = 1; i <= 12; i++) {
-            upCalendar(i); // 依序傳入 1 到 12 月
-        }
+    $("#upData").on("click", () => {
+        $.confirm({
+            title: '更新行事曆',
+            content: `
+                <form id="calendarForm">
+                    <div>
+                        <label>年份</label>
+                        <input type="text" id="calendarYear" value="${year}" placeholder="請輸入年份" />
+                    </div>
+                    <div>
+                        <label>月份</label>
+                        <input type="text" id="calendarMonth" value="${nowmonth}" placeholder="請輸入月份" />
+                    </div>
+                </form>
+            `,
+            buttons: {
+                confirm: {
+                    text: '確定',
+                    btnClass: 'btn-blue',
+                    action: function () {
+                        var inputYear = this.$content.find('#calendarYear').val();
+                        var inputMonth = this.$content.find('#calendarMonth').val();
+                        if (!inputMonth){
+                            for (var i = 1; i <= 12; i++) {
+                                upCalendar(i); // 依序傳入 1 到 12 月
+                            }
+                            alert("已更新當年所有月份的行事曆資料");
+                        }
+                        else if (inputMonth < 1 || inputMonth > 12) {
+                            alert("請輸入有效的月份（1-12）");
+                            return false;
+                        } else {
+                            upCalendar(inputMonth);
+                            alert(`已更新 ${inputYear} 年 ${inputMonth} 月的行事曆資料`);
+                        }
+                    }
+                },
+                cancel: {
+                    text: '取消'
+                }
+            }
+        })
     });
 
 
