@@ -38,7 +38,7 @@ $(function () {
                         var inputMonth = this.$content.find('#calendarMonth').val();
                         if (!inputMonth){
                             for (var i = 1; i <= 12; i++) {
-                                upCalendar(i); // 依序傳入 1 到 12 月
+                                upCalendar(i, inputYear); // 依序傳入 1 到 12 月
                             }
                             alert("已更新當年所有月份的行事曆資料");
                         }
@@ -46,7 +46,7 @@ $(function () {
                             alert("請輸入有效的月份（1-12）");
                             return false;
                         } else {
-                            upCalendar(inputMonth);
+                            upCalendar(inputMonth, inputYear);
                             alert(`已更新 ${inputYear} 年 ${inputMonth} 月的行事曆資料`);
                         }
                     }
@@ -59,7 +59,8 @@ $(function () {
     });
 
 
-    function upCalendar(month) {
+    function upCalendar(month, year) {
+        console.log(`正在更新 ${year} 年 ${month} 月的行事曆資料...`);
         $.ajax({
             url: "http://eucan.ddns.net:3000/calendar",
             type: "POST",
