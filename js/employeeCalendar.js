@@ -41,7 +41,7 @@ $(function () {
         "https://docs.google.com/spreadsheets/d/1KdbMgnsiP6tz0KVtgCse-1u67cmiD-z2/preview", //2026 9月
         "https://docs.google.com/spreadsheets/d/1nSrfkXJDuD_UAvxHKtEBEHIvNRpp7y3t/preview", //2026 10月
         "https://docs.google.com/spreadsheets/d/1VGDWRHR-1NtZMn7di3zURusCu9iy0ivo/preview", //2026 11月
-        "http://docs.google.com/spreadsheets/d/1-lZmsQ8hl6LMQAvCM5rt9GDA8WLZy_xa/preview", //2026 12月
+        "https://docs.google.com/spreadsheets/d/1-lZmsQ8hl6LMQAvCM5rt9GDA8WLZy_xa/preview", //2026 12月
     ]
 
     function updateCalendar() {
