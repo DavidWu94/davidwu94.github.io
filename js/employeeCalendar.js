@@ -57,7 +57,7 @@ $(function () {
     }
 
     function loadCalendar(monthArray, monthIndex) {
-        if (monthIndex > 0 && monthIndex < month.length) {
+        if (monthIndex > 0 && monthIndex <= month.length) {
             $("#calendar").html(`
                 <iframe src="${monthArray[monthIndex]}"
                     width="100%"
@@ -65,9 +65,9 @@ $(function () {
                     frameborder="0">
                 </iframe>
             `);
-            console.log("✅ 更新行事曆:", month[monthIndex]);
+            console.log("✅ 更新行事曆:", monthArray[monthIndex]);
         } else {
-            console.warn("⚠️ 無效的月份選擇，無對應網址", nowMonth);
+            console.warn("⚠️ 無效的月份選擇，無對應網址", monthIndex);
         }
     }
 
