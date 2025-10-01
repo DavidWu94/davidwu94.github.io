@@ -92,6 +92,11 @@ function submitLeaveRequest() {
         return reloadPage();
     }
 
+    if (!validReason(reason)) {
+        alert("請填寫請假事由，謝謝！");
+        return reloadPage();
+    }
+
     const requestData = {
         account: userId,
         cookie: sessionKey,
@@ -138,7 +143,12 @@ function validTime(time) {
 //檢查是否填寫假別
 function validType(type) {
     if (type != "選擇假別") return true;
-} 
+}
+
+//檢查事由
+function validReason(reason) {
+    if (reason.length > 0) return true;
+}
 
 
 /**
